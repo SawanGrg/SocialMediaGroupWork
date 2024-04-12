@@ -1,0 +1,164 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|d:\\year 3\\application development\\group-courserwork-2\\groupcoursework\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|d:\\year 3\\application development\\group-courserwork-2\\groupcoursework\\migrations\\20240412073149_create user table first table.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|solutionrelative:migrations\\20240412073149_create user table first table.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|d:\\year 3\\application development\\group-courserwork-2\\groupcoursework\\migrations\\appdatabasecontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|solutionrelative:migrations\\appdatabasecontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|d:\\year 3\\application development\\group-courserwork-2\\groupcoursework\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|solutionrelative:appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|d:\\year 3\\application development\\group-courserwork-2\\groupcoursework\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|solutionrelative:controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|d:\\year 3\\application development\\group-courserwork-2\\groupcoursework\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|d:\\year 3\\application development\\group-courserwork-2\\groupcoursework\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|d:\\year 3\\application development\\group-courserwork-2\\groupcoursework\\databaseconfig\\appdatabasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|solutionrelative:databaseconfig\\appdatabasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 264,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AppDatabaseContextModelSnapshot.cs",
+              "DocumentMoniker": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Migrations\\AppDatabaseContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "Migrations\\AppDatabaseContextModelSnapshot.cs",
+              "ToolTip": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Migrations\\AppDatabaseContextModelSnapshot.cs",
+              "RelativeToolTip": "Migrations\\AppDatabaseContextModelSnapshot.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-12T09:10:29.528Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "20240412073149_create user table first table.cs",
+              "DocumentMoniker": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Migrations\\20240412073149_create user table first table.cs",
+              "RelativeDocumentMoniker": "Migrations\\20240412073149_create user table first table.cs",
+              "ToolTip": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Migrations\\20240412073149_create user table first table.cs",
+              "RelativeToolTip": "Migrations\\20240412073149_create user table first table.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-12T07:31:50.168Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAAwBUAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-12T07:04:41.947Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "appsettings.Development.json",
+              "ToolTip": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\appsettings.Development.json",
+              "RelativeToolTip": "appsettings.Development.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-04-12T06:54:12.756Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "Controllers\\WeatherForecastController.cs",
+              "ToolTip": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "Controllers\\WeatherForecastController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-12T07:33:42.903Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
+              "ToolTip": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Properties\\launchSettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-04-12T07:33:40.182Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-12T07:13:23.152Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AppDatabaseContext.cs",
+              "DocumentMoniker": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\DatabaseConfig\\AppDatabaseContext.cs",
+              "RelativeDocumentMoniker": "DatabaseConfig\\AppDatabaseContext.cs",
+              "ToolTip": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\DatabaseConfig\\AppDatabaseContext.cs",
+              "RelativeToolTip": "DatabaseConfig\\AppDatabaseContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-12T07:03:42.281Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
