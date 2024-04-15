@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace GroupCoursework.Models
 {
@@ -31,6 +32,10 @@ namespace GroupCoursework.Models
 
         [Display(Name = "Is Admin")]
         public bool IsAdmin { get; set; }
+
+        //icollection is a collection of objects
+        [JsonIgnore] // Ignore this property during JSON serialization
+        public ICollection <Blog> Blogs { get; set; }
 
 
     }

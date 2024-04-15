@@ -3,6 +3,7 @@ using GroupCoursework.ApiResponse;
 using GroupCoursework.Models;
 using GroupCoursework.Service;
 using Microsoft.AspNetCore.Mvc;
+using GroupCoursework.Filters; // Import the namespace containing AuthFilter
 
 namespace GroupCoursework.Controllers
 {
@@ -21,19 +22,12 @@ namespace GroupCoursework.Controllers
         public ActionResult<ApiResponse<IEnumerable<User>>> GetAllUsers()
         {
             var users = _userService.GetAllUsers();
-            Console.WriteLine("User data:");
-            foreach (var user in users)
-            {
-                Console.WriteLine($"User ID: {user.UserId}, Username: {user.Username}, Email: {user.Email}, ...");
-            }
-
             var response = new ApiResponse<IEnumerable<User>>("200", "Success", users);
             return Ok(response);
         }
 
-
-        //http://localhost:5000/api/user/1
         [HttpGet("{id}")]
+        [ServiceFilter(typeof(AuthFilter))] // Apply AuthFilter to this action
         public ActionResult<ApiResponse<User>> GetUserById(int id)
         {
             var user = _userService.GetUserById(id);
@@ -46,15 +40,12 @@ namespace GroupCoursework.Controllers
             return Ok(successResponse);
         }
 
-        //http://localhost:5000/api/user
         [HttpPost]
         public IActionResult CreateUser([FromBody] User user)
         {
             _userService.AddUser(user);
             var response = new ApiResponse<User>("201", "User created", user);
-            // Now, let's create a response with status code 201 Created and include the newly created user in the response body.
-            // In this example, we assume 'user' has been populated with data after being added to the database.
-            return Ok(response); // Return the response with status code 201 Created and the newly created user in the response body.
+            return Ok(response);
         }
 
         [HttpPut("{id}")]

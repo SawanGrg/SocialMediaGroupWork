@@ -3,8 +3,28 @@
   "WorkspaceRootPath": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|d:\\year 3\\application development\\group-courserwork-2\\groupcoursework\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|d:\\year 3\\application development\\group-courserwork-2\\groupcoursework\\controllers\\blogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|solutionrelative:controllers\\blogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|d:\\year 3\\application development\\group-courserwork-2\\groupcoursework\\utils\\valuemapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|solutionrelative:utils\\valuemapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|d:\\year 3\\application development\\group-courserwork-2\\groupcoursework\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|d:\\year 3\\application development\\group-courserwork-2\\groupcoursework\\models\\blog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|solutionrelative:models\\blog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|d:\\year 3\\application development\\group-courserwork-2\\groupcoursework\\service\\blogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|solutionrelative:service\\blogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|d:\\year 3\\application development\\group-courserwork-2\\groupcoursework\\repository\\blogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|solutionrelative:repository\\blogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|d:\\year 3\\application development\\group-courserwork-2\\groupcoursework\\service\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -15,19 +35,46 @@
       "RelativeMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|solutionrelative:repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|d:\\year 3\\application development\\group-courserwork-2\\groupcoursework\\databaseconfig\\appdatabasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|solutionrelative:databaseconfig\\appdatabasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/SAWAN_SQLEXPRESS/SawanSSMS/True/SqlTable/dbo.Blogs.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|d:\\year 3\\application development\\group-courserwork-2\\groupcoursework\\dto\\postblogdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|solutionrelative:dto\\postblogdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|d:\\year 3\\application development\\group-courserwork-2\\groupcoursework\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/SAWAN_SQLEXPRESS/SawanSSMS/True/SqlTable/dbo.Users.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|d:\\year 3\\application development\\group-courserwork-2\\groupcoursework\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|solutionrelative:appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|d:\\year 3\\application development\\group-courserwork-2\\groupcoursework\\apiresponse\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|solutionrelative:apiresponse\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/SAWAN_SQLEXPRESS/SawanSSMS/True/SqlTable/dbo.Users.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+      "AbsoluteMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|d:\\year 3\\application development\\group-courserwork-2\\groupcoursework\\groupcoursework.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|solutionrelative:groupcoursework.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|d:\\year 3\\application development\\group-courserwork-2\\groupcoursework\\databaseconfig\\appdatabasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|solutionrelative:databaseconfig\\appdatabasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|d:\\year 3\\application development\\group-courserwork-2\\groupcoursework\\migrations\\20240415051025_create blog table.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|solutionrelative:migrations\\20240415051025_create blog table.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|d:\\year 3\\application development\\group-courserwork-2\\groupcoursework\\migrations\\20240412073149_create user table first table.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|solutionrelative:migrations\\20240412073149_create user table first table.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|d:\\year 3\\application development\\group-courserwork-2\\groupcoursework\\filters\\authfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|solutionrelative:filters\\authfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{06162C19-2ACF-4DD2-879F-D6D3519E42CC}|GroupCoursework.csproj|d:\\year 3\\application development\\group-courserwork-2\\groupcoursework\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -45,13 +92,13 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 11,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAhAAAA",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAcwC4AAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-12T07:13:23.152Z",
               "IsPinned": true,
@@ -63,76 +110,147 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "AppDatabaseContext.cs",
-              "DocumentMoniker": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\DatabaseConfig\\AppDatabaseContext.cs",
-              "RelativeDocumentMoniker": "DatabaseConfig\\AppDatabaseContext.cs",
-              "ToolTip": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\DatabaseConfig\\AppDatabaseContext.cs",
-              "RelativeToolTip": "DatabaseConfig\\AppDatabaseContext.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAYwB0AAAApAAAA",
+              "DocumentIndex": 4,
+              "Title": "BlogService.cs",
+              "DocumentMoniker": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Service\\BlogService.cs",
+              "RelativeDocumentMoniker": "Service\\BlogService.cs",
+              "ToolTip": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Service\\BlogService.cs",
+              "RelativeToolTip": "Service\\BlogService.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAmwB0AAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-12T07:03:42.281Z",
+              "WhenOpened": "2024-04-15T06:41:50.989Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
-              "ToolTip": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Controllers\\UserController.cs",
-              "RelativeToolTip": "Controllers\\UserController.cs",
-              "ViewState": "AQIAACEAAAAAAAAAAAAYwEMAAAAjAAAA",
+              "Title": "BlogController.cs",
+              "DocumentMoniker": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Controllers\\BlogController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BlogController.cs",
+              "ToolTip": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Controllers\\BlogController.cs",
+              "RelativeToolTip": "Controllers\\BlogController.cs",
+              "ViewState": "AQIAADYAAAAAAAAAAAAYwDcAAAA+AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-14T12:28:14.348Z",
+              "WhenOpened": "2024-04-15T05:33:11.072Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ApiResponse.cs",
-              "DocumentMoniker": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\ApiResponse\\ApiResponse.cs",
-              "RelativeDocumentMoniker": "ApiResponse\\ApiResponse.cs",
-              "ToolTip": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\ApiResponse\\ApiResponse.cs",
-              "RelativeToolTip": "ApiResponse\\ApiResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAIAAAAnAAAA",
+              "DocumentIndex": 3,
+              "Title": "Blog.cs",
+              "DocumentMoniker": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Models\\Blog.cs",
+              "RelativeDocumentMoniker": "Models\\Blog.cs",
+              "ToolTip": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Models\\Blog.cs",
+              "RelativeToolTip": "Models\\Blog.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAADwvxsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-14T12:50:50.609Z",
+              "WhenOpened": "2024-04-15T02:49:08.779Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAA3wCkAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-15T02:48:09.432Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "UserRepository.cs",
               "DocumentMoniker": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Repository\\UserRepository.cs",
               "RelativeDocumentMoniker": "Repository\\UserRepository.cs",
               "ToolTip": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Repository\\UserRepository.cs",
               "RelativeToolTip": "Repository\\UserRepository.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAQwB0AAAAjAAAA",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAQwBUAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-14T12:26:16.798Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BlogRepository.cs",
+              "DocumentMoniker": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Repository\\BlogRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\BlogRepository.cs",
+              "ToolTip": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Repository\\BlogRepository.cs",
+              "RelativeToolTip": "Repository\\BlogRepository.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAAD4vygAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-15T06:42:41.057Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "ValueMapper.cs",
+              "DocumentMoniker": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Utils\\ValueMapper.cs",
+              "RelativeDocumentMoniker": "Utils\\ValueMapper.cs",
+              "ToolTip": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Utils\\ValueMapper.cs",
+              "RelativeToolTip": "Utils\\ValueMapper.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-15T05:48:52.295Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "UserService.cs",
               "DocumentMoniker": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Service\\UserService.cs",
               "RelativeDocumentMoniker": "Service\\UserService.cs",
               "ToolTip": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Service\\UserService.cs",
               "RelativeToolTip": "Service\\UserService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAtAAAA",
+              "ViewState": "AQIAAAQAAAAAAAAAAAApwBQAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-14T12:27:06.341Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AppDatabaseContext.cs",
+              "DocumentMoniker": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\DatabaseConfig\\AppDatabaseContext.cs",
+              "RelativeDocumentMoniker": "DatabaseConfig\\AppDatabaseContext.cs",
+              "ToolTip": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\DatabaseConfig\\AppDatabaseContext.cs",
+              "RelativeToolTip": "DatabaseConfig\\AppDatabaseContext.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAUwBYAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-12T07:03:42.281Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
+              "Title": "dbo.Blogs [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/SAWAN_SQLEXPRESS/SawanSSMS/True/SqlTable/dbo.Blogs.sql",
+              "ToolTip": "dbo.Blogs [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-04-15T06:58:32.04Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PostBlogDTO.cs",
+              "DocumentMoniker": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\DTO\\PostBlogDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\PostBlogDTO.cs",
+              "ToolTip": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\DTO\\PostBlogDTO.cs",
+              "RelativeToolTip": "DTO\\PostBlogDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-15T05:47:16.056Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "dbo.Users [Data]",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/SAWAN_SQLEXPRESS/SawanSSMS/True/SqlTable/dbo.Users.sql",
               "ToolTip": "dbo.Users [Data]",
@@ -142,7 +260,85 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 13,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "appsettings.Development.json",
+              "ToolTip": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\appsettings.Development.json",
+              "RelativeToolTip": "appsettings.Development.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-04-15T05:23:58.747Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ApiResponse.cs",
+              "DocumentMoniker": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\ApiResponse\\ApiResponse.cs",
+              "RelativeDocumentMoniker": "ApiResponse\\ApiResponse.cs",
+              "ToolTip": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\ApiResponse\\ApiResponse.cs",
+              "RelativeToolTip": "ApiResponse\\ApiResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwBAAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-14T12:50:50.609Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "GroupCoursework.http",
+              "DocumentMoniker": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\GroupCoursework.http",
+              "RelativeDocumentMoniker": "GroupCoursework.http",
+              "ToolTip": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\GroupCoursework.http",
+              "RelativeToolTip": "GroupCoursework.http",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2024-04-15T05:23:56.74Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "20240415051025_create blog table.cs",
+              "DocumentMoniker": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Migrations\\20240415051025_create blog table.cs",
+              "RelativeDocumentMoniker": "Migrations\\20240415051025_create blog table.cs",
+              "ToolTip": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Migrations\\20240415051025_create blog table.cs",
+              "RelativeToolTip": "Migrations\\20240415051025_create blog table.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-15T05:10:26.094Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "20240412073149_create user table first table.cs",
+              "DocumentMoniker": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Migrations\\20240412073149_create user table first table.cs",
+              "RelativeDocumentMoniker": "Migrations\\20240412073149_create user table first table.cs",
+              "ToolTip": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Migrations\\20240412073149_create user table first table.cs",
+              "RelativeToolTip": "Migrations\\20240412073149_create user table first table.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAIBJwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-15T04:02:31.82Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "AuthFilter.cs",
+              "DocumentMoniker": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Filters\\AuthFilter.cs",
+              "RelativeDocumentMoniker": "Filters\\AuthFilter.cs",
+              "ToolTip": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Filters\\AuthFilter.cs",
+              "RelativeToolTip": "Filters\\AuthFilter.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAQwA8AAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-14T15:17:53.783Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
               "Title": "launchSettings.json",
               "DocumentMoniker": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "Properties\\launchSettings.json",

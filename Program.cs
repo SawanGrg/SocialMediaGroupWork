@@ -1,8 +1,14 @@
 using GroupCoursework.DatabaseConfig;
+using GroupCoursework.Filters;
 using GroupCoursework.Repositories;
+using GroupCoursework.Repository;
 using GroupCoursework.Service;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
+using GroupCoursework.Models;
+using GroupCoursework.DTO;
+using GroupCoursework.Utils;
+using Microsoft.AspNetCore.Builder;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +31,16 @@ builder.Services.AddDbContext<AppDatabaseContext>();
 // Add repositories and services
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<UserService>();
+
+builder.Services.AddScoped<BlogRepository>();
+builder.Services.AddScoped<BlogService>();
+builder.Services.AddScoped<PostBlogDTO>();
+builder.Services.AddScoped<ValueMapper>();
+builder.Services.AddScoped<FileUploaderHelper>();
+builder.Services.AddScoped<UserRepository>();
+
+// Add filters
+builder.Services.AddScoped<AuthFilter>();
 
 var app = builder.Build();
 
