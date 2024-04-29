@@ -20,7 +20,7 @@ namespace GroupCoursework.Utils
                 throw new Exception("File is empty or null");
 
             string contentRootPath = _hostingEnvironment.ContentRootPath;
-            string uploadFolder = Path.Combine(contentRootPath, "Assets", "Images");
+            string uploadFolder = Path.Combine(contentRootPath,"wwwroot","images");
 
             // Generate a unique file name to avoid overwriting existing files
             string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
@@ -31,7 +31,7 @@ namespace GroupCoursework.Utils
                 file.CopyTo(stream);
             }
 
-            return Path.Combine("Assets", "Images", fileName);
+            return fileName;
         }
     }
 }

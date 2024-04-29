@@ -138,3 +138,4 @@ D:\year 3\application development\group-courserwork-2\GroupCoursework\obj\Debug\
 D:\year 3\application development\group-courserwork-2\GroupCoursework\bin\Debug\net8.0\System.Web.Cors.dll
 D:\year 3\application development\group-courserwork-2\GroupCoursework\bin\Debug\net8.0\CloudinaryDotNet.dll
 D:\year 3\application development\group-courserwork-2\GroupCoursework\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\year 3\application development\group-courserwork-2\GroupCoursework\bin\Debug\net8.0\GroupCoursework.staticwebassets.runtime.json

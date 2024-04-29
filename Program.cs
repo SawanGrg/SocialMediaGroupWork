@@ -54,6 +54,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseStaticFiles(); // Add this line to serve static files
+
 app.UseAuthorization();
 
 // Apply database migrations
