@@ -8,6 +8,7 @@ using GroupCoursework.DTO;
 using GroupCoursework.Utils;
 using Microsoft.AspNetCore.Http;
 using GroupCoursework.Repositories;
+using GroupCoursework.Filters;
 
 
 namespace GroupCoursework.Controllers
@@ -30,6 +31,7 @@ namespace GroupCoursework.Controllers
 
         //get all blogs
         [HttpGet]
+        [ServiceFilter(typeof(AdminAuthFilter))]
         public ActionResult<ApiResponse<IEnumerable<Blog>>> GetAllBlogs()
         {
             var blogs = _blogService.GetAllBlogs();

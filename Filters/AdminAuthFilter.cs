@@ -1,16 +1,18 @@
-﻿using GroupCoursework.Repositories;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using GroupCoursework.Repository;
 using GroupCoursework.Repositories;
 using GroupCoursework.Models;
+using System.Numerics;
+
 
 namespace GroupCoursework.Filters
 {
-    public class AuthFilter : Attribute, IAuthorizationFilter
+    public class AdminAuthFilter : Attribute, IAuthorizationFilter
     {
         private readonly UserRepository _userRepository;
 
-        public AuthFilter(UserRepository userRepository)
+        public AdminAuthFilter(UserRepository userRepository)
         {
             _userRepository = userRepository;
         }
@@ -18,37 +20,37 @@ namespace GroupCoursework.Filters
         public void OnAuthorization(AuthorizationFilterContext context)
         {
             // Retrieve authorization token from request headers
-            string authorizationHeader = context.HttpContext.Request.Headers["Authorization"];
+            string authorizationHeaderValue = context.HttpContext.Request.Headers["Authorization"];
 
             // Check if authorization header is missing or not
-            if (string.IsNullOrEmpty(authorizationHeader))
+            if (string.IsNullOrEmpty(authorizationHeaderValue))
             {
                 // Unauthorized if token is missing
                 context.Result = new UnauthorizedResult();
                 return;
             }
 
-            bool isTokenValid = ValidateToken(authorizationHeader);
+            bool isAdmin = IsAdmin(authorizationHeaderValue);
 
-            if (!isTokenValid)
+            if (!isAdmin)
             {
-                // Unauthorized if token is invalid
+                // Unauthorized if user is not an admin
                 context.Result = new UnauthorizedResult();
                 return;
             }
         }
 
-        private bool ValidateToken(string token)
+        private bool IsAdmin(string token)
         {
             int userId = int.Parse(token);
             User user = _userRepository.GetUserById(userId);
 
-            if (user != null)
+            if(user != null && user.Role == "Admin")
             {
-                return true; // User exists
+                return true; // User is an admin
             }
 
-            return false;
+            return false; // Default: Not an admin
         }
     }
 }

@@ -41,6 +41,7 @@ builder.Services.AddScoped<UserRepository>();
 
 // Add filters
 builder.Services.AddScoped<AuthFilter>();
+builder.Services.AddScoped<AdminAuthFilter>();
 
 var app = builder.Build();
 
