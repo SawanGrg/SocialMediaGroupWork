@@ -8,6 +8,7 @@ using GroupCoursework.DTO;
 using GroupCoursework.Utils;
 using Microsoft.AspNetCore.Http;
 using GroupCoursework.Repositories;
+
 using GroupCoursework.Filters;
 
 
@@ -32,6 +33,7 @@ namespace GroupCoursework.Controllers
         //get all blogs
         [HttpGet]
         [ServiceFilter(typeof(AdminAuthFilter))]
+
         public ActionResult<ApiResponse<IEnumerable<Blog>>> GetAllBlogs()
         {
             var blogs = _blogService.GetAllBlogs();
@@ -87,6 +89,7 @@ namespace GroupCoursework.Controllers
         }
 
 
+
         // vote a blog
         [HttpPost("{id}/vote")]
         public IActionResult VoteBlog(int id, [FromBody] VoteBlogDTO blogVote)
@@ -120,6 +123,7 @@ namespace GroupCoursework.Controllers
                 return BadRequest("Failed to upvote blog");
             }
         }
+
 
 
     }
