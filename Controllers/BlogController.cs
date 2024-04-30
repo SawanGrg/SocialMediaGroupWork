@@ -8,6 +8,7 @@ using GroupCoursework.DTO;
 using GroupCoursework.Utils;
 using Microsoft.AspNetCore.Http;
 using GroupCoursework.Repositories;
+
 using GroupCoursework.Filters;
 
 
@@ -32,6 +33,7 @@ namespace GroupCoursework.Controllers
         //get all blogs
         [HttpGet]
         [ServiceFilter(typeof(AdminAuthFilter))]
+
         public ActionResult<ApiResponse<IEnumerable<Blog>>> GetAllBlogs()
         {
             var blogs = _blogService.GetAllBlogs();
@@ -86,6 +88,41 @@ namespace GroupCoursework.Controllers
             return BadRequest(response);
         }
 
+
+
+        // vote a blog
+        [HttpPost("{id}/vote")]
+        public IActionResult VoteBlog(int id, [FromBody] VoteBlogDTO blogVote)
+        {
+            var blog = _blogService.GetBlogById(id);
+            if (blog == null)
+            {
+                return NotFound("Blog not found");
+            }
+
+            // Extracting Authorization header value
+            string authorizationValue = HttpContext.Request.Headers["Authorization"];
+            if (string.IsNullOrEmpty(authorizationValue))
+            {
+                // Handle case when Authorization header is missing
+                return Unauthorized("Authorization header is missing");
+            }
+
+            // Retrieve user details
+            User userDetails = _userRepository.GetUserById(int.Parse(authorizationValue));
+
+            // Call service method to handle upvoting
+            bool voted = _blogService.VoteBlog(blogVote, userDetails);
+
+            if (voted)
+            {
+                return Ok("Blog voted successfully");
+            }
+            else
+            {
+                return BadRequest("Failed to upvote blog");
+            }
+        }
 
 
 
