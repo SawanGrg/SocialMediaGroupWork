@@ -1,0 +1,79 @@
+﻿using System.Collections.Generic;
+using GroupCoursework.ApiResponse;
+using GroupCoursework.Models;
+using GroupCoursework.Service;
+using Microsoft.AspNetCore.Mvc;
+using GroupCoursework.Filters; // Import the namespace containing AuthFilter
+
+namespace GroupCoursework.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class UserController : ControllerBase
+    {
+        private readonly UserService _userService;
+
+        public UserController(UserService userService)
+        {
+            _userService = userService;
+        }
+
+        [HttpGet]
+        public ActionResult<ApiResponse<IEnumerable<User>>> GetAllUsers()
+        {
+            var users = _userService.GetAllUsers();
+            var response = new ApiResponse<IEnumerable<User>>("200", "Success", users);
+            return Ok(response);
+        }
+
+        [HttpGet("{id}")]
+        [ServiceFilter(typeof(AuthFilter))] // Apply AuthFilter to this action
+        public ActionResult<ApiResponse<User>> GetUserById(int id)
+        {
+            var user = _userService.GetUserById(id);
+            if (user == null)
+            {
+                var response = new ApiResponse<User>("404", "User not found", null);
+                return NotFound(response);
+            }
+            var successResponse = new ApiResponse<User>("200", "Success", user);
+            return Ok(successResponse);
+        }
+
+        [HttpPost]
+        public IActionResult CreateUser([FromBody] User user)
+        {
+            _userService.AddUser(user);
+            var response = new ApiResponse<User>("201", "User created", user);
+            return Ok(response);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateUser(int id, [FromBody] User user)
+        {
+            if (id != user.UserId)
+            {
+                var errorResponse = new ApiResponse<User>("400", "Bad request", null);
+                return BadRequest(errorResponse);
+            }
+            _userService.UpdateUser(user);
+            var successResponse = new ApiResponse<User>("204", "User updated", null);
+            return Ok(successResponse);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteUser(int id)
+        {
+            var isDeleted = _userService.DeleteUser(id);
+
+            if (!isDeleted)
+            {
+                var response = new ApiResponse<User>("404", "User not found", null);
+                return NotFound(response);
+            }
+
+            var successResponse = new ApiResponse<User>("204", "User deleted", null);
+            return Ok(successResponse);
+        }
+    }
+}
