@@ -43,6 +43,7 @@ builder.Services.AddScoped<BlogVoteRepository>();
 
 // Add filters
 builder.Services.AddScoped<AuthFilter>();
+builder.Services.AddScoped<AdminAuthFilter>();
 
 var app = builder.Build();
 
@@ -54,6 +55,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseStaticFiles(); // Add this line to serve static files
 
 app.UseAuthorization();
 

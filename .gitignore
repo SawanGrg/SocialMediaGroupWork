@@ -1,6 +1,9 @@
+# Ignore .vs/ folder and its contents
 .vs/
 
 obj/
 
 bin/
+obj/
+Properties/
 

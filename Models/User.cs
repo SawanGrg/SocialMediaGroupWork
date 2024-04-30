@@ -35,7 +35,7 @@ namespace GroupCoursework.Models
 
         //icollection is a collection of objects
         [JsonIgnore] // Ignore this property during JSON serialization
-        public ICollection <Blog> Blogs { get; set; }
+        public ICollection <Blog>? Blogs { get; set; }
 
 
     }

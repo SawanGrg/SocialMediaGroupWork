@@ -9,6 +9,7 @@ namespace GroupCoursework.Repositories
     {
         private readonly AppDatabaseContext _context;
 
+
         public UserRepository(AppDatabaseContext context)
         {
             _context = context;
@@ -40,8 +41,8 @@ namespace GroupCoursework.Repositories
             }
             catch (Exception ex)
             {
-                // Handle exception if needed
-                return false; // Operation failed
+              
+                return false; 
             }
         }
 
@@ -54,7 +55,7 @@ namespace GroupCoursework.Repositories
                 {
                     _context.Users.Remove(user);
                     _context.SaveChanges();
-                    return true; // Operation succeeded
+                    return true; 
                 }
                 else
                 {
@@ -63,8 +64,7 @@ namespace GroupCoursework.Repositories
             }
             catch (Exception ex)
             {
-                // Handle exception if needed
-                return false; // Operation failed
+                return false;
             }
         }
 

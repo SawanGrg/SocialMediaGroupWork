@@ -1,10 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GroupCoursework.Repositories;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using GroupCoursework.Repositories;
+using GroupCoursework.Models;
 
 namespace GroupCoursework.Filters
 {
     public class AuthFilter : Attribute, IAuthorizationFilter
     {
+        private readonly UserRepository _userRepository;
+
+        public AuthFilter(UserRepository userRepository)
+        {
+            _userRepository = userRepository;
+        }
+
         public void OnAuthorization(AuthorizationFilterContext context)
         {
             // Retrieve authorization token from request headers
@@ -30,11 +40,14 @@ namespace GroupCoursework.Filters
 
         private bool ValidateToken(string token)
         {
-            if (token == "user_id")
+            int userId = int.Parse(token);
+            User user = _userRepository.GetUserById(userId);
+
+            if (user != null)
             {
-                // Logic to validate token
-                return true;
+                return true; // User exists
             }
+
             return false;
         }
     }

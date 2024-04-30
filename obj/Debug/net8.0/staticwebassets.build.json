@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "YhKxJWVkYIiHDC82P0RNh1ChoSgv+/XYs4uJJiYavbo=",
+  "Source": "GroupCoursework",
+  "BasePath": "_content/GroupCoursework",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "GroupCoursework\\wwwroot",
+      "Source": "GroupCoursework",
+      "ContentRoot": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\wwwroot\\",
+      "BasePath": "_content/GroupCoursework",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}
