@@ -23,5 +23,18 @@ namespace GroupCoursework.Utils
 
             return blog;
         }
+
+        public BlogVote MapToBlogVote(VoteBlogDTO voteBlogDTO, User userDetails)
+        {
+            BlogVote blogVote = new BlogVote();
+
+            blogVote.User = userDetails;
+            blogVote.Blog = voteBlogDTO.Blog;
+            blogVote.IsVote = voteBlogDTO.vote;
+
+
+
+            return blogVote;
+        }
     }
 }

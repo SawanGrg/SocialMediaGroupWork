@@ -24,6 +24,8 @@ namespace GroupCoursework.Utils
 
             // Generate a unique file name to avoid overwriting existing files
             string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+
+            // Combine the upload folder path with the file name
             string filePath = Path.Combine(uploadFolder, fileName);
 
             using (FileStream stream = new FileStream(filePath, FileMode.Create))
