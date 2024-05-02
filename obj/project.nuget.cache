@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "T21NEoZtSh4NRBrKZFig2cwQdo/wBG/lrLUNdRnhOXtdfrTxGbIrgAWXSYpfuyrbwUnemW7QwASxK+paMZQrTA==",
+  "dgSpecHash": "JBkDXNS/FySnc4wFZfhKkLAKkNni1PKZcwZz1nrO6gaVFUUHjfMr7IvhY7zK7vcJhCwPyq1P8IhvSIv10tu9fA==",
   "success": true,
-  "projectFilePath": "D:\\year 3\\application development\\group-courserwork-2\\GroupCoursework\\GroupCoursework.csproj",
+  "projectFilePath": "C:\\ICP\\Final_Year\\Courseworks\\Application Development\\Group_Coursework\\backend\\GroupCoursework.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ASUS\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
