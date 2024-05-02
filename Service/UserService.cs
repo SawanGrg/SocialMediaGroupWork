@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using GroupCoursework.DTO;
 using GroupCoursework.Models;
 using GroupCoursework.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace GroupCoursework.Service
 {
@@ -18,9 +20,53 @@ namespace GroupCoursework.Service
             return _userRepository.GetAllUsers();
         }
 
+
+
+        public IEnumerable<Blog> GetBlogsByUser(int userId)
+        {
+            return _userRepository.GetBlogsByUser(userId);
+        }
+
+ 
         public User GetUserById(int userId)
         {
             return _userRepository.GetUserById(userId);
+        }
+
+        //For user profile
+        public UserWithBlogsDTO UserProfileDetails(int userId)
+        {
+            var user = _userRepository.GetUserById(userId);
+            if (user == null)
+            {
+                return null;
+            }
+
+            var blogs = _userRepository.GetBlogsByUser(userId)
+                .Select(b => new BlogDTO
+                {
+                    BlogId = b.BlogId,
+                    BlogImage = b.blogImageUrl,
+                    Title = b.blogTitle,
+                    Content = b.blogContent,
+                    blogCreatedAt = b.blogCreatedAt,
+                    isDeleted = b.isDeleted
+                })
+                .ToList();
+
+            return new UserWithBlogsDTO
+            {
+                UserId = user.UserId,
+                UserName = user.Username,
+                Email = user.Email,
+                Blogs = blogs
+            };
+        }
+
+
+        public User AuthenticateUser(string Email, string password)
+        {
+            return _userRepository.AuthenticateUser(Email, password);
         }
 
 

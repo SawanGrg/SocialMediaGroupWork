@@ -9,6 +9,7 @@ using GroupCoursework.Models;
 using GroupCoursework.DTO;
 using GroupCoursework.Utils;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Cors;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,17 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
+
+//Adding cors 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowOrigin", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -35,15 +47,18 @@ builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<BlogRepository>();
 builder.Services.AddScoped<BlogService>();
 builder.Services.AddScoped<PostBlogDTO>();
+builder.Services.AddScoped<VoteBlogDTO>();
 builder.Services.AddScoped<ValueMapper>();
 builder.Services.AddScoped<FileUploaderHelper>();
 builder.Services.AddScoped<UserRepository>();
+builder.Services.AddScoped<BlogVoteRepository>();
 
 // Add filters
 builder.Services.AddScoped<AuthFilter>();
 builder.Services.AddScoped<AdminAuthFilter>();
 
 var app = builder.Build();
+app.UseCors("AllowOrigin");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

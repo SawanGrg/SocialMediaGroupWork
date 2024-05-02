@@ -3,7 +3,9 @@ using GroupCoursework.ApiResponse;
 using GroupCoursework.Models;
 using GroupCoursework.Service;
 using Microsoft.AspNetCore.Mvc;
-using GroupCoursework.Filters; // Import the namespace containing AuthFilter
+using GroupCoursework.Filters;
+using Microsoft.AspNetCore.Identity.Data;
+using GroupCoursework.DTO; // Import the namespace containing AuthFilter
 
 namespace GroupCoursework.Controllers
 {
@@ -24,6 +26,45 @@ namespace GroupCoursework.Controllers
             var users = _userService.GetAllUsers();
             var response = new ApiResponse<IEnumerable<User>>("200", "Success", users);
             return Ok(response);
+        }
+
+        [HttpGet("specific-user/{user_id}")]
+        public ActionResult<ApiResponse<UserWithBlogsDTO>> GetSpecificUser(int user_id)
+        {
+            var user = _userService.UserProfileDetails(user_id);
+            if(user != null)
+            {
+            var response = new ApiResponse<UserWithBlogsDTO>("200", "User's profile", user);
+
+            return Ok(response);
+
+            }
+            else
+            {
+                var response = new ApiResponse<string>("404", "User not found", null);
+                return NotFound(response);
+            }
+        }
+
+
+
+        [HttpGet("hehe")]
+        public IActionResult Gethehe()
+        {
+            return Ok("hehe");
+        }
+
+        [HttpPost("login")]
+        public IActionResult Login([FromBody] LoginRequest loginRequest)
+        {
+            var user = _userService.AuthenticateUser(loginRequest.Email, loginRequest.Password);
+            if (user == null)
+            {
+                var response = new ApiResponse<User>("401", "Unauthorized register first!", null);
+                return Unauthorized(response);
+            }
+            var successResponse = new ApiResponse<User>("200", "Success", user);
+            return Ok(successResponse);
         }
 
         [HttpGet("{id}")]
