@@ -1,10 +1,9 @@
 ﻿using GroupCoursework.DTO;
 using GroupCoursework.Models;
-using GroupCoursework.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using GroupCoursework.Models;
+using GroupCoursework.DTOs;
 
 namespace GroupCoursework.Utils
 {
@@ -22,5 +21,23 @@ namespace GroupCoursework.Utils
 
             return blog;
         }
+
+        public User MapToAdminUser(CreateAdminDTO userDTO)
+        {
+            User user = new User
+            {
+                UserId = userDTO.UserId,
+                Username = userDTO.Username,
+                Password = userDTO.Password,
+                Email = userDTO.Email,
+                Phone = userDTO.Phone,
+                Gender = userDTO.Gender,
+                Role = "Admin",
+                IsAdmin = true 
+            };
+
+            return user;
+        }
+
     }
 }

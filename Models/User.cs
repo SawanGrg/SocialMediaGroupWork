@@ -33,9 +33,22 @@ namespace GroupCoursework.Models
         [Display(Name = "Is Admin")]
         public bool IsAdmin { get; set; }
 
+        [Display(Name = "Is Deleted")]
+        public bool IsDeleted { get; set; }
+
+
         //icollection is a collection of objects
         [JsonIgnore] // Ignore this property during JSON serialization
         public ICollection <Blog>? Blogs { get; set; }
+
+
+        [Display(Name = "CreatedAt")]
+        public DateTime CreatedAt { get; set; }
+
+
+        [Display(Name = "UpdatedAt")]
+        public DateTime UpdatedAt { get; set; }
+
 
 
     }

@@ -68,5 +68,28 @@ namespace GroupCoursework.Repositories
             }
         }
 
+        public bool changePassword(String email, String password)
+        {
+            try
+            {
+                var user = _context.Users.FirstOrDefault(u => u.Email == email);
+                if (user != null)
+                {
+                    user.Password = password;
+                    _context.Users.Update(user);
+                    _context.SaveChanges();
+                    return true; 
+                }
+                else
+                {
+                    return false; // User not found
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
     }
 }

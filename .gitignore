@@ -1,3 +1,7 @@
 # Ignore .vs/ folder and its contents
 .vs/
 
+#ignore bin and obj folders
+bin/
+obj/
+
