@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using GroupCoursework.Models;
+using static System.Net.WebRequestMethods;
 
 namespace GroupCoursework.Utils
 {

@@ -9,6 +9,7 @@ using GroupCoursework.Utils;
 using Microsoft.AspNetCore.Http;
 using GroupCoursework.Repositories;
 using GroupCoursework.Filters;
+using System.Diagnostics;
 
 
 namespace GroupCoursework.Controllers
@@ -30,14 +31,54 @@ namespace GroupCoursework.Controllers
         }
 
         //get all blogs
-        [HttpGet]
-        [ServiceFilter(typeof(AdminAuthFilter))]
-        public ActionResult<ApiResponse<IEnumerable<Blog>>> GetAllBlogs()
+        //[ServiceFilter(typeof(AdminAuthFilter))]
+        //public ActionResult<ApiResponse<IEnumerable<Blog>>> GetAllBlogs()
+        //{
+        //    var blogs = _blogService.GetAllBlogs();
+        //    var response = new ApiResponse<IEnumerable<Blog>>("200", "Success", blogs);
+        //    return Ok(response);
+        //}
+
+        [HttpGet("getAllBlogs")]
+        public ActionResult<ApiResponse<BlogPaginationDTO>> GetAllBlogs(int pageNumber = 1, int pageSize = 6)
         {
-            var blogs = _blogService.GetAllBlogs();
-            var response = new ApiResponse<IEnumerable<Blog>>("200", "Success", blogs);
+            var blogs = _blogService.GetAllBlogs(pageNumber, pageSize);
+            var totalCount = _blogService.GetTotalBlogs();
+            var blogDetails = new BlogPaginationDTO
+            {
+                TotalBlogs = totalCount,
+                PageSize = pageSize,
+                Blog = blogs
+            };
+            var response = new ApiResponse<BlogPaginationDTO>("200", "Success", blogDetails);
             return Ok(response);
         }
+
+
+
+
+
+        [HttpGet("specific-blogs/{blog_id}")]
+        public ActionResult<ApiResponse<SpecificBlogsWithSuggestions>> GetBlogsById(int blog_id)
+        {
+            Debug.WriteLine(blog_id.ToString(), "hehe");
+            var blogs = _blogService.GetBlogById(blog_id);
+            var blogSuggestions = _blogService.GetBlogsSuggestions(blog_id);
+            if (blogs == null)
+            {
+                var response = new ApiResponse<SpecificBlogsWithSuggestions>("404", "Blog not found", null);
+                return NotFound(response);
+            }
+            var blogDetails = new SpecificBlogsWithSuggestions
+            {
+                SpecificBlog = blogs,
+                BlogSuggestions = blogSuggestions
+            };
+
+            var successResponse = new ApiResponse<SpecificBlogsWithSuggestions>("200", "Success", blogDetails);
+            return Ok(successResponse);
+        }
+
 
         //get blog by id
         //[HttpGet("{id}")]
@@ -54,7 +95,7 @@ namespace GroupCoursework.Controllers
         //}
 
         //post blog 
-        [HttpPost]
+        [HttpPost("postBlogs")]
         public IActionResult CreateBlog([FromForm] PostBlogDTO postBlogDTO)
         {
             // Extracting Authorization header value
@@ -73,17 +114,115 @@ namespace GroupCoursework.Controllers
                 return BadRequest("Blog image is required");
 
             string imageUrl = _fileUploaderHelper.UploadFile(postBlogDTO.BlogImage);
-            
-            
 
-           bool stateBlog =  _blogService.AddBlog(postBlogDTO, imageUrl, userDetails);
 
-            if (stateBlog) { 
-                var res = new ApiResponse<string>("201", "Blog created", "Blog posted SuccessFul");
+
+            bool stateBlog = _blogService.AddBlog(postBlogDTO, imageUrl, userDetails);
+
+            if (stateBlog) {
+                var res = new ApiResponse<string>("201", "Blog posted SuccessFul", null);
                 return Ok(res);
             }
-            var response = new ApiResponse<string>("400", "Blog not created", "Blog not posted");
+            var response = new ApiResponse<string>("400", "Blog not created", null);
             return BadRequest(response);
+        }
+
+
+
+        //update blog 
+        [HttpPut("updateBlogs/{blogId}")]
+        public IActionResult UpdateBlog(int blogId, [FromForm] UpdateBlogDTO updateBlogDTO)
+        {
+            // Extracting Authorization header value
+            string authorizationValue = HttpContext.Request.Headers["Authorization"];
+
+            if (string.IsNullOrEmpty(authorizationValue))
+            {
+                return Unauthorized("Authorization header is missing");
+            }
+
+            User userDetails = _userRepository.GetUserById(int.Parse(authorizationValue));
+
+
+            Blog existingBlog = _blogService.GetBlogById(blogId);
+            if (existingBlog == null)
+            {
+                var response = new ApiResponse<string>("404", "The specified blog does not exist.", null);
+                return NotFound(response);
+            }
+
+
+            // Check if the user is authorized to update the blog
+            if (existingBlog.user.UserId != userDetails.UserId)
+            {
+                var response = new ApiResponse<string>("403", "You are not authorized to update this blog.", null);
+                return Unauthorized(response);
+            }
+
+
+            // Update the blog
+            string newImageUrl = null;
+            //Check if the blog is null or not
+            if (updateBlogDTO.BlogImage != null && updateBlogDTO.BlogImage.Length > 0)
+            {
+                newImageUrl = _fileUploaderHelper.UploadFile(updateBlogDTO.BlogImage);
+            }
+
+            bool isUpdated = _blogService.UpdateBlog(blogId, updateBlogDTO, newImageUrl);
+
+            if (isUpdated)
+            {
+                var response = new ApiResponse<string>("201", "The blog has been updated successfully.",null);
+                return Ok(response);
+            }
+            else
+            {
+                var response = new ApiResponse<string>("500", "An error occurred while updating the blog.", null);
+                return StatusCode(StatusCodes.Status500InternalServerError, response);
+            }
+        }
+
+        [HttpDelete("deleteBlog/{blogId}")]
+        public IActionResult DeleteBlog(int blogId)
+        {
+            // Extracting Authorization header value
+            string authorizationValue = HttpContext.Request.Headers["Authorization"];
+
+            if (string.IsNullOrEmpty(authorizationValue))
+            {
+                return Unauthorized("Authorization header is missing");
+            }
+
+            User userDetails = _userRepository.GetUserById(int.Parse(authorizationValue));
+
+
+            Blog existingBlog = _blogService.GetBlogById(blogId);
+            if (existingBlog == null)
+            {
+                var response = new ApiResponse<string>("404", "The specified blog does not exist.", null);
+                return NotFound(response);
+            }
+
+
+            // Check if the user is authorized to update the blog
+            if (existingBlog.user.UserId != userDetails.UserId)
+            {
+                var response = new ApiResponse<string>("403", "You are not authorized to delete this blog.", null);
+                return Unauthorized(response);
+            }
+
+
+            var blog= _blogService.DeleteBlog(blogId);
+            if (blog)
+            {
+                var response = new ApiResponse<string>("201", "The blog has been deleted successfully.", null);
+                return Ok(response);
+            }
+            else
+            {
+                var response = new ApiResponse<string>("500", "An error occurred while deleting the blog.", null);
+                return StatusCode(StatusCodes.Status500InternalServerError, response);
+            }
         }
 
 

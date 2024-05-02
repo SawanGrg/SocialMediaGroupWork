@@ -20,6 +20,17 @@ namespace GroupCoursework.Repositories
             return _context.Users.ToList();
         }
 
+        public User AuthenticateUser(string email, string password)
+        {
+            return _context.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
+        }
+
+        //Getting blogs posted by the user
+        public IEnumerable<Blog> GetBlogsByUser(int userId)
+        {
+            return _context.Blogs.Where(b => b.user.UserId == userId).ToList();
+        }
+
         public User GetUserById(int userId)
         {
             return _context.Users.FirstOrDefault(u => u.UserId == userId);
