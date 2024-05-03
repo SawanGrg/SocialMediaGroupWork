@@ -4,7 +4,7 @@ namespace GroupCoursework.DTO
 {
     public class VoteBlogDTO
     {
-        public Blog Blog { get; set; }
+       
         public bool vote { get; set; }
        
 
@@ -12,9 +12,8 @@ namespace GroupCoursework.DTO
         {
         }
 
-        public VoteBlogDTO(Blog Blog, bool vote)
+        public VoteBlogDTO(bool vote)
         {
-            this.Blog = Blog;
             this.vote = vote;
         }
 

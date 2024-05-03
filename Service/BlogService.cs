@@ -144,5 +144,33 @@ namespace GroupCoursework.Service
             }
 
         }
+
+        public BlogVote GetBlogVote(int blogId)
+        {
+            if (blogId <= 0)
+            {
+                return null;
+            }
+
+            BlogVote blogVote = _blogVoteRepository.GetBlogVoteById(blogId);
+
+            return blogVote;
+
+
+        }
+
+        public Boolean UpdateBlogVote(VoteBlogDTO blogVote, User user)
+        {
+            BlogVote blogVoteObject = _valueMapper.MapToBlogVote(blogVote, user);
+
+            Boolean blogUpdateStatus = _blogVoteRepository.UpdateBlogVote(blogVoteObject);
+
+            if (blogUpdateStatus)
+            {
+                return true;
+            }
+            return false;
+
+        }
     }
 }

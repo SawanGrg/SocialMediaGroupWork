@@ -232,7 +232,7 @@ namespace GroupCoursework.Controllers
 
 
         // vote a blog
-        [HttpPost("{id}/vote")]
+        [HttpPost("vote/{id}")]
         public IActionResult VoteBlog(int id, [FromBody] VoteBlogDTO blogVote)
         {
             var blog = _blogService.GetBlogById(id);
@@ -242,27 +242,57 @@ namespace GroupCoursework.Controllers
             }
 
             // Extracting Authorization header value
-            string authorizationValue = HttpContext.Request.Headers["Authorization"];
-            if (string.IsNullOrEmpty(authorizationValue))
+            string userId = HttpContext.Request.Headers["Authorization"];
+            if (string.IsNullOrEmpty(userId))
             {
                 // Handle case when Authorization header is missing
                 return Unauthorized("Authorization header is missing");
             }
 
             // Retrieve user details
-            User userDetails = _userRepository.GetUserById(int.Parse(authorizationValue));
+            User userDetails = _userRepository.GetUserById(int.Parse(userId));
 
-            // Call service method to handle upvoting
-            bool voted = _blogService.VoteBlog(blogVote, userDetails);
+            // Check vote
+            BlogVote blogCheck = _blogService.GetBlogVote(id);
 
-            if (voted)
+            if (blogCheck.IsVote == blogVote.vote)
             {
-                return Ok("Blog voted successfully");
+                return BadRequest("Same vote already voted");
             }
-            else
+
+            if(blogCheck.IsVote != blogVote.vote) 
             {
-                return BadRequest("Failed to upvote blog");
+                Boolean blogUpdate = _blogService.UpdateBlogVote(blogVote, userDetails);
+
+                if (blogUpdate)
+                {
+                    return Ok("Blog voted updated");
+
+                }
+                else
+                {
+                    return BadRequest();
+                }
             }
+
+            if(blogCheck == null)
+            {
+                // Call service method to handle upvoting
+                bool voted = _blogService.VoteBlog(blogVote, userDetails);
+
+                if (voted)
+                {
+                    return Ok("Blog voted successfully");
+                }
+                else
+                {
+                    return BadRequest("Failed to upvote blog");
+                }
+            }
+
+            return BadRequest("Failed to upvote blog");
+
+
         }
 
 
