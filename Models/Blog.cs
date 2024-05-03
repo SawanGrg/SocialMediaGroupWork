@@ -27,6 +27,10 @@ namespace GroupCoursework.Models
 
         public User user { get; set; }
 
+        // Navigation property for BlogVotes
+        [JsonIgnore] // Ignore this property during JSON serialization
+        public ICollection<BlogVote> BlogVotes { get; set; } // Collection of BlogVotes
+
         public Blog()
         {
 

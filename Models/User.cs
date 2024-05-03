@@ -37,6 +37,9 @@ namespace GroupCoursework.Models
         [JsonIgnore] // Ignore this property during JSON serialization
         public ICollection <Blog>? Blogs { get; set; }
 
+        [JsonIgnore]
+        public ICollection <BlogVote> BlogVotes { get; set; }
+
 
     }
 }

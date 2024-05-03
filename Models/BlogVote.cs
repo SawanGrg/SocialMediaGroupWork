@@ -15,6 +15,11 @@ namespace GroupCoursework.Models
         [Required]
         public bool IsVote { get; set; }
 
+        // Update the navigation property and attribute for the User property
+        [ForeignKey("User")]
+        public int UserId { get; set; }
+
+        [JsonIgnore]
         public User User { get; set; }
     }
 }
