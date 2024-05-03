@@ -22,9 +22,6 @@ namespace GroupCoursework.Models
         [Column(TypeName = "text"), MaxLength(1000)]
         public string blogImageUrl { get; set; }
 
-        [Display(Name = "Is Deleted")]
-        public bool IsDeleted { get; set; }
-
         public DateOnly blogCreatedAt { get; set; }
 
         public DateOnly blogUpdatedAt { get; set; }
