@@ -4,11 +4,11 @@ using System.Text.Json.Serialization;
 
 namespace GroupCoursework.Models
 {
+    [Table("BlogVotes")]
     public class BlogVote
     {
         [Key]
         public int VoteId { get; set; }
-
  
         public Blog Blog { get; set; }
 
