@@ -40,10 +40,11 @@ namespace GroupCoursework.Controllers
         //    return Ok(response);
         //}
 
+        //SetOrder chai filter ko type denote garcha jastai random, popularity and latest and null rakheko chai the filter auna pani sakcha naauna ni so null rakdeko 
         [HttpGet("getAllBlogs")]
-        public ActionResult<ApiResponse<BlogPaginationDTO>> GetAllBlogs(int pageNumber = 1, int pageSize = 6)
+        public ActionResult<ApiResponse<BlogPaginationDTO>> GetAllBlogs( string  sortOrder = null, int pageNumber = 1, int pageSize = 6)
         {
-            var blogs = _blogService.GetAllBlogs(pageNumber, pageSize);
+            var blogs = _blogService.GetAllBlogs(pageNumber, pageSize, sortOrder);
             var totalCount = _blogService.GetTotalBlogs();
             var blogDetails = new BlogPaginationDTO
             {
@@ -160,7 +161,6 @@ namespace GroupCoursework.Controllers
                 return Unauthorized(response);
             }
 
-
             // Update the blog
             string newImageUrl = null;
             //Check if the blog is null or not
@@ -228,39 +228,39 @@ namespace GroupCoursework.Controllers
 
 
 
-        // vote a blog
-        [HttpPost("{id}/vote")]
-        public IActionResult VoteBlog(int id, [FromBody] VoteBlogDTO blogVote)
-        {
-            var blog = _blogService.GetBlogById(id);
-            if (blog == null)
-            {
-                return NotFound("Blog not found");
-            }
+        //// vote a blog
+        //[HttpPost("{id}/vote")]
+        //public IActionResult VoteBlog(int id, [FromBody] VoteBlogDTO blogVote)
+        //{
+        //    var blog = _blogService.GetBlogById(id);
+        //    if (blog == null)
+        //    {
+        //        return NotFound("Blog not found");
+        //    }
 
-            // Extracting Authorization header value
-            string authorizationValue = HttpContext.Request.Headers["Authorization"];
-            if (string.IsNullOrEmpty(authorizationValue))
-            {
-                // Handle case when Authorization header is missing
-                return Unauthorized("Authorization header is missing");
-            }
+        //    // Extracting Authorization header value
+        //    string authorizationValue = HttpContext.Request.Headers["Authorization"];
+        //    if (string.IsNullOrEmpty(authorizationValue))
+        //    {
+        //        // Handle case when Authorization header is missing
+        //        return Unauthorized("Authorization header is missing");
+        //    }
 
-            // Retrieve user details
-            User userDetails = _userRepository.GetUserById(int.Parse(authorizationValue));
+        //    // Retrieve user details
+        //    User userDetails = _userRepository.GetUserById(int.Parse(authorizationValue));
 
-            // Call service method to handle upvoting
-            bool voted = _blogService.VoteBlog(blogVote, userDetails);
+        //    // Call service method to handle upvoting
+        //    bool voted = _blogService.VoteBlog(blogVote, userDetails);
 
-            if (voted)
-            {
-                return Ok("Blog voted successfully");
-            }
-            else
-            {
-                return BadRequest("Failed to upvote blog");
-            }
-        }
+        //    if (voted)
+        //    {
+        //        return Ok("Blog voted successfully");
+        //    }
+        //    else
+        //    {
+        //        return BadRequest("Failed to upvote blog");
+        //    }
+        //}
 
 
 

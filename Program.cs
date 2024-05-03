@@ -47,11 +47,9 @@ builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<BlogRepository>();
 builder.Services.AddScoped<BlogService>();
 builder.Services.AddScoped<PostBlogDTO>();
-builder.Services.AddScoped<VoteBlogDTO>();
 builder.Services.AddScoped<ValueMapper>();
 builder.Services.AddScoped<FileUploaderHelper>();
 builder.Services.AddScoped<UserRepository>();
-builder.Services.AddScoped<BlogVoteRepository>();
 
 // Add filters
 builder.Services.AddScoped<AuthFilter>();

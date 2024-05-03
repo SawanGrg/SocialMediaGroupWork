@@ -23,32 +23,35 @@ namespace GroupCoursework.Repository
             _context = context;
             _userService = userService;
             _logger = logger;
-        } 
+        }
 
-        public IEnumerable<Blog> GetAllBlogs(int pageNumber, int pageSize)
+        public IEnumerable<Blog> GetAllBlogs(int pageNumber, int pageSize, string sortOrder)
         {
             //So offset is the starting like the index ho and the page size is the limit
             //Ani skip vanna le kun index bata suru and take vanna le kati limit ko lini
             int offset = (pageNumber - 1) * pageSize;
+            IQueryable<Blog> blogs = _context.Blogs.Include(b => b.user);
 
-            var blogs = _context.Blogs
-                                   .Include(b => b.user)
-                                   .OrderByDescending(b => b.blogCreatedAt) 
-                                   .Skip(offset)
-                                   .Take(pageSize)
-                                   .ToList();
-            List<Blog> blogList = new List<Blog>();
-
-            // Populate user details for each blog
-            foreach (var blog in blogs)
+            if (sortOrder != null && !string.IsNullOrEmpty(sortOrder))
             {
-                blogList.Add(PopulateUserDetails(blog));
+                switch (sortOrder)
+                {
+                    case "random":
+                        blogs = blogs.OrderBy(b => Guid.NewGuid());
+                        break;
+                    case "recent":
+                        blogs = blogs.OrderByDescending(b => b.blogCreatedAt);
+                        break;
+                    default:
+                        break;
+                }
             }
+            blogs = blogs.Skip(offset).Take(pageSize);
 
-            return blogList;
+            return blogs.ToList(); 
         }
 
-      
+
 
         private Blog PopulateUserDetails(Blog blog)
         {
@@ -112,10 +115,27 @@ namespace GroupCoursework.Repository
 
         public bool UpdateBlog(Blog updatedBlog)
         {
-            _context.Entry(updatedBlog).State = EntityState.Modified;
+            AddBlogHistory(updatedBlog);
+
+            _context.Update(updatedBlog);
             _context.SaveChanges();
 
-            return true; // Update successful
+            return true; 
+        }
+
+        public void AddBlogHistory(Blog blog)
+        {
+            var blogHistoryEntry = new BlogHistory
+            {
+                BlogId = blog.BlogId,
+                blogTitle = blog.blogTitle,
+                blogContent = blog.blogContent,
+                blogImageUrl = blog.blogImageUrl,
+            };
+
+            // Add the new BlogHistory entry to the context
+            _context.BlogsHistory.Add(blogHistoryEntry);
+            _context.SaveChanges();
         }
 
         public bool DeleteBlog(int blogId)

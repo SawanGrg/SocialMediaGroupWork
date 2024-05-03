@@ -21,14 +21,14 @@ namespace GroupCoursework.DTO
                 BlogImage = blogImage;
             }
         }
-
+    
         //DTO for blog pagination home view
 
         public class BlogPaginationDTO
         {
             public int TotalBlogs { get; set; }
             public int PageSize { get; set; }
-
+            public string ?SortOrder { get; set; }
             public IEnumerable<Blog> Blog { get; set; }
 
             //public BlogPaginationDTO(int totalCount, int pageSize, IEnumerable<Blog> blog)
