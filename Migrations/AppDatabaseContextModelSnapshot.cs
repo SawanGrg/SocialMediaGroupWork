@@ -54,6 +54,9 @@ namespace GroupCoursework.Migrations
                     b.Property<DateOnly>("blogUpdatedAt")
                         .HasColumnType("date");
 
+                    b.Property<bool>("isDeleted")
+                        .HasColumnType("bit");
+
                     b.HasKey("BlogId");
 
                     b.HasIndex("UserId");
@@ -95,6 +98,9 @@ namespace GroupCoursework.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -104,6 +110,9 @@ namespace GroupCoursework.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsAdmin")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsUserDeleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("Password")
@@ -117,6 +126,9 @@ namespace GroupCoursework.Migrations
                     b.Property<string>("Role")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Username")
                         .IsRequired()
@@ -137,6 +149,8 @@ namespace GroupCoursework.Migrations
 
                     b.Navigation("user");
                 });
+
+        
 
             modelBuilder.Entity("GroupCoursework.Models.BlogVote", b =>
                 {

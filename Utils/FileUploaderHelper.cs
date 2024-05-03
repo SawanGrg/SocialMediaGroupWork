@@ -22,6 +22,11 @@ namespace GroupCoursework.Utils
             string contentRootPath = _hostingEnvironment.ContentRootPath;
             string uploadFolder = Path.Combine(contentRootPath,"wwwroot","images");
 
+            if (!Directory.Exists(uploadFolder))
+            {
+                Directory.CreateDirectory(uploadFolder);
+            }   
+
             // Generate a unique file name to avoid overwriting existing files
             string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
 
@@ -32,9 +37,10 @@ namespace GroupCoursework.Utils
             {
                 file.CopyTo(stream);
             }
+            //Path matra deko
+            string imageUrl = "http://localhost:5121/images/" + fileName;
 
-            // Return the file name (or full path if needed)
-            return fileName;
+            return imageUrl;
         }
     }
 }
