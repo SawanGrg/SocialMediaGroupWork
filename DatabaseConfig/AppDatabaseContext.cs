@@ -22,6 +22,9 @@ namespace GroupCoursework.DatabaseConfig
         public DbSet<User> Users { get; set; }
         public DbSet<Blog> Blogs { get; set; }
 
+        public DbSet<BlogVote> BlogVotes { get; set; }
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>()

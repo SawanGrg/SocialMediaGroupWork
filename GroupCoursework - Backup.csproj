@@ -7,15 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Assets\**" />
-    <Content Remove="Assets\**" />
-    <EmbeddedResource Remove="Assets\**" />
-    <None Remove="Assets\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="CloudinaryDotNet" Version="1.26.2" />
-    <PackageReference Include="MailKit" Version="4.5.0" />
     <PackageReference Include="Microsoft.AspNet.Cors" Version="5.3.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.4" />
@@ -23,11 +14,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
+    <Folder Include="Assets\Images\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 

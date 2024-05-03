@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
@@ -28,6 +29,8 @@ namespace GroupCoursework.Models
 
         public DateOnly blogUpdatedAt { get; set; }
 
+        [DefaultValue(false)]
+        public bool isDeleted { get; set; }
         public User user { get; set; }
 
         public Blog()
@@ -44,5 +47,12 @@ namespace GroupCoursework.Models
             this.blogUpdatedAt = blogUpdatedAt;
             this.user = user;
         }
+    }
+
+    public class SpecificBlogsWithSuggestions
+    {
+        public Blog SpecificBlog { get; set; }
+
+        public IEnumerable<Blog> BlogSuggestions { get; set; }
     }
 }

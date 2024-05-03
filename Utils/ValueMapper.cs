@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using GroupCoursework.DTOs;
+using GroupCoursework.Models;
+using static System.Net.WebRequestMethods;
 
 namespace GroupCoursework.Utils
 {
@@ -39,5 +41,18 @@ namespace GroupCoursework.Utils
             return user;
         }
 
+
+        public BlogVote MapToBlogVote(VoteBlogDTO voteBlogDTO, User userDetails)
+        {
+            BlogVote blogVote = new BlogVote();
+
+            blogVote.User = userDetails;
+            blogVote.Blog = voteBlogDTO.Blog;
+            blogVote.IsVote = voteBlogDTO.vote;
+
+
+
+            return blogVote;
+        }
     }
 }
