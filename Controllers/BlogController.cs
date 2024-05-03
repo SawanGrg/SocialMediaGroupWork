@@ -261,7 +261,7 @@ namespace GroupCoursework.Controllers
             if (blogCheck == null)
             {
                 // Call service method to handle upvoting
-                bool voted = _blogService.VoteBlog(blogVote, userDetails);
+                bool voted = _blogService.VoteBlog(blog, blogVote, userDetails);
 
                 if (voted)
                 {

@@ -42,10 +42,11 @@ namespace GroupCoursework.Utils
         }
 
 
-        public BlogVote MapToBlogVote(VoteBlogDTO voteBlogDTO, User userDetails)
+        public BlogVote MapToBlogVote(Blog blog, VoteBlogDTO voteBlogDTO, User userDetails)
         {
             BlogVote blogVote = new BlogVote();
 
+            blogVote.Blog = blog;
             blogVote.User = userDetails;
             blogVote.IsVote = voteBlogDTO.vote;
 

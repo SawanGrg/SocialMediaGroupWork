@@ -121,7 +121,7 @@ namespace GroupCoursework.Service
         //    return _blogRepository.DeleteBlog(blogId);
         //}
 
-        public Boolean VoteBlog(VoteBlogDTO blogVote,User userDetails)
+        public Boolean VoteBlog(Blog blog, VoteBlogDTO blogVote,User userDetails)
         {
             if(blogVote == null)
             {
@@ -132,7 +132,7 @@ namespace GroupCoursework.Service
                 return false;
             }
 
-            BlogVote blogVoteObject = _valueMapper.MapToBlogVote(blogVote, userDetails);
+            BlogVote blogVoteObject = _valueMapper.MapToBlogVote(blog, blogVote, userDetails);
 
             if (_blogVoteRepository.AddVoteBlog(blogVoteObject))
             {
