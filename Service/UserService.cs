@@ -84,5 +84,10 @@ namespace GroupCoursework.Service
         {
             return _userRepository.DeleteUser(userId);
         }
+
+        public bool changePassword(String email, String password)
+        {
+            return _userRepository.changePassword(email, password);
+        }
     }
 }

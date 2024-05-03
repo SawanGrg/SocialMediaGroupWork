@@ -64,6 +64,32 @@ namespace GroupCoursework.Migrations
                     b.ToTable("Blogs");
                 });
 
+            modelBuilder.Entity("GroupCoursework.Models.BlogVote", b =>
+                {
+                    b.Property<int>("VoteId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("VoteId"));
+
+                    b.Property<int>("BlogId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsVote")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("VoteId");
+
+                    b.HasIndex("BlogId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("BlogVotes");
+                });
+
             modelBuilder.Entity("GroupCoursework.Models.User", b =>
                 {
                     b.Property<int>("UserId")
@@ -71,6 +97,9 @@ namespace GroupCoursework.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -81,6 +110,9 @@ namespace GroupCoursework.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsAdmin")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsUserDeleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("Password")
@@ -94,6 +126,9 @@ namespace GroupCoursework.Migrations
                     b.Property<string>("Role")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Username")
                         .IsRequired()
@@ -115,8 +150,29 @@ namespace GroupCoursework.Migrations
                     b.Navigation("user");
                 });
 
+            modelBuilder.Entity("GroupCoursework.Models.BlogVote", b =>
+                {
+                    b.HasOne("GroupCoursework.Models.Blog", "Blog")
+                        .WithMany()
+                        .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GroupCoursework.Models.User", "User")
+                        .WithMany("BlogVotes")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Blog");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("GroupCoursework.Models.User", b =>
                 {
+                    b.Navigation("BlogVotes");
+
                     b.Navigation("Blogs");
                 });
 #pragma warning restore 612, 618
