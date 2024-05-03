@@ -159,11 +159,11 @@ namespace GroupCoursework.Service
 
         }
 
-        public Boolean UpdateBlogVote(VoteBlogDTO blogVote, User user)
+        public Boolean UpdateBlogVote(BlogVote blogCheck, VoteBlogDTO blogVote, User user)
         {
-            BlogVote blogVoteObject = _valueMapper.MapToBlogVote(blogVote, user);
+            blogCheck.IsVote = blogVote.vote;
 
-            Boolean blogUpdateStatus = _blogVoteRepository.UpdateBlogVote(blogVoteObject);
+            Boolean blogUpdateStatus = _blogVoteRepository.UpdateBlogVote(blogCheck);
 
             if (blogUpdateStatus)
             {
@@ -171,6 +171,19 @@ namespace GroupCoursework.Service
             }
             return false;
 
+        }
+
+        public Boolean DeleteBlogVote(int blogVoteId)
+        {
+            var deleteBlogVote = _blogVoteRepository.DeleteBlogVote(blogVoteId);
+            if (deleteBlogVote)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

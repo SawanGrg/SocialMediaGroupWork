@@ -235,18 +235,21 @@ namespace GroupCoursework.Controllers
         [HttpPost("vote/{id}")]
         public IActionResult VoteBlog(int id, [FromBody] VoteBlogDTO blogVote)
         {
-            var blog = _blogService.GetBlogById(id);
+            Blog blog = _blogService.GetBlogById(id);
             if (blog == null)
             {
-                return NotFound("Blog not found");
+                var response = new ApiResponse<string>("404", "Blog not found", null);
+                return NotFound(response);
+                
             }
 
             // Extracting Authorization header value
             string userId = HttpContext.Request.Headers["Authorization"];
             if (string.IsNullOrEmpty(userId))
             {
-                // Handle case when Authorization header is missing
-                return Unauthorized("Authorization header is missing");
+                var response = new ApiResponse<string>("403", "You are not authorization to vote for blog", null);
+                return Unauthorized(response);
+               
             }
 
             // Retrieve user details
@@ -255,42 +258,59 @@ namespace GroupCoursework.Controllers
             // Check vote
             BlogVote blogCheck = _blogService.GetBlogVote(id);
 
-            if (blogCheck.IsVote == blogVote.vote)
-            {
-                return BadRequest("Same vote already voted");
-            }
-
-            if(blogCheck.IsVote != blogVote.vote) 
-            {
-                Boolean blogUpdate = _blogService.UpdateBlogVote(blogVote, userDetails);
-
-                if (blogUpdate)
-                {
-                    return Ok("Blog voted updated");
-
-                }
-                else
-                {
-                    return BadRequest();
-                }
-            }
-
-            if(blogCheck == null)
+            if (blogCheck == null)
             {
                 // Call service method to handle upvoting
                 bool voted = _blogService.VoteBlog(blogVote, userDetails);
 
                 if (voted)
                 {
-                    return Ok("Blog voted successfully");
+                    var response = new ApiResponse<string>("201", "The blog voted successfully.", null);
+                    return Ok(response);
                 }
                 else
                 {
-                    return BadRequest("Failed to upvote blog");
+                    var response = new ApiResponse<string>("500", "Failed to vote the blog", null);
+                    return StatusCode(StatusCodes.Status500InternalServerError, response);
+           
                 }
             }
 
-            return BadRequest("Failed to upvote blog");
+            if (blogCheck.IsVote == blogVote.vote)
+            {
+                var blogVoteDelete = _blogService.DeleteBlogVote(blogCheck.VoteId);
+                if (blogVoteDelete)
+                {
+                    var response = new ApiResponse<string>("201", "The blog vote has been deleted successfully.", null);
+                    return Ok(response);
+                }
+                else
+                {
+                    var response = new ApiResponse<string>("500", "An error occurred while deleting the blog vote.", null);
+                    return StatusCode(StatusCodes.Status500InternalServerError, response);
+                }
+
+            }
+
+            if(blogCheck.IsVote != blogVote.vote) 
+            {
+                Boolean blogUpdate = _blogService.UpdateBlogVote(blogCheck, blogVote, userDetails);
+
+                if (blogUpdate)
+                {
+                    var response = new ApiResponse<string>("201", "The blog vote has been successfully updated.", null);
+                    return Ok(response);
+                }
+                else
+                {
+                    var response = new ApiResponse<string>("500", "Failed to update the vote of the blog", null);
+                    return StatusCode(StatusCodes.Status500InternalServerError, response);
+                }
+            }
+
+
+            var responseReturn = new ApiResponse<string>("500", "Failed to vote of the blog", null);
+            return StatusCode(StatusCodes.Status500InternalServerError, responseReturn);
 
 
         }

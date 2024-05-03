@@ -112,7 +112,7 @@ namespace GroupCoursework.Repository
 
         public bool UpdateBlog(Blog updatedBlog)
         {
-            _context.Entry(updatedBlog).State = EntityState.Modified;
+            _context.Blogs.Update(updatedBlog);
             _context.SaveChanges();
 
             return true; // Update successful

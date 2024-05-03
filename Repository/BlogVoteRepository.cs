@@ -27,6 +27,7 @@ namespace GroupCoursework.Repository
             try
             {
                 _context.BlogVotes.Add(blogVote);
+                _context.SaveChanges();
                 return true;
             }catch (Exception ex)
             {
@@ -50,7 +51,7 @@ namespace GroupCoursework.Repository
         {
             try
             {
-            _context.Entry(updatedBlogVote).State = EntityState.Modified;
+            _context.BlogVotes.Update(updatedBlogVote);
             _context.SaveChanges();
 
             return true; // Update successful
@@ -60,5 +61,19 @@ namespace GroupCoursework.Repository
                 return false;
             }
         }
+
+        public Boolean DeleteBlogVote(int blogVoteId)
+        {
+            var blogVote = _context.BlogVotes.Find(blogVoteId);
+            if (blogVote != null)
+            {
+                _context.BlogVotes.Remove(blogVote);
+                _context.SaveChanges();
+                return true;
+            }
+            return false;
+
+        }
+
     }
 }
