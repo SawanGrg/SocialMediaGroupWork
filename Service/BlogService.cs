@@ -49,6 +49,11 @@ namespace GroupCoursework.Service
             return _blogRepository.GetBlogSuggestions(blogId);
         }
 
+        public IEnumerable<BlogHistory> GetBlogHistories(int blogId)
+        {
+            return _blogRepository.GetBlogHistories(blogId);    
+        }
+
 
         public Boolean AddBlog(PostBlogDTO postBlogDTO, string imageUrl, User userDetails )
         {
@@ -63,6 +68,32 @@ namespace GroupCoursework.Service
             return false;
         }
 
+
+        public Boolean TempDeleteBlog(int blogId)
+        {
+            var updateBlog = _blogRepository.TempDeleteBlog(blogId);
+            if (updateBlog)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public Boolean RecoverDeletedBlog(int blogId)
+        {
+            var updateBlog = _blogRepository.RecoverDeletedBlog(blogId);
+            if (updateBlog)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public Boolean DeleteBlog(int blogId)
         {
             var updateBlog = _blogRepository.DeleteBlog(blogId);
@@ -79,30 +110,51 @@ namespace GroupCoursework.Service
         public bool UpdateBlog(int blogId, UpdateBlogDTO updateBlogDTO, string newImageUrl)
         {
             //This is the existing blog taken from the db and the updateBlogDTO is the data sent from the user to be updated
-            var existingBlog = _blogRepository.GetBlogById(blogId);
+            Blog existingBlog = _blogRepository.GetBlogById(blogId);
 
             if (existingBlog == null)
             {
                 return false; // Blog not found
             }
 
+            //Yo chai update navako wala paila ko wala for storing on the blog history 
+            Blog oldBlog = new Blog
+            {
+                blogTitle = existingBlog.blogTitle,
+                blogContent = existingBlog.blogContent,
+                blogImageUrl = existingBlog.blogImageUrl
+            };
+            Console.WriteLine(oldBlog.blogTitle, "1");
+
+            //For what fields have been updated yetaikai rakhdeko 
+            string updatedDataMessage = "You updated: ";
+            //Updated blog chai aile user le input gareko wala
+
             // Update properties only if they are provided in the DTO
             if (!string.IsNullOrEmpty(updateBlogDTO.BlogTitle))
             {
                 existingBlog.blogTitle = updateBlogDTO.BlogTitle;
+                updatedDataMessage += "title, ";
             }
 
             if (!string.IsNullOrEmpty(updateBlogDTO.BlogContent))
             {
                 existingBlog.blogContent = updateBlogDTO.BlogContent;
+                updatedDataMessage += "content, ";
+
             }
 
             if (updateBlogDTO.BlogImage != null && updateBlogDTO.BlogImage.Length > 0)
             {
                 existingBlog.blogImageUrl = newImageUrl;
-            }
+                updatedDataMessage += "image, ";
 
-            return _blogRepository.UpdateBlog(existingBlog);
+            }
+            updatedDataMessage = updatedDataMessage.TrimEnd(',', ' ');
+
+            Console.WriteLine(oldBlog.blogTitle, "2");
+
+            return _blogRepository.UpdateBlog(existingBlog, oldBlog, updatedDataMessage);
         }
 
         //public Boolean UpdateBlog(Blog blog)

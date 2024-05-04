@@ -47,13 +47,6 @@ namespace GroupCoursework.Controllers
         }
 
 
-
-        [HttpGet("hehe")]
-        public IActionResult Gethehe()
-        {
-            return Ok("hehe");
-        }
-
         [HttpPost("login")]
         public IActionResult Login([FromBody] LoginRequest loginRequest)
         {

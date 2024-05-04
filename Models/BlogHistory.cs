@@ -1,31 +1,30 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace GroupCoursework.Models
 {
+    [Table("BlogHistory")]
     public class BlogHistory
     {
         [Key]
-        public int BlogHistoryId{ get; set; }
+        public int BlogHistoryId { get; set; }
 
         [Required]
-        [Column(TypeName = "text"), MaxLength(100)]
-        public string blogTitle { get; set; }
+        public Blog Blog { get; set; }
 
-        [Required]
-        [Column(TypeName = "text"), MaxLength(1000)]
-        public string blogContent { get; set; }
+        [Display(Name = "Blog Title")]
+        public string BlogTitle { get; set; }
 
-        [Required]
-        [Column(TypeName = "text"), MaxLength(1000)]
+        [Display(Name = "Blog Content")]
+        public string BlogContent { get; set; }
 
-        public string blogImageUrl { get; set; }
+        [Display(Name = "Blog Image Url")]
+        public string BlogImageUrl { get; set; }
 
-        public int BlogId { get; set; }
-
-        public DateOnly CreatedAt { get; set; }
-
-        public DateOnly UpdatedAt { get; set; }
+        [Display(Name ="CreatedAt")]
+        public DateTime CreatedAt { get; set; }
 
     }
 }

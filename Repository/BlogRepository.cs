@@ -113,30 +113,75 @@ namespace GroupCoursework.Repository
         }
 
 
-        public bool UpdateBlog(Blog updatedBlog)
+        public IEnumerable<BlogHistory> GetBlogHistories(int blogId)
         {
-            AddBlogHistory(updatedBlog);
-
-            _context.Update(updatedBlog);
-            _context.SaveChanges();
-
-            return true; 
+            return _context.BlogHistory.Where(history => history.Blog.BlogId == blogId);
         }
 
-        public void AddBlogHistory(Blog blog)
+        public bool UpdateBlog(Blog updatedBlog, Blog oldBlog, string updatedDataMessage)
         {
+            Console.WriteLine(oldBlog.blogTitle, "3");
+            _context.Update(updatedBlog);
             var blogHistoryEntry = new BlogHistory
             {
-                BlogId = blog.BlogId,
-                blogTitle = blog.blogTitle,
-                blogContent = blog.blogContent,
-                blogImageUrl = blog.blogImageUrl,
+                Blog = updatedBlog,
+                BlogTitle = oldBlog.blogTitle,
+                BlogContent = oldBlog.blogContent,
+                BlogImageUrl = oldBlog.blogImageUrl,
+                CreatedAt = DateTime.Now,
+
             };
 
-            // Add the new BlogHistory entry to the context
-            _context.BlogsHistory.Add(blogHistoryEntry);
+            _context.BlogHistory.Add(blogHistoryEntry);
+
             _context.SaveChanges();
+            return true;
         }
+
+        //public void AddBlogHistory(Blog blog)
+        //{
+        //    var blogHistoryEntry = new BlogHistory
+        //    {
+        //        BlogId = blog.BlogId,
+        //        blogTitle = blog.blogTitle,
+        //        blogContent = blog.blogContent,
+        //        blogImageUrl = blog.blogImageUrl,
+        //    };
+
+        //    // Add the new BlogHistory entry to the context
+        //    _context.BlogsHistory.Add(blogHistoryEntry);
+        //    _context.SaveChanges();
+        //}
+
+
+        //For temporiarily deleting the blog
+        public bool TempDeleteBlog(int blogId)
+        {
+            var blog = _context.Blogs.Find(blogId);
+            if (blog != null)
+            {
+                blog.isDeleted = true;
+                _context.Blogs.Update(blog);
+                _context.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
+        //For recovering the temporiarily deleted blog
+        public bool RecoverDeletedBlog(int blogId)
+        {
+            var blog = _context.Blogs.Find(blogId);
+            if (blog != null)
+            {
+                blog.isDeleted = false;
+                _context.Blogs.Update(blog);
+                _context.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
 
         public bool DeleteBlog(int blogId)
         {

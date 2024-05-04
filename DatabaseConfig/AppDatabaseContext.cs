@@ -21,9 +21,11 @@ namespace GroupCoursework.DatabaseConfig
 
         public DbSet<User> Users { get; set; }
         public DbSet<Blog> Blogs { get; set; }
-
-        public DbSet<BlogHistory> BlogsHistory { get; set; }
-        //public DbSet<BlogVote> BlogVotes { get; set; }
+        public DbSet<BlogVote> BlogVotes { get; set; }
+        public DbSet<BlogComments> BlogComments { get; set; }
+        public DbSet<CommentReaction> CommentReactions { get; set; }
+        public DbSet<BlogHistory> BlogHistory { get; set; }
+        public DbSet<Notification> Notification { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

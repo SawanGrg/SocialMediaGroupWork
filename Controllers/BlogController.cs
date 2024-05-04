@@ -115,6 +115,9 @@ namespace GroupCoursework.Controllers
             if (postBlogDTO.BlogImage == null || postBlogDTO.BlogImage.Length == 0)
                 return BadRequest("Blog image is required");
 
+            if (postBlogDTO.BlogImage.OpenReadStream().Length > 1000000)
+                return BadRequest("Blog image size should not exceed 1MB");
+
             string imageUrl = _fileUploaderHelper.UploadFile(postBlogDTO.BlogImage);
 
 
@@ -183,6 +186,114 @@ namespace GroupCoursework.Controllers
             }
         }
 
+        [HttpGet("getBlogHistory/{blogId}")]
+        public IActionResult GetAllHistoryBlog(int blogId)
+        {
+            Blog blog = _blogService.GetBlogById(blogId);
+
+            if (blog == null)
+            {
+                return NotFound("The specified blog does not exist.");
+            }
+            else
+            {
+                IEnumerable<BlogHistory> blogHistories = _blogService.GetBlogHistories(blogId);
+                var response = new ApiResponse<IEnumerable<BlogHistory>>("200", "The specified blog's update history.", blogHistories);
+                return Ok(response);
+            }
+        }
+
+
+
+        //Temporary deletion
+        [HttpPut("deleteBlogTemp/{blogId}")]
+        public IActionResult DeleteBlogTemp(int blogId)
+        {
+            // Extracting Authorization header value
+            string authorizationValue = HttpContext.Request.Headers["Authorization"];
+
+            if (string.IsNullOrEmpty(authorizationValue))
+            {
+                return Unauthorized("Authorization header is missing");
+            }
+
+            User userDetails = _userRepository.GetUserById(int.Parse(authorizationValue));
+
+
+            Blog existingBlog = _blogService.GetBlogById(blogId);
+            if (existingBlog == null)
+            {
+                var response = new ApiResponse<string>("404", "The specified blog does not exist.", null);
+                return NotFound(response);
+            }
+
+
+            // Check if the user is authorized to update the blog
+            if (existingBlog.user.UserId != userDetails.UserId)
+            {
+                var response = new ApiResponse<string>("403", "You are not authorized to delete this blog.", null);
+                return Unauthorized(response);
+            }
+
+
+            var blog = _blogService.TempDeleteBlog(blogId);
+            if (blog)
+            {
+                var response = new ApiResponse<string>("201", "The blog has been deleted  temporarily.", null);
+                return Ok(response);
+            }
+            else
+            {
+                var response = new ApiResponse<string>("500", "An error occurred while deleting the blog.", null);
+                return BadRequest(response);
+            }
+        }
+
+        //Temporary deletion
+        [HttpPut("recoverDeletedBlog/{blogId}")]
+        public IActionResult RecoverBlogDelete(int blogId)
+        {
+            // Extracting Authorization header value
+            string authorizationValue = HttpContext.Request.Headers["Authorization"];
+
+            if (string.IsNullOrEmpty(authorizationValue))
+            {
+                return Unauthorized("Authorization header is missing");
+            }
+
+            User userDetails = _userRepository.GetUserById(int.Parse(authorizationValue));
+
+
+            Blog existingBlog = _blogService.GetBlogById(blogId);
+            if (existingBlog == null)
+            {
+                var response = new ApiResponse<string>("404", "The specified blog does not exist.", null);
+                return NotFound(response);
+            }
+
+
+            // Check if the user is authorized to update the blog
+            if (existingBlog.user.UserId != userDetails.UserId)
+            {
+                var response = new ApiResponse<string>("403", "You are not authorized to delete this blog.", null);
+                return Unauthorized(response);
+            }
+
+
+            var blog = _blogService.RecoverDeletedBlog(blogId);
+            if (blog)
+            {
+                var response = new ApiResponse<string>("201", "The blog has been recovered  successfully.", null);
+                return Ok(response);
+            }
+            else
+            {
+                var response = new ApiResponse<string>("500", "An error occurred while deleting the blog.", null);
+                return BadRequest(response);
+            }
+        }
+
+        //Permanent deletion
         [HttpDelete("deleteBlog/{blogId}")]
         public IActionResult DeleteBlog(int blogId)
         {

@@ -10,6 +10,9 @@ using GroupCoursework.DTO;
 using GroupCoursework.Utils;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors;
+using GroupCoursework.DTOs;
+using GroupCoursework.MailHandler.Service;
+using GroupCoursework.MailHandler.MailDTO;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -51,9 +54,20 @@ builder.Services.AddScoped<ValueMapper>();
 builder.Services.AddScoped<FileUploaderHelper>();
 builder.Services.AddScoped<UserRepository>();
 
+//admin 
+builder.Services.AddScoped<AdminRepository>();
+builder.Services.AddScoped<AdminService>();
+builder.Services.AddScoped<CreateAdminDTO>();
+
 // Add filters
 builder.Services.AddScoped<AuthFilter>();
 builder.Services.AddScoped<AdminAuthFilter>();
+
+//add mail service
+builder.Services.AddScoped<IMailService, MailServiceImplementation>();
+
+//add mail configuration
+builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
 
 var app = builder.Build();
 app.UseCors("AllowOrigin");

@@ -22,6 +22,11 @@ namespace GroupCoursework.Utils
             string contentRootPath = _hostingEnvironment.ContentRootPath;
             string uploadFolder = Path.Combine(contentRootPath,"wwwroot","images");
 
+            if (!Directory.Exists(uploadFolder))
+            {
+                Directory.CreateDirectory(uploadFolder);
+            }   
+
             // Generate a unique file name to avoid overwriting existing files
             string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
 
