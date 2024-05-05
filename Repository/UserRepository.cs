@@ -22,7 +22,7 @@ namespace GroupCoursework.Repositories
 
         public User AuthenticateUser(string email, string password)
         {
-            return _context.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
+            return _context.Users.FirstOrDefault(u => u.Email == email && u.Password == password );
         }
 
         //Getting blogs posted by the user
@@ -64,7 +64,8 @@ namespace GroupCoursework.Repositories
                 var user = _context.Users.FirstOrDefault(u => u.UserId == userId);
                 if (user != null)
                 {
-                    _context.Users.Remove(user);
+                    user.IsUserDeleted = true;
+                    _context.Users.Update(user);
                     _context.SaveChanges();
                     return true; 
                 }

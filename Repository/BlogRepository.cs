@@ -46,7 +46,7 @@ namespace GroupCoursework.Repository
                         break;
                 }
             }
-            blogs = blogs.Skip(offset).Take(pageSize);
+            blogs = blogs.Where(blog => !blog.isDeleted).Skip(offset).Take(pageSize);
 
             return blogs.ToList(); 
         }

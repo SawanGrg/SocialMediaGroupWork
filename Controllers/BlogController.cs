@@ -42,7 +42,7 @@ namespace GroupCoursework.Controllers
 
         //SetOrder chai filter ko type denote garcha jastai random, popularity and latest and null rakheko chai the filter auna pani sakcha naauna ni so null rakdeko 
         [HttpGet("getAllBlogs")]
-        public ActionResult<ApiResponse<BlogPaginationDTO>> GetAllBlogs( string  sortOrder = null, int pageNumber = 1, int pageSize = 6)
+        public ActionResult<ApiResponse<BlogPaginationDTO>> GetAllBlogs( string  sortOrder = null, int pageNumber = 1, int pageSize = 4)
         {
             var blogs = _blogService.GetAllBlogs(pageNumber, pageSize, sortOrder);
             var totalCount = _blogService.GetTotalBlogs();
@@ -55,9 +55,6 @@ namespace GroupCoursework.Controllers
             var response = new ApiResponse<BlogPaginationDTO>("200", "Success", blogDetails);
             return Ok(response);
         }
-
-
-
 
 
         [HttpGet("specific-blogs/{blog_id}")]
