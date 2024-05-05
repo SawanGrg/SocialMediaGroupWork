@@ -20,5 +20,8 @@ namespace GroupCoursework.Models
         [Required]
         [Display(Name = "User Id")]
         public User User { get; set; }
+
+        [Display(Name = "CreatedAt")]
+        public DateTime CreatedAt { get; set; }
     }
 }

@@ -37,6 +37,7 @@ namespace GroupCoursework.Repository
                                    .Skip(offset)
                                    .Take(pageSize)
                                    .ToList();
+
             List<Blog> blogList = new List<Blog>();
 
             // Populate user details for each blog
