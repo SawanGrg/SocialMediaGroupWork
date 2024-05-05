@@ -56,6 +56,10 @@ builder.Services.AddScoped<PostBlogDTO>();
 builder.Services.AddScoped<ValueMapper>();
 builder.Services.AddScoped<FileUploaderHelper>();
 builder.Services.AddScoped<UserRepository>();
+builder.Services.AddScoped<BlogVoteRepository>();
+builder.Services.AddScoped<BlogCommentRepository>();
+builder.Services.AddScoped<BlogCommentService>();
+builder.Services.AddScoped<BlogCommentDTO>();
 
 //admin 
 builder.Services.AddScoped<AdminRepository>();

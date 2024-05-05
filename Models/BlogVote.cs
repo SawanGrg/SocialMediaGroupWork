@@ -9,12 +9,16 @@ namespace GroupCoursework.Models
     {
         [Key]
         public int VoteId { get; set; }
- 
+
+        [Required]
+        [Display(Name = "Blog Id")]
         public Blog Blog { get; set; }
 
         [Required]
         public bool IsVote { get; set; }
 
+        [Required]
+        [Display(Name = "User Id")]
         public User User { get; set; }
 
         [Display(Name = "CreatedAt")]
