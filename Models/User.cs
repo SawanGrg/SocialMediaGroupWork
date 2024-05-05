@@ -53,6 +53,9 @@ namespace GroupCoursework.Models
         [Display(Name = "UpdatedAt")]
         public DateTime UpdatedAt { get; set; }
 
+        [NotMapped]
+        public Double PopularityScore { get; set; }
+
 
 
     }

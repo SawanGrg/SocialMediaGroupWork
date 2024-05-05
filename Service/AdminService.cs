@@ -45,6 +45,12 @@ namespace GroupCoursework.Service
         }
 
 
+        public List<User> GetTopBlogger()
+        {
+            return _adminRepository.Get10TopBlogger();
+        }
+
+
 
 
 

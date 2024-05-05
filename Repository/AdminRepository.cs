@@ -49,6 +49,53 @@ namespace GroupCoursework.Repository
             }
         }
 
+        public List<User> Get10TopBlogger()
+        {
+            try
+            {
+                var _allBloggers = _context.Users.Where(u => u.Role == "User").ToList();
+
+                var top10Bloggers = new List<User>();
+
+                foreach (var blogger in _allBloggers)
+                {
+                    var bloggerBlogs = _context.Blogs.Where(b => b.user.UserId == blogger.UserId).ToList();
+
+                    int totalLikes = 0;
+                    int totalDislikes = 0;
+                    int totalComments = 0;
+
+                    foreach (var blog in bloggerBlogs)
+                    {
+                        var blogVotes = _context.BlogVotes.Where(v => v.Blog.BlogId == blog.BlogId).ToList();
+                        var blogComments = _context.BlogComments.Where(c => c.Blog.BlogId == blog.BlogId).ToList();
+
+                        totalLikes += blogVotes.Count(v => v.IsVote);
+                        totalDislikes += blogVotes.Count(v => !v.IsVote);
+                        totalComments += blogComments.Count;
+                    }
+
+                    double popularity = CalculatePopularity(totalLikes, totalDislikes, totalComments);
+
+                    blogger.PopularityScore = popularity; // Assuming you have a property PopularityScore in your User class
+
+                    top10Bloggers.Add(blogger);
+
+                }
+
+                // Sort the bloggers based on popularity score
+                top10Bloggers = top10Bloggers.OrderByDescending(b => b.PopularityScore).Take(10).ToList();
+
+                return top10Bloggers;
+            }
+            catch (Exception ex)
+            {
+               Console.WriteLine("Error retrieving top blogger: " + ex.Message);
+                return new List<User>(); // Return an empty list on error
+
+            }
+        }
+
 
 
         public List<SpecificBlogsWithSuggestions> Get10TopBlogsAllTime()
