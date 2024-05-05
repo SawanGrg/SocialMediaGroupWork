@@ -361,6 +361,27 @@
   },
   {
     "ContainingType": "GroupCoursework.Controllers.UserController",
+    "Method": "UpdatePassword",
+    "RelativePath": "api/User/passwordChangeProfile/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "pass",
+        "Type": "GroupCoursework.DTO.ChangePassDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GroupCoursework.Controllers.UserController",
     "Method": "GetSpecificUser",
     "RelativePath": "api/User/specific-user/{user_id}",
     "HttpMethod": "GET",
