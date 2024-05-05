@@ -54,6 +54,9 @@ namespace GroupCoursework.Service
             }
 
             return false;
+           
+
+            
         }
 
         public Boolean DeleteBlogComment(BlogComments blogComments)

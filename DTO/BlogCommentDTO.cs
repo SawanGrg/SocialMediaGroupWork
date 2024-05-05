@@ -14,5 +14,6 @@
     public class UpdateBlogCommentDTO
     {
         public string? CommentContent { get; set; }
+       
     }
 }

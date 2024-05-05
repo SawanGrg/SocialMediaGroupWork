@@ -28,7 +28,7 @@ namespace GroupCoursework.Controllers
 
 
         [HttpPost("postBlogComment/{blogId}")]
-        public IActionResult PostBlogComment(int blogId, [FromForm] BlogCommentDTO blogCommentDTO)
+        public IActionResult PostBlogComment(int blogId, [FromBody] BlogCommentDTO blogCommentDTO)
         {
             if (blogCommentDTO == null)
             {
@@ -102,8 +102,8 @@ namespace GroupCoursework.Controllers
 
         }
 
-        [HttpPost("updateBlogComment/{blogCommentId}")]
-        public IActionResult UpdateBlogComment(int blogCommentId, [FromForm] UpdateBlogCommentDTO updateBlogCommentDTO)
+        [HttpPost("updateBlogComment")]
+        public IActionResult UpdateBlogComment([FromQuery] int blogCommentId ,[FromBody] UpdateBlogCommentDTO updateBlogCommentDTO)
         {
             if (updateBlogCommentDTO == null)
             {
@@ -135,6 +135,13 @@ namespace GroupCoursework.Controllers
             {
                 var response = new ApiResponse<string>("404", "Blog comment not found", null);
                 return NotFound(response);
+            }
+
+            if(existingBlogComments.User.UserId != userDetails.UserId)
+            {
+                var response = new ApiResponse<string>("500", "Current user cannot update comment in the blog", null);
+                return StatusCode(StatusCodes.Status500InternalServerError, response);
+
             }
 
             Boolean update = _blogCommentService.UpdateBlogComment(updateBlogCommentDTO, existingBlogComments);
@@ -175,6 +182,13 @@ namespace GroupCoursework.Controllers
             {
                 var response = new ApiResponse<string>("404", "Blog comment not found", null);
                 return NotFound(response);
+            }
+
+            if (existingBlogComments.User.UserId != userDetails.UserId)
+            {
+                var response = new ApiResponse<string>("403", "Current user cannot delete comment in the blog", null);
+                return StatusCode(StatusCodes.Status500InternalServerError, response);
+
             }
 
             Boolean deleteBLogComment = _blogCommentService.DeleteBlogComment(existingBlogComments);
