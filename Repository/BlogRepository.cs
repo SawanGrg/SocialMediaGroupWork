@@ -42,7 +42,12 @@ namespace GroupCoursework.Repository
             // Populate user details for each blog
             foreach (var blog in blogs)
             {
-                blogList.Add(PopulateUserDetails(blog));
+                var populatedBlog = PopulateUserDetails(blog);
+
+               
+
+                blogList.Add(populatedBlog);
+                
             }
 
             return blogList;
@@ -55,14 +60,22 @@ namespace GroupCoursework.Repository
             // Check if the blog has a user
             if (blog.user != null)
             {
-                // Here you can extract user details using blog.user.UserId
-                // For example, you can fetch user details from the database using the user ID
-                // Or you can use a cached lookup if user details are readily available
-                // For demonstration purposes, let's assume you fetch user details from a service
                 var userDetails = _userService.GetUserById(blog.user.UserId);
 
                 // Populate user details in the blog object
                 blog.user = userDetails;
+
+                // Calculate total upvotes for the blog
+                blog.TotalUpVote = _context.BlogVotes
+                                                     .Count(v => v.Blog.BlogId == blog.BlogId && v.IsVote);
+
+                // Calculate total downvotes for the blog
+                blog.TotalDownVote = _context.BlogVotes
+                                                       .Count(v => v.Blog.BlogId == blog.BlogId && !v.IsVote);
+
+                // Calculate total comments for the blog
+                blog.TotalComment = _context.BlogComments
+                                                      .Count(c => c.Blog.BlogId == blog.BlogId);
             }
 
             return blog; // Return the blog object in all cases
