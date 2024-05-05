@@ -56,6 +56,10 @@ namespace GroupCoursework.Controllers
         [HttpPost("reset-password")]
         public ActionResult<ApiResponse<string>> ResetPassword([FromQuery] string email, [FromQuery] string otp, [FromQuery] string newPassword)
         {
+            Console.WriteLine(email, otp, newPassword,"params bata");
+            Console.WriteLine( otp, "params bata");
+            Console.WriteLine(newPassword, "params bata");
+
             if (EmailOtpMap.ContainsKey(email) && EmailOtpMap[email] == otp)
             {
 
@@ -65,7 +69,7 @@ namespace GroupCoursework.Controllers
 
                 if (!state)
                 {
-                    return new ApiResponse<string>("400", "Failed to reset password", null);
+                    return  BadRequest(new ApiResponse<string>("400", "Failed to reset password", null));
                 }
 
 

@@ -35,24 +35,37 @@ namespace GroupCoursework.Utils
                 Phone = userDTO.Phone,
                 Gender = userDTO.Gender,
                 Role = "Admin",
-                IsAdmin = true 
+                IsAdmin = true
             };
 
             return user;
         }
 
 
-        public BlogVote MapToBlogVote(VoteBlogDTO voteBlogDTO, User userDetails)
+        public BlogVote MapToBlogVote(Blog blog, VoteBlogDTO voteBlogDTO, User userDetails)
         {
             BlogVote blogVote = new BlogVote();
 
+            blogVote.Blog = blog;
             blogVote.User = userDetails;
-            blogVote.Blog = voteBlogDTO.Blog;
             blogVote.IsVote = voteBlogDTO.vote;
-
-
+            blogVote.CreatedAt = DateTime.Now;
 
             return blogVote;
         }
+
+        public BlogComments MapToBlogComments(Blog blog, BlogCommentDTO blogCommentDTO, User userDetails)
+        {
+            BlogComments blogComments = new BlogComments();
+
+            blogComments.CommentContent = blogCommentDTO.CommentContent;
+            blogComments.Blog = blog;
+            blogComments.User = userDetails;
+            blogComments.IsCommentDeleted = blogCommentDTO.IsCommentDeleted;
+            blogComments.CreatedAt = DateTime.Now;
+
+            return blogComments;
+        }
+
     }
 }

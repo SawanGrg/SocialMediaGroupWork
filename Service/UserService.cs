@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Numerics;
 using GroupCoursework.DTO;
 using GroupCoursework.Models;
 using GroupCoursework.Repositories;
@@ -59,6 +60,8 @@ namespace GroupCoursework.Service
                 UserId = user.UserId,
                 UserName = user.Username,
                 Email = user.Email,
+                Phone = user.Phone,
+                Gender = user.Gender,
                 Blogs = blogs
             };
         }

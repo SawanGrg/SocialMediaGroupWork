@@ -15,11 +15,11 @@ namespace GroupCoursework.Models
         public string blogTitle { get; set; }
 
         [Required]
-        [Column(TypeName = "text"), MaxLength(1000)]
+        [Column(TypeName = "text")]
         public string blogContent { get; set; }
 
         [Required]
-        [Column(TypeName = "text"), MaxLength(1000)]
+        [Column(TypeName = "text")]
         public string blogImageUrl { get; set; }
 
         public DateOnly blogCreatedAt { get; set; }
