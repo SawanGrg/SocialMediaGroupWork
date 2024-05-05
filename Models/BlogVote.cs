@@ -16,5 +16,10 @@ namespace GroupCoursework.Models
         public bool IsVote { get; set; }
 
         public User User { get; set; }
+
+        [Display(Name = "CreatedAt")]
+        public DateTime CreatedAt { get; set; }
+
+        public BlogVote() { }
     }
 }

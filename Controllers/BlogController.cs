@@ -112,8 +112,8 @@ namespace GroupCoursework.Controllers
             if (postBlogDTO.BlogImage == null || postBlogDTO.BlogImage.Length == 0)
                 return BadRequest("Blog image is required");
 
-            if (postBlogDTO.BlogImage.OpenReadStream().Length > 1000000)
-                return BadRequest("Blog image size should not exceed 1MB");
+            if (postBlogDTO.BlogImage.OpenReadStream().Length > 10000000)
+                return BadRequest("Blog image size should not exceed 10MB");
 
             string imageUrl = _fileUploaderHelper.UploadFile(postBlogDTO.BlogImage);
 
