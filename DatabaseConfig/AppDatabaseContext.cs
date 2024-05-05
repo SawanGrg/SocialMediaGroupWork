@@ -26,6 +26,7 @@ namespace GroupCoursework.DatabaseConfig
         public DbSet<CommentReaction> CommentReactions { get; set; }
         public DbSet<BlogHistory> BlogHistory { get; set; }
         public DbSet<Notification> Notification { get; set; }
+        public DbSet<CommentHistory> CommentHistory { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

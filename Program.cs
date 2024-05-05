@@ -40,6 +40,9 @@ builder.Services.AddCors(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//we can modify the swagger to insert the http header 
+
+
 // Add database context
 builder.Services.AddDbContext<AppDatabaseContext>();
 

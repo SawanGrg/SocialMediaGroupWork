@@ -1,4 +1,5 @@
-﻿using GroupCoursework.DTOs;
+﻿using GroupCoursework.DTO;
+using GroupCoursework.DTOs;
 using GroupCoursework.Models;
 using GroupCoursework.Repository;
 using GroupCoursework.Utils;
@@ -32,6 +33,20 @@ namespace GroupCoursework.Service
 
             return _adminRepository.CreateAdminAccount(user);
         }
-        
+
+        public List<SpecificBlogsWithSuggestions> GetTopBlogsAllTime()
+        {
+            return _adminRepository.Get10TopBlogsAllTime();
+        }
+
+        public List<SpecificBlogsWithSuggestions> GetTopBlogsForMonth(String Month)
+        {
+            return _adminRepository.Get10TopBlogsForMonth(Month);
+        }
+
+
+
+
+
     }
 }

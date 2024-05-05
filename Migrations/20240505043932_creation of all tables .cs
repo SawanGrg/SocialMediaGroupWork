@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GroupCoursework.Migrations
 {
     /// <inheritdoc />
-    public partial class createalltables : Migration
+    public partial class creationofalltables : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -149,7 +149,8 @@ namespace GroupCoursework.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     BlogId = table.Column<int>(type: "int", nullable: false),
                     IsVote = table.Column<bool>(type: "bit", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -165,6 +166,27 @@ namespace GroupCoursework.Migrations
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
+                        onDelete: ReferentialAction.NoAction);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CommentHistory",
+                columns: table => new
+                {
+                    CommentHistoryId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BlogCommentsCommentId = table.Column<int>(type: "int", nullable: false),
+                    CommentContent = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CommentHistory", x => x.CommentHistoryId);
+                    table.ForeignKey(
+                        name: "FK_CommentHistory_BlogComments_BlogCommentsCommentId",
+                        column: x => x.BlogCommentsCommentId,
+                        principalTable: "BlogComments",
+                        principalColumn: "CommentId",
                         onDelete: ReferentialAction.NoAction);
                 });
 
@@ -229,6 +251,11 @@ namespace GroupCoursework.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_CommentHistory_BlogCommentsCommentId",
+                table: "CommentHistory",
+                column: "BlogCommentsCommentId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_CommentReactions_BlogCommentCommentId",
                 table: "CommentReactions",
                 column: "BlogCommentCommentId");
@@ -257,6 +284,9 @@ namespace GroupCoursework.Migrations
 
             migrationBuilder.DropTable(
                 name: "BlogVotes");
+
+            migrationBuilder.DropTable(
+                name: "CommentHistory");
 
             migrationBuilder.DropTable(
                 name: "CommentReactions");
