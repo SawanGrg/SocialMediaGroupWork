@@ -47,25 +47,25 @@ namespace GroupCoursework.Controllers
         }
 
 
-
-        [HttpGet("hehe")]
-        public IActionResult Gethehe()
-        {
-            return Ok("hehe");
-        }
-
-        [HttpPost("login")]
-        public IActionResult Login([FromBody] LoginRequest loginRequest)
-        {
-            var user = _userService.AuthenticateUser(loginRequest.Email, loginRequest.Password);
-            if (user == null)
+            [HttpPost("login")]
+            public IActionResult Login([FromBody] LoginRequest loginRequest)
             {
-                var response = new ApiResponse<User>("401", "Unauthorized register first!", null);
-                return Unauthorized(response);
+                var user = _userService.AuthenticateUser(loginRequest.Email, loginRequest.Password);
+                if (user == null)
+                {
+                    var response = new ApiResponse<User>("401", "Unauthorized register first!", null);
+                    return Unauthorized(response);
+                }
+
+                if (user.IsUserDeleted)
+                {
+                    var response = new ApiResponse<User>("401", "Unauthorized: Your account has been deleted.", null);
+                    return Unauthorized(response);
+                }
+
+                var successResponse = new ApiResponse<User>("200", "Success", user);
+                    return Ok(successResponse);
             }
-            var successResponse = new ApiResponse<User>("200", "Success", user);
-            return Ok(successResponse);
-        }
 
         [HttpGet("{id}")]
         [ServiceFilter(typeof(AuthFilter))] // Apply AuthFilter to this action
@@ -116,5 +116,6 @@ namespace GroupCoursework.Controllers
             var successResponse = new ApiResponse<User>("204", "User deleted", null);
             return Ok(successResponse);
         }
+
     }
 }

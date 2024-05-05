@@ -23,47 +23,57 @@ namespace GroupCoursework.Repository
             _context = context;
             _userService = userService;
             _logger = logger;
-        } 
+        }
 
-        public IEnumerable<Blog> GetAllBlogs(int pageNumber, int pageSize)
+        public IEnumerable<Blog> GetAllBlogs(int pageNumber, int pageSize, string sortOrder)
         {
             //So offset is the starting like the index ho and the page size is the limit
             //Ani skip vanna le kun index bata suru and take vanna le kati limit ko lini
             int offset = (pageNumber - 1) * pageSize;
+            IQueryable<Blog> blogs = _context.Blogs.Include(b => b.user);
 
-            var blogs = _context.Blogs
-                                   .Include(b => b.user)
-                                   .OrderByDescending(b => b.blogCreatedAt) 
-                                   .Skip(offset)
-                                   .Take(pageSize)
-                                   .ToList();
-
-            List<Blog> blogList = new List<Blog>();
-
-            // Populate user details for each blog
-            foreach (var blog in blogs)
+            if (sortOrder != null && !string.IsNullOrEmpty(sortOrder))
             {
-                blogList.Add(PopulateUserDetails(blog));
+                switch (sortOrder)
+                {
+                    case "random":
+                        blogs = blogs.OrderBy(b => Guid.NewGuid());
+                        break;
+                    case "recent":
+                        blogs = blogs.OrderByDescending(b => b.blogCreatedAt);
+                        break;
+                    default:
+                        break;
+                }
             }
+            blogs = blogs.Where(blog => !blog.isDeleted).Skip(offset).Take(pageSize);
 
-            return blogList;
+            return blogs.ToList(); 
         }
 
-      
+
 
         private Blog PopulateUserDetails(Blog blog)
         {
             // Check if the blog has a user
             if (blog.user != null)
             {
-                // Here you can extract user details using blog.user.UserId
-                // For example, you can fetch user details from the database using the user ID
-                // Or you can use a cached lookup if user details are readily available
-                // For demonstration purposes, let's assume you fetch user details from a service
                 var userDetails = _userService.GetUserById(blog.user.UserId);
 
                 // Populate user details in the blog object
                 blog.user = userDetails;
+
+                // Calculate total upvotes for the blog
+                blog.TotalUpVote = _context.BlogVotes
+                                                     .Count(v => v.Blog.BlogId == blog.BlogId && v.IsVote);
+
+                // Calculate total downvotes for the blog
+                blog.TotalDownVote = _context.BlogVotes
+                                                       .Count(v => v.Blog.BlogId == blog.BlogId && !v.IsVote);
+
+                // Calculate total comments for the blog
+                blog.TotalComment = _context.BlogComments
+                                                      .Count(c => c.Blog.BlogId == blog.BlogId);
             }
 
             return blog; // Return the blog object in all cases
@@ -111,13 +121,75 @@ namespace GroupCoursework.Repository
         }
 
 
-        public bool UpdateBlog(Blog updatedBlog)
+        public IEnumerable<BlogHistory> GetBlogHistories(int blogId)
         {
-            _context.Blogs.Update(updatedBlog);
-            _context.SaveChanges();
-
-            return true; // Update successful
+            return _context.BlogHistory.Where(history => history.Blog.BlogId == blogId);
         }
+
+        public bool UpdateBlog(Blog updatedBlog, Blog oldBlog, string updatedDataMessage)
+        {
+            Console.WriteLine(oldBlog.blogTitle, "3");
+            _context.Update(updatedBlog);
+            var blogHistoryEntry = new BlogHistory
+            {
+                Blog = updatedBlog,
+                BlogTitle = oldBlog.blogTitle,
+                BlogContent = oldBlog.blogContent,
+                BlogImageUrl = oldBlog.blogImageUrl,
+                CreatedAt = DateTime.Now,
+
+            };
+
+            _context.BlogHistory.Add(blogHistoryEntry);
+
+            _context.SaveChanges();
+            return true;
+        }
+
+        //public void AddBlogHistory(Blog blog)
+        //{
+        //    var blogHistoryEntry = new BlogHistory
+        //    {
+        //        BlogId = blog.BlogId,
+        //        blogTitle = blog.blogTitle,
+        //        blogContent = blog.blogContent,
+        //        blogImageUrl = blog.blogImageUrl,
+        //    };
+
+        //    // Add the new BlogHistory entry to the context
+        //    _context.BlogsHistory.Add(blogHistoryEntry);
+        //    _context.SaveChanges();
+        //}
+
+
+        //For temporiarily deleting the blog
+        public bool TempDeleteBlog(int blogId)
+        {
+            var blog = _context.Blogs.Find(blogId);
+            if (blog != null)
+            {
+                blog.isDeleted = true;
+                _context.Blogs.Update(blog);
+                _context.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
+        //For recovering the temporiarily deleted blog
+        public bool RecoverDeletedBlog(int blogId)
+        {
+            var blog = _context.Blogs.Find(blogId);
+            if (blog != null)
+            {
+                blog.isDeleted = false;
+                _context.Blogs.Update(blog);
+                _context.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
 
         public bool DeleteBlog(int blogId)
         {

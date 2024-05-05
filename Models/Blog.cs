@@ -15,11 +15,11 @@ namespace GroupCoursework.Models
         public string blogTitle { get; set; }
 
         [Required]
-        [Column(TypeName = "text"), MaxLength(1000)]
+        [Column(TypeName = "text")]
         public string blogContent { get; set; }
 
         [Required]
-        [Column(TypeName = "text"), MaxLength(1000)]
+        [Column(TypeName = "text")]
         public string blogImageUrl { get; set; }
 
         public DateOnly blogCreatedAt { get; set; }
@@ -30,6 +30,15 @@ namespace GroupCoursework.Models
         public bool isDeleted { get; set; }
         public User user { get; set; }
 
+        // Additional fields for rendering details
+        [NotMapped]
+        public int TotalUpVote { get; set; }
+
+        [NotMapped]
+        public int TotalDownVote { get; set; }
+
+        [NotMapped]
+        public int TotalComment { get; set; }
 
         public Blog()
         {
@@ -52,5 +61,6 @@ namespace GroupCoursework.Models
         public Blog SpecificBlog { get; set; }
 
         public IEnumerable<Blog> BlogSuggestions { get; set; }
+        public double Popularity { get; set; } // Add this property to store the popularity score
     }
 }

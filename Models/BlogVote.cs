@@ -23,5 +23,7 @@ namespace GroupCoursework.Models
 
         [Display(Name = "CreatedAt")]
         public DateTime CreatedAt { get; set; }
+
+        public BlogVote() { }
     }
 }

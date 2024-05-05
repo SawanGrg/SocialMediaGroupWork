@@ -40,6 +40,9 @@ builder.Services.AddCors(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//we can modify the swagger to insert the http header 
+
+
 // Add database context
 builder.Services.AddDbContext<AppDatabaseContext>();
 
@@ -50,7 +53,6 @@ builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<BlogRepository>();
 builder.Services.AddScoped<BlogService>();
 builder.Services.AddScoped<PostBlogDTO>();
-builder.Services.AddScoped<VoteBlogDTO>();
 builder.Services.AddScoped<ValueMapper>();
 builder.Services.AddScoped<FileUploaderHelper>();
 builder.Services.AddScoped<UserRepository>();

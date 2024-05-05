@@ -35,7 +35,7 @@ namespace GroupCoursework.Utils
                 Phone = userDTO.Phone,
                 Gender = userDTO.Gender,
                 Role = "Admin",
-                IsAdmin = true 
+                IsAdmin = true
             };
 
             return user;
