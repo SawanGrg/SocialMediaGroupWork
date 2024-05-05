@@ -1,12 +1,49 @@
 [
   {
     "ContainingType": "GroupCoursework.Controllers.BlogController",
+    "Method": "DeleteBlog",
+    "RelativePath": "api/Blog/deleteBlog/{blogId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "blogId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GroupCoursework.Controllers.BlogController",
+    "Method": "DeleteBlogTemp",
+    "RelativePath": "api/Blog/deleteBlogTemp/{blogId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "blogId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GroupCoursework.Controllers.BlogController",
     "Method": "GetAllBlogs",
     "RelativePath": "api/Blog/getAllBlogs",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
+      {
+        "Name": "sortOrder",
+        "Type": "System.String",
+        "IsRequired": false
+      },
       {
         "Name": "pageNumber",
         "Type": "System.Int32",
@@ -32,6 +69,22 @@
   },
   {
     "ContainingType": "GroupCoursework.Controllers.BlogController",
+    "Method": "GetAllHistoryBlog",
+    "RelativePath": "api/Blog/getBlogHistory/{blogId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "blogId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GroupCoursework.Controllers.BlogController",
     "Method": "CreateBlog",
     "RelativePath": "api/Blog/postBlogs",
     "HttpMethod": "POST",
@@ -52,6 +105,22 @@
         "Name": "BlogImage",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GroupCoursework.Controllers.BlogController",
+    "Method": "RecoverBlogDelete",
+    "RelativePath": "api/Blog/recoverDeletedBlog/{blogId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "blogId",
+        "Type": "System.Int32",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -112,6 +181,68 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GroupCoursework.Controllers.EmailController",
+    "Method": "ResetPassword",
+    "RelativePath": "api/Email/reset-password",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "otp",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "newPassword",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "GroupCoursework.ApiResponse.ApiResponse\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "GroupCoursework.Controllers.EmailController",
+    "Method": "ForgotPassword",
+    "RelativePath": "api/Email/send-otp",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "GroupCoursework.ApiResponse.ApiResponse\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "GroupCoursework.Controllers.UserController",
@@ -214,16 +345,6 @@
   },
   {
     "ContainingType": "GroupCoursework.Controllers.UserController",
-    "Method": "Gethehe",
-    "RelativePath": "api/User/hehe",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "GroupCoursework.Controllers.UserController",
     "Method": "Login",
     "RelativePath": "api/User/login",
     "HttpMethod": "POST",
@@ -263,6 +384,58 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "GroupCoursework.Controllers.AdminController",
+    "Method": "CreateAdminAccount",
+    "RelativePath": "createAdmin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userDTO",
+        "Type": "GroupCoursework.DTOs.CreateAdminDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "GroupCoursework.ApiResponse.ApiResponse\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "GroupCoursework.Controllers.AdminController",
+    "Method": "GetTopBlogger",
+    "RelativePath": "GetTopBlogger",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GroupCoursework.Controllers.AdminController",
+    "Method": "GetTopBlog",
+    "RelativePath": "GetTopBlogs",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "month",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "GroupCoursework.Controllers.WeatherForecastController",

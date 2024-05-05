@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GroupCoursework.Migrations
 {
     /// <inheritdoc />
-    public partial class creationofalltables : Migration
+    public partial class gau : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -40,8 +40,8 @@ namespace GroupCoursework.Migrations
                     BlogId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     blogTitle = table.Column<string>(type: "text", maxLength: 100, nullable: false),
-                    blogContent = table.Column<string>(type: "text", maxLength: 1000, nullable: false),
-                    blogImageUrl = table.Column<string>(type: "text", maxLength: 1000, nullable: false),
+                    blogContent = table.Column<string>(type: "text", nullable: false),
+                    blogImageUrl = table.Column<string>(type: "text", nullable: false),
                     blogCreatedAt = table.Column<DateOnly>(type: "date", nullable: false),
                     blogUpdatedAt = table.Column<DateOnly>(type: "date", nullable: false),
                     isDeleted = table.Column<bool>(type: "bit", nullable: false),
