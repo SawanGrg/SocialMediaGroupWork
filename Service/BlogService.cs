@@ -11,6 +11,7 @@ namespace GroupCoursework.Service
     public class BlogService
     {
         private readonly BlogRepository _blogRepository;
+        private readonly BlogVoteRepository _blogVoteRepository;
         private readonly PostBlogDTO _postBlogDTO;
         private readonly ValueMapper _valueMapper;
         private readonly FileUploaderHelper _fileUploaderHelper;
@@ -167,28 +168,66 @@ namespace GroupCoursework.Service
         //    return _blogRepository.DeleteBlog(blogId);
         //}
 
-        //public Boolean VoteBlog(VoteBlogDTO blogVote,User userDetails)
-        //{
-        //    if(blogVote == null)
-        //    {
-        //        return false;
-        //    }
-        //    if(userDetails == null)
-        //    {
-        //        return false;
-        //    }
+        public Boolean VoteBlog(Blog blog, VoteBlogDTO blogVote,User userDetails)
+        {
+            if(blogVote == null)
+            {
+                return false;
+            }
+            if(userDetails == null)
+            {
+                return false;
+            }
 
-        //    BlogVote blogVoteObject = _valueMapper.MapToBlogVote(blogVote, userDetails);
+            BlogVote blogVoteObject = _valueMapper.MapToBlogVote(blog, blogVote, userDetails);
 
-        //    if (_blogVoteRepository.AddVoteBlog(blogVoteObject))
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
+         if (_blogVoteRepository.AddVoteBlog(blogVoteObject))
+           {
+              return true;
+          }
+           else
+           {
+               return false;
+         }
 
-        //}
+        }
+
+        public BlogVote GetBlogVote(int blogId)
+        {
+            if (blogId <= 0)
+            {
+                return null;
+            }
+
+            BlogVote blogVote = _blogVoteRepository.GetBlogVoteById(blogId);
+            return blogVote;
+        }
+
+        public Boolean UpdateBlogVote(BlogVote blogCheck, VoteBlogDTO blogVote, User user)
+        {
+            blogCheck.IsVote = blogVote.vote;
+
+            Boolean blogUpdateStatus = _blogVoteRepository.UpdateBlogVote(blogCheck);
+
+            if (blogUpdateStatus)
+            {
+                return true;
+            }
+            return false;
+
+        }
+
+        public Boolean DeleteBlogVote(int blogVoteId)
+        {
+            var deleteBlogVote = _blogVoteRepository.DeleteBlogVote(blogVoteId);
+            if (deleteBlogVote)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

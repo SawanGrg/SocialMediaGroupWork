@@ -42,18 +42,30 @@ namespace GroupCoursework.Utils
         }
 
 
-        //public BlogVote MapToBlogVote(VoteBlogDTO voteBlogDTO, User userDetails)
-        //{
-        //    BlogVote blogVote = new BlogVote();
+        public BlogVote MapToBlogVote(Blog blog, VoteBlogDTO voteBlogDTO, User userDetails)
+        {
+            BlogVote blogVote = new BlogVote();
 
-        //    //    blogVote.User = userDetails;
-        //    //    blogVote.Blog = voteBlogDTO.Blog;
-        //    //    blogVote.IsVote = voteBlogDTO.vote;
+            blogVote.Blog = blog;
+            blogVote.User = userDetails;
+            blogVote.IsVote = voteBlogDTO.vote;
+            blogVote.CreatedAt = DateTime.Now;
 
+            return blogVote;
+        }
 
+        public BlogComments MapToBlogComments(Blog blog, BlogCommentDTO blogCommentDTO, User userDetails)
+        {
+            BlogComments blogComments = new BlogComments();
 
-        //    //    return blogVote;
-        //    //}
-        //}
+            blogComments.CommentContent = blogCommentDTO.CommentContent;
+            blogComments.Blog = blog;
+            blogComments.User = userDetails;
+            blogComments.IsCommentDeleted = blogCommentDTO.IsCommentDeleted;
+            blogComments.CreatedAt = DateTime.Now;
+
+            return blogComments;
+        }
+
     }
 }
