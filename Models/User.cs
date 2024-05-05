@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
@@ -33,9 +34,28 @@ namespace GroupCoursework.Models
         [Display(Name = "Is Admin")]
         public bool IsAdmin { get; set; }
 
+        [Display(Name = "Is User Deleted")]
+        public bool IsUserDeleted { get; set; }
+
+
         //icollection is a collection of objects
         [JsonIgnore] // Ignore this property during JSON serialization
         public ICollection <Blog>? Blogs { get; set; }
+
+        [JsonIgnore]
+        public ICollection<BlogVote>? BlogVotes { get; set; }
+
+
+        [Display(Name = "CreatedAt")]
+        public DateTime CreatedAt { get; set; }
+
+
+        [Display(Name = "UpdatedAt")]
+        public DateTime UpdatedAt { get; set; }
+
+        [NotMapped]
+        public Double PopularityScore { get; set; }
+
 
 
     }

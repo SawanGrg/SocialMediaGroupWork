@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
@@ -25,7 +26,19 @@ namespace GroupCoursework.Models
 
         public DateOnly blogUpdatedAt { get; set; }
 
+        [DefaultValue(false)]
+        public bool isDeleted { get; set; }
         public User user { get; set; }
+
+        // Additional fields for rendering details
+        [NotMapped]
+        public int TotalUpVote { get; set; }
+
+        [NotMapped]
+        public int TotalDownVote { get; set; }
+
+        [NotMapped]
+        public int TotalComment { get; set; }
 
         public Blog()
         {
@@ -41,5 +54,13 @@ namespace GroupCoursework.Models
             this.blogUpdatedAt = blogUpdatedAt;
             this.user = user;
         }
+    }
+
+    public class SpecificBlogsWithSuggestions
+    {
+        public Blog SpecificBlog { get; set; }
+
+        public IEnumerable<Blog> BlogSuggestions { get; set; }
+        public double Popularity { get; set; } // Add this property to store the popularity score
     }
 }
