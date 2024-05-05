@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GroupCoursework.Migrations
 {
     [DbContext(typeof(AppDatabaseContext))]
-    [Migration("20240505043932_creation of all tables ")]
-    partial class creationofalltables
+    [Migration("20240505103728_gau")]
+    partial class gau
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,7 +38,6 @@ namespace GroupCoursework.Migrations
 
                     b.Property<string>("blogContent")
                         .IsRequired()
-                        .HasMaxLength(1000)
                         .HasColumnType("text");
 
                     b.Property<DateOnly>("blogCreatedAt")
@@ -46,7 +45,6 @@ namespace GroupCoursework.Migrations
 
                     b.Property<string>("blogImageUrl")
                         .IsRequired()
-                        .HasMaxLength(1000)
                         .HasColumnType("text");
 
                     b.Property<string>("blogTitle")

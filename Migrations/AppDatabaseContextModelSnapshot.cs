@@ -35,7 +35,6 @@ namespace GroupCoursework.Migrations
 
                     b.Property<string>("blogContent")
                         .IsRequired()
-                        .HasMaxLength(1000)
                         .HasColumnType("text");
 
                     b.Property<DateOnly>("blogCreatedAt")
@@ -43,7 +42,6 @@ namespace GroupCoursework.Migrations
 
                     b.Property<string>("blogImageUrl")
                         .IsRequired()
-                        .HasMaxLength(1000)
                         .HasColumnType("text");
 
                     b.Property<string>("blogTitle")

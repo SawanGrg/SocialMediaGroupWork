@@ -1,10 +1,15 @@
-﻿namespace GroupCoursework.DTO
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace GroupCoursework.DTO
 {
     public class UserWithBlogsDTO
     {
         public int UserId { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
+        public string Phone { get; set; }
+
+        public string Gender { get; set; }
         public IEnumerable<BlogDTO> Blogs { get; set; }
     }
 

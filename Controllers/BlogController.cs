@@ -40,10 +40,11 @@ namespace GroupCoursework.Controllers
         //    return Ok(response);
         //}
 
+        //SetOrder chai filter ko type denote garcha jastai random, popularity and latest and null rakheko chai the filter auna pani sakcha naauna ni so null rakdeko 
         [HttpGet("getAllBlogs")]
-        public ActionResult<ApiResponse<BlogPaginationDTO>> GetAllBlogs(int pageNumber = 1, int pageSize = 6)
+        public ActionResult<ApiResponse<BlogPaginationDTO>> GetAllBlogs( string  sortOrder = null, int pageNumber = 1, int pageSize = 4)
         {
-            var blogs = _blogService.GetAllBlogs(pageNumber, pageSize);
+            var blogs = _blogService.GetAllBlogs(pageNumber, pageSize, sortOrder);
             var totalCount = _blogService.GetTotalBlogs();
             var blogDetails = new BlogPaginationDTO
             {
@@ -54,9 +55,6 @@ namespace GroupCoursework.Controllers
             var response = new ApiResponse<BlogPaginationDTO>("200", "Success", blogDetails);
             return Ok(response);
         }
-
-
-
 
 
         [HttpGet("specific-blogs/{blog_id}")]
@@ -163,7 +161,6 @@ namespace GroupCoursework.Controllers
                 return Unauthorized(response);
             }
 
-
             // Update the blog
             string newImageUrl = null;
             //Check if the blog is null or not
@@ -186,6 +183,114 @@ namespace GroupCoursework.Controllers
             }
         }
 
+        [HttpGet("getBlogHistory/{blogId}")]
+        public IActionResult GetAllHistoryBlog(int blogId)
+        {
+            Blog blog = _blogService.GetBlogById(blogId);
+
+            if (blog == null)
+            {
+                return NotFound("The specified blog does not exist.");
+            }
+            else
+            {
+                IEnumerable<BlogHistory> blogHistories = _blogService.GetBlogHistories(blogId);
+                var response = new ApiResponse<IEnumerable<BlogHistory>>("200", "The specified blog's update history.", blogHistories);
+                return Ok(response);
+            }
+        }
+
+
+
+        //Temporary deletion
+        [HttpPut("deleteBlogTemp/{blogId}")]
+        public IActionResult DeleteBlogTemp(int blogId)
+        {
+            // Extracting Authorization header value
+            string authorizationValue = HttpContext.Request.Headers["Authorization"];
+
+            if (string.IsNullOrEmpty(authorizationValue))
+            {
+                return Unauthorized("Authorization header is missing");
+            }
+
+            User userDetails = _userRepository.GetUserById(int.Parse(authorizationValue));
+
+
+            Blog existingBlog = _blogService.GetBlogById(blogId);
+            if (existingBlog == null)
+            {
+                var response = new ApiResponse<string>("404", "The specified blog does not exist.", null);
+                return NotFound(response);
+            }
+
+
+            // Check if the user is authorized to update the blog
+            if (existingBlog.user.UserId != userDetails.UserId)
+            {
+                var response = new ApiResponse<string>("403", "You are not authorized to delete this blog.", null);
+                return Unauthorized(response);
+            }
+
+
+            var blog = _blogService.TempDeleteBlog(blogId);
+            if (blog)
+            {
+                var response = new ApiResponse<string>("201", "The blog has been deleted  temporarily.", null);
+                return Ok(response);
+            }
+            else
+            {
+                var response = new ApiResponse<string>("500", "An error occurred while deleting the blog.", null);
+                return BadRequest(response);
+            }
+        }
+
+        //Temporary deletion
+        [HttpPut("recoverDeletedBlog/{blogId}")]
+        public IActionResult RecoverBlogDelete(int blogId)
+        {
+            // Extracting Authorization header value
+            string authorizationValue = HttpContext.Request.Headers["Authorization"];
+
+            if (string.IsNullOrEmpty(authorizationValue))
+            {
+                return Unauthorized("Authorization header is missing");
+            }
+
+            User userDetails = _userRepository.GetUserById(int.Parse(authorizationValue));
+
+
+            Blog existingBlog = _blogService.GetBlogById(blogId);
+            if (existingBlog == null)
+            {
+                var response = new ApiResponse<string>("404", "The specified blog does not exist.", null);
+                return NotFound(response);
+            }
+
+
+            // Check if the user is authorized to update the blog
+            if (existingBlog.user.UserId != userDetails.UserId)
+            {
+                var response = new ApiResponse<string>("403", "You are not authorized to delete this blog.", null);
+                return Unauthorized(response);
+            }
+
+
+            var blog = _blogService.RecoverDeletedBlog(blogId);
+            if (blog)
+            {
+                var response = new ApiResponse<string>("201", "The blog has been recovered  successfully.", null);
+                return Ok(response);
+            }
+            else
+            {
+                var response = new ApiResponse<string>("500", "An error occurred while deleting the blog.", null);
+                return BadRequest(response);
+            }
+        }
+
+        //Permanent deletion
         [HttpDelete("deleteBlog/{blogId}")]
         public IActionResult DeleteBlog(int blogId)
         {
@@ -231,39 +336,39 @@ namespace GroupCoursework.Controllers
 
 
 
-        // vote a blog
-        [HttpPost("{id}/vote")]
-        public IActionResult VoteBlog(int id, [FromBody] VoteBlogDTO blogVote)
-        {
-            var blog = _blogService.GetBlogById(id);
-            if (blog == null)
-            {
-                return NotFound("Blog not found");
-            }
+        //// vote a blog
+        //[HttpPost("{id}/vote")]
+        //public IActionResult VoteBlog(int id, [FromBody] VoteBlogDTO blogVote)
+        //{
+        //    var blog = _blogService.GetBlogById(id);
+        //    if (blog == null)
+        //    {
+        //        return NotFound("Blog not found");
+        //    }
 
-            // Extracting Authorization header value
-            string authorizationValue = HttpContext.Request.Headers["Authorization"];
-            if (string.IsNullOrEmpty(authorizationValue))
-            {
-                // Handle case when Authorization header is missing
-                return Unauthorized("Authorization header is missing");
-            }
+        //    // Extracting Authorization header value
+        //    string authorizationValue = HttpContext.Request.Headers["Authorization"];
+        //    if (string.IsNullOrEmpty(authorizationValue))
+        //    {
+        //        // Handle case when Authorization header is missing
+        //        return Unauthorized("Authorization header is missing");
+        //    }
 
-            // Retrieve user details
-            User userDetails = _userRepository.GetUserById(int.Parse(authorizationValue));
+        //    // Retrieve user details
+        //    User userDetails = _userRepository.GetUserById(int.Parse(authorizationValue));
 
-            // Call service method to handle upvoting
-            bool voted = _blogService.VoteBlog(blogVote, userDetails);
+        //    // Call service method to handle upvoting
+        //    bool voted = _blogService.VoteBlog(blogVote, userDetails);
 
-            if (voted)
-            {
-                return Ok("Blog voted successfully");
-            }
-            else
-            {
-                return BadRequest("Failed to upvote blog");
-            }
-        }
+        //    if (voted)
+        //    {
+        //        return Ok("Blog voted successfully");
+        //    }
+        //    else
+        //    {
+        //        return BadRequest("Failed to upvote blog");
+        //    }
+        //}
 
 
 
