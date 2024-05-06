@@ -17,7 +17,6 @@ namespace GroupCoursework.Controllers
         private readonly BlogService _blogService;
         private readonly FileUploaderHelper _fileUploaderHelper;
         private readonly UserRepository _userRepository;
-
         public BlogCommentController(BlogCommentService blogCommentService, BlogService blogService, FileUploaderHelper fileUploaderHelper, UserRepository userRepository)
         {
             _blogCommentService = blogCommentService;

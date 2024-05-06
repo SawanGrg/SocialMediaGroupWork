@@ -10,16 +10,19 @@ namespace GroupCoursework.Repository
     {
         private readonly UserService _userService;
         private readonly AppDatabaseContext _context;
+        private readonly NotificationRepository _notification;
 
         private readonly ILogger _logger;
 
         public BlogCommentRepository(AppDatabaseContext context,
-            UserService userService,
+            UserService userService, NotificationRepository notification,
             ILogger<BlogRepository> logger)
         {
             _context = context;
             _userService = userService;
             _logger = logger;
+            _notification = notification;
+
         }
 
         private BlogComments PopulateUserDetails(BlogComments blogComments)
@@ -36,11 +39,26 @@ namespace GroupCoursework.Repository
             return blogComments;
         }
 
-        public Boolean PostBlogComment(BlogComments blogComments)
+        public bool PostBlogComment(BlogComments blogComments)
         {
             try
             {
                 _context.BlogComments.Add(blogComments);
+
+                //The blog comments ko user ma chai sender huncha and blogs bhitra ko chai user so 
+                //Comments ko chai sender ho and blogs bhitra ko chai user ho la
+                // Create a Notification object
+                Notification notification = new Notification
+                {
+                    Content = NotificationContent.Comment, 
+                    SenderId = blogComments.User,
+                    ReceiverId = blogComments.Blog.user,
+                    CreatedAt = DateTime.Now,
+                    IsSeen = false,
+                    UpdatedAt = DateTime.Now,
+                };
+
+                _notification.AddNotification(notification);
                 _context.SaveChanges();
                 return true; // Operation succeeded
             }
@@ -50,11 +68,12 @@ namespace GroupCoursework.Repository
             }
         }
 
+
         public List<BlogComments> GetAllBlogCommentsById(int blogId)
         {
             try
             {
-                var blogComments = _context.BlogComments.Where(b => b.Blog.BlogId == blogId).Include(user => user.User).ToList(); 
+                var blogComments = _context.BlogComments.Where(b => b.Blog.BlogId == blogId && b.IsCommentDeleted == false).Include(user => user.User).ToList(); 
                 List<BlogComments> blogCommentsList = new List<BlogComments>();
 
                 if (blogComments == null)
@@ -88,8 +107,24 @@ namespace GroupCoursework.Repository
             return null;
         }
 
-        public Boolean UpdateBlogComment(BlogComments blogComments)
+        public Boolean UpdateBlogComment(BlogComments blogComments, CommentHistory oldComment)
+
         {
+            //For comment history
+            _context.CommentHistory.Add(oldComment);
+
+            //For comment updation
+            _context.BlogComments.Update(blogComments);
+            _context.SaveChanges();
+
+            return true; // Update successfule
+        }
+
+        //For temp deletion of the blogs
+        public Boolean UpdateBlogCommentDelete(BlogComments blogComments)
+
+        {
+            //For comment updation
             _context.BlogComments.Update(blogComments);
             _context.SaveChanges();
 

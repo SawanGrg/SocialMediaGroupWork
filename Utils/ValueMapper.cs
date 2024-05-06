@@ -61,7 +61,7 @@ namespace GroupCoursework.Utils
             blogComments.CommentContent = blogCommentDTO.CommentContent;
             blogComments.Blog = blog;
             blogComments.User = userDetails;
-            blogComments.IsCommentDeleted = blogCommentDTO.IsCommentDeleted;
+            blogComments.IsCommentDeleted = false;
             blogComments.CreatedAt = DateTime.Now;
 
             return blogComments;

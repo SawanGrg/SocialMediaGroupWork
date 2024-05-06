@@ -47,6 +47,17 @@ namespace GroupCoursework.Repository
 
         }
 
+        public IEnumerable<BlogVote> GetBlogVotes(int blogId)
+        {
+            IEnumerable<BlogVote> blogVotes = _context.BlogVotes
+                .Include(blogVote => blogVote.User)
+                .Where(b => b.Blog.BlogId == blogId)
+                .ToList(); 
+
+            return blogVotes;
+        }
+
+
         public Boolean UpdateBlogVote(BlogVote updatedBlogVote)
         {
             try

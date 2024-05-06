@@ -62,5 +62,10 @@ namespace GroupCoursework.Models
 
         public IEnumerable<Blog> BlogSuggestions { get; set; }
         public double Popularity { get; set; } // Add this property to store the popularity score
+
+        public IEnumerable<BlogComments> BlogComments { get; set; }
+
+        public IEnumerable<BlogVote> BlogVotes { get; set; }
+
     }
 }

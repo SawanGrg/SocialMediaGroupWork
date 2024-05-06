@@ -20,13 +20,15 @@ namespace GroupCoursework.Service
             BlogRepository blogRepository,
             PostBlogDTO postBlogDTO,
             ValueMapper valueMapper,
-            FileUploaderHelper fileUploaderHelper
+            FileUploaderHelper fileUploaderHelper,
+            BlogVoteRepository blogVoteRepository
             )
         {
             _blogRepository = blogRepository;
             _postBlogDTO = postBlogDTO;
             _valueMapper = valueMapper;
             _fileUploaderHelper = fileUploaderHelper;
+            _blogVoteRepository = blogVoteRepository;
         }
 
         public IEnumerable<Blog> GetAllBlogs(int pageNumber, int pageSize, string sortOrder)
@@ -198,6 +200,7 @@ namespace GroupCoursework.Service
             {
                 return null;
             }
+            Console.WriteLine(blogId.ToString(), "jje");
 
             BlogVote blogVote = _blogVoteRepository.GetBlogVoteById(blogId);
             return blogVote;

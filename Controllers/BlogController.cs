@@ -11,6 +11,7 @@ using GroupCoursework.Repositories;
 
 using GroupCoursework.Filters;
 using System.Diagnostics;
+using GroupCoursework.Repository;
 
 
 namespace GroupCoursework.Controllers
@@ -21,14 +22,18 @@ namespace GroupCoursework.Controllers
     {
 
         private readonly BlogService _blogService;
+        private readonly BlogCommentService _blogCommentService;
         private readonly FileUploaderHelper _fileUploaderHelper;
         private readonly UserRepository _userRepository;
+        private readonly BlogVoteRepository _blogVoteRepository;
 
-        public BlogController(BlogService blogService, FileUploaderHelper fileUploaderHelper, UserRepository userRepository)
+        public BlogController(BlogService blogService, FileUploaderHelper fileUploaderHelper, UserRepository userRepository, BlogCommentService blogCommentService, BlogVoteRepository blogVoteRepository)
         {
             _blogService = blogService;
             _fileUploaderHelper = fileUploaderHelper;
             _userRepository = userRepository;
+            _blogCommentService = blogCommentService;
+            _blogVoteRepository = blogVoteRepository;
         }
 
         //get all blogs
@@ -65,13 +70,18 @@ namespace GroupCoursework.Controllers
             var blogSuggestions = _blogService.GetBlogsSuggestions(blog_id);
             if (blogs == null)
             {
-                var response = new ApiResponse<SpecificBlogsWithSuggestions>("404", "Blog not found", null);
+                var response = new ApiResponse<string>("404", "Blog not found", null);
                 return NotFound(response);
             }
+            var blogComments = _blogCommentService.GetAllBlogCommentsById(blog_id);
+            IEnumerable<BlogVote> blogVotes = _blogVoteRepository.GetBlogVotes(blog_id);
+
             var blogDetails = new SpecificBlogsWithSuggestions
             {
                 SpecificBlog = blogs,
-                BlogSuggestions = blogSuggestions
+                BlogSuggestions = blogSuggestions,
+                BlogComments = blogComments,
+                BlogVotes = blogVotes
             };
 
             var successResponse = new ApiResponse<SpecificBlogsWithSuggestions>("200", "Success", blogDetails);
