@@ -15,7 +15,7 @@ namespace GroupCoursework.Repository
 
         public BlogCommentRepository(AppDatabaseContext context,
             UserService userService,
-            ILogger<BlogRepository> logger)
+            ILogger<BlogCommentRepository> logger)
         {
             _context = context;
             _userService = userService;

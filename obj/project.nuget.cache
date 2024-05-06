@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uBup+GUAGxGAj70AvuvoWB9dg1Zjk5ALSFyOJ1zoF6fxNYx7aVA8Xd+r4ycf/1HyBSBbTfcMAl4ddar6JfVWTQ==",
+  "dgSpecHash": "GB+p/66jaBHamTKM1LVdEYTnj7WVNrYJwYW3xqzShb/mVXsS2m0P7vYSUzHm61MBqBMfUX1VjTA1jJSb/X22bg==",
   "success": true,
-  "projectFilePath": "D:\\New AD Groupcoursework\\SocialMediaGroupWork\\GroupCoursework.csproj",
+  "projectFilePath": "D:\\SocialGroupCoursework\\SocialMediaGroupWork\\GroupCoursework.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

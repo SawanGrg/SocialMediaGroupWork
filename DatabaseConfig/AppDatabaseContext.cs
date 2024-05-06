@@ -28,6 +28,7 @@ namespace GroupCoursework.DatabaseConfig
         public DbSet<Notification> Notification { get; set; }
         public DbSet<CommentHistory> CommentHistory { get; set; }
 
+        public DbSet<BlogCommentVote> BlogCommentVotes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -35,9 +35,10 @@ namespace GroupCoursework.Repository
             }
         }
 
-        public BlogVote GetBlogVoteById(int blogId)
+        public BlogVote GetBlogVoteById(int blogId, int userId)
         {
-            BlogVote blogVote = _context.BlogVotes.Include(blogVote => blogVote.Blog).FirstOrDefault(b => b.Blog.BlogId == blogId);
+            BlogVote blogVote = _context.BlogVotes.Include(blogVote => blogVote.Blog).FirstOrDefault(b => b.Blog.BlogId == blogId && b.User.UserId == userId);
+           
             if (blogVote != null)
             {
                 return blogVote;

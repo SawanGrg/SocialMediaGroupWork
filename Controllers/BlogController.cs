@@ -360,7 +360,7 @@ namespace GroupCoursework.Controllers
             User userDetails = _userRepository.GetUserById(int.Parse(userId));
 
             // Check vote
-            BlogVote blogCheck = _blogService.GetBlogVote(id);
+            BlogVote blogCheck = _blogService.GetBlogVote(id, userDetails.UserId);
 
             if (blogCheck == null)
             {
