@@ -24,13 +24,19 @@ namespace GroupCoursework.Repository
 
         public BlogCommentVote GetBlogCommentVoteById(int blogCommentId, int userId)
         {
-            BlogCommentVote blogCommentVote = _context.BlogCommentVotes.Include(vote => vote.BlogComment).FirstOrDefault(b => b.BlogComment.CommentId == blogCommentId && b.User.UserId == userId);
-            if (blogCommentVote != null)
+            try
             {
+                BlogCommentVote blogCommentVote = _context.BlogCommentVotes.Include(vote => vote.BlogComment).FirstOrDefault(b => b.BlogComment.CommentId == blogCommentId && b.User.UserId == userId);
+           
                 return blogCommentVote;
+            
+
+            }catch (Exception ex)
+            {
+                return null;
+
             }
 
-            return null;
 
         }
 
@@ -38,6 +44,7 @@ namespace GroupCoursework.Repository
         {
             try
             {
+                Console.WriteLine("inside add blog commen repo");
                 _context.BlogCommentVotes.Add(blogCommentVote);
                 _context.SaveChanges();
                 return true;

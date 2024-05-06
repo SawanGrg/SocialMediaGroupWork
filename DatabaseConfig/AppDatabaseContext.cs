@@ -23,7 +23,6 @@ namespace GroupCoursework.DatabaseConfig
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<BlogVote> BlogVotes { get; set; }
         public DbSet<BlogComments> BlogComments { get; set; }
-        public DbSet<CommentReaction> CommentReactions { get; set; }
         public DbSet<BlogHistory> BlogHistory { get; set; }
         public DbSet<Notification> Notification { get; set; }
         public DbSet<CommentHistory> CommentHistory { get; set; }

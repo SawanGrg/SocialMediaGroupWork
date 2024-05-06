@@ -245,7 +245,7 @@ namespace GroupCoursework.Controllers
                 }
                 else
                 {
-                    var response = new ApiResponse<string>("500", "Failed to vote the blog comment", null);
+                    var response = new ApiResponse<string>("500", "Failed to vote the blog comment 1", null);
                     return StatusCode(StatusCodes.Status500InternalServerError, response);
 
                 }

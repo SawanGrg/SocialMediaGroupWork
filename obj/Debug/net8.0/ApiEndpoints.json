@@ -183,6 +183,122 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "GroupCoursework.Controllers.BlogController",
+    "Method": "VoteBlog",
+    "RelativePath": "api/Blog/vote/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "blogVote",
+        "Type": "GroupCoursework.DTO.VoteBlogDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GroupCoursework.Controllers.BlogCommentController",
+    "Method": "DeleteBlogComment",
+    "RelativePath": "api/BlogComment/blogCommentDelete/{blogCommentId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "blogCommentId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GroupCoursework.Controllers.BlogCommentController",
+    "Method": "GetAllBlogCommentsByBlogId",
+    "RelativePath": "api/BlogComment/getAllBlogComments/{blogId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "blogId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GroupCoursework.Controllers.BlogCommentController",
+    "Method": "PostBlogComment",
+    "RelativePath": "api/BlogComment/postBlogComment/{blogId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "blogId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "blogCommentDTO",
+        "Type": "GroupCoursework.DTO.BlogCommentDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GroupCoursework.Controllers.BlogCommentController",
+    "Method": "UpdateBlogComment",
+    "RelativePath": "api/BlogComment/updateBlogComment",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "blogCommentId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "updateBlogCommentDTO",
+        "Type": "GroupCoursework.DTO.UpdateBlogCommentDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GroupCoursework.Controllers.BlogCommentController",
+    "Method": "VoteBlogComment",
+    "RelativePath": "api/BlogComment/vote/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "blogCommentVoteDTO",
+        "Type": "GroupCoursework.DTO.VoteBlogCommentDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "GroupCoursework.Controllers.EmailController",
     "Method": "ResetPassword",
     "RelativePath": "api/Email/reset-password",
