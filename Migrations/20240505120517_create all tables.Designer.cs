@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GroupCoursework.Migrations
 {
     [DbContext(typeof(AppDatabaseContext))]
-    [Migration("20240505103728_gau")]
-    partial class gau
+    [Migration("20240505120517_create all tables")]
+    partial class createalltables
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -312,7 +312,7 @@ namespace GroupCoursework.Migrations
                     b.HasOne("GroupCoursework.Models.User", "user")
                         .WithMany("Blogs")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("user");
@@ -323,13 +323,13 @@ namespace GroupCoursework.Migrations
                     b.HasOne("GroupCoursework.Models.Blog", "Blog")
                         .WithMany()
                         .HasForeignKey("BlogId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("GroupCoursework.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Blog");
@@ -342,7 +342,7 @@ namespace GroupCoursework.Migrations
                     b.HasOne("GroupCoursework.Models.Blog", "Blog")
                         .WithMany()
                         .HasForeignKey("BlogId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Blog");
@@ -353,13 +353,13 @@ namespace GroupCoursework.Migrations
                     b.HasOne("GroupCoursework.Models.Blog", "Blog")
                         .WithMany()
                         .HasForeignKey("BlogId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("GroupCoursework.Models.User", "User")
                         .WithMany("BlogVotes")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Blog");
@@ -372,7 +372,7 @@ namespace GroupCoursework.Migrations
                     b.HasOne("GroupCoursework.Models.BlogComments", "BlogComments")
                         .WithMany()
                         .HasForeignKey("BlogCommentsCommentId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("BlogComments");
@@ -383,13 +383,13 @@ namespace GroupCoursework.Migrations
                     b.HasOne("GroupCoursework.Models.BlogComments", "BlogComment")
                         .WithMany()
                         .HasForeignKey("BlogCommentCommentId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("GroupCoursework.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("BlogComment");
@@ -402,13 +402,13 @@ namespace GroupCoursework.Migrations
                     b.HasOne("GroupCoursework.Models.User", "ReceiverId")
                         .WithMany()
                         .HasForeignKey("ReceiverIdUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("GroupCoursework.Models.User", "SenderId")
                         .WithMany()
                         .HasForeignKey("SenderIdUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("ReceiverId");

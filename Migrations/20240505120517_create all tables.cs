@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GroupCoursework.Migrations
 {
     /// <inheritdoc />
-    public partial class gau : Migration
+    public partial class createalltables : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
