@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GroupCoursework.Migrations
 {
     /// <inheritdoc />
-    public partial class gau : Migration
+    public partial class addingblogcommentvotetable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -170,6 +170,34 @@ namespace GroupCoursework.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "BlogCommentVotes",
+                columns: table => new
+                {
+                    BlogCommentVoteId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BlogCommentCommentId = table.Column<int>(type: "int", nullable: false),
+                    IsVote = table.Column<bool>(type: "bit", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BlogCommentVotes", x => x.BlogCommentVoteId);
+                    table.ForeignKey(
+                        name: "FK_BlogCommentVotes_BlogComments_BlogCommentCommentId",
+                        column: x => x.BlogCommentCommentId,
+                        principalTable: "BlogComments",
+                        principalColumn: "CommentId",
+                        onDelete: ReferentialAction.NoAction);
+                    table.ForeignKey(
+                        name: "FK_BlogCommentVotes_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.NoAction);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "CommentHistory",
                 columns: table => new
                 {
@@ -190,36 +218,6 @@ namespace GroupCoursework.Migrations
                         onDelete: ReferentialAction.NoAction);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "CommentReactions",
-                columns: table => new
-                {
-                    commentReactionId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    BlogCommentCommentId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    IsLike = table.Column<bool>(type: "bit", nullable: false),
-                    IsCommentDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CommentReactions", x => x.commentReactionId);
-                    table.ForeignKey(
-                        name: "FK_CommentReactions_BlogComments_BlogCommentCommentId",
-                        column: x => x.BlogCommentCommentId,
-                        principalTable: "BlogComments",
-                        principalColumn: "CommentId",
-                        onDelete: ReferentialAction.NoAction);
-                    table.ForeignKey(
-                        name: "FK_CommentReactions_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.NoAction);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_BlogComments_BlogId",
                 table: "BlogComments",
@@ -228,6 +226,16 @@ namespace GroupCoursework.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_BlogComments_UserId",
                 table: "BlogComments",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BlogCommentVotes_BlogCommentCommentId",
+                table: "BlogCommentVotes",
+                column: "BlogCommentCommentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BlogCommentVotes_UserId",
+                table: "BlogCommentVotes",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -256,16 +264,6 @@ namespace GroupCoursework.Migrations
                 column: "BlogCommentsCommentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CommentReactions_BlogCommentCommentId",
-                table: "CommentReactions",
-                column: "BlogCommentCommentId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CommentReactions_UserId",
-                table: "CommentReactions",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Notifications_ReceiverIdUserId",
                 table: "Notifications",
                 column: "ReceiverIdUserId");
@@ -280,6 +278,9 @@ namespace GroupCoursework.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "BlogCommentVotes");
+
+            migrationBuilder.DropTable(
                 name: "BlogHistory");
 
             migrationBuilder.DropTable(
@@ -287,9 +288,6 @@ namespace GroupCoursework.Migrations
 
             migrationBuilder.DropTable(
                 name: "CommentHistory");
-
-            migrationBuilder.DropTable(
-                name: "CommentReactions");
 
             migrationBuilder.DropTable(
                 name: "Notifications");
