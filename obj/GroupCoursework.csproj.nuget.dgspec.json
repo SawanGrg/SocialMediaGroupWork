@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\New AD Groupcoursework\\SocialMediaGroupWork\\GroupCoursework.csproj": {}
+    "D:\\SocialGroupCoursework\\SocialMediaGroupWork\\GroupCoursework.csproj": {}
   },
   "projects": {
-    "D:\\New AD Groupcoursework\\SocialMediaGroupWork\\GroupCoursework.csproj": {
+    "D:\\SocialGroupCoursework\\SocialMediaGroupWork\\GroupCoursework.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\New AD Groupcoursework\\SocialMediaGroupWork\\GroupCoursework.csproj",
+        "projectUniqueName": "D:\\SocialGroupCoursework\\SocialMediaGroupWork\\GroupCoursework.csproj",
         "projectName": "GroupCoursework",
-        "projectPath": "D:\\New AD Groupcoursework\\SocialMediaGroupWork\\GroupCoursework.csproj",
+        "projectPath": "D:\\SocialGroupCoursework\\SocialMediaGroupWork\\GroupCoursework.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "D:\\New AD Groupcoursework\\SocialMediaGroupWork\\obj\\",
+        "outputPath": "D:\\SocialGroupCoursework\\SocialMediaGroupWork\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

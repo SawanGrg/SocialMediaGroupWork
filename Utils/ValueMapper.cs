@@ -67,5 +67,18 @@ namespace GroupCoursework.Utils
             return blogComments;
         }
 
+        public BlogCommentVote MapToBlogCommentVote(BlogComments blogComment,VoteBlogCommentDTO blogCommentVoteDTO,User userDetails)
+        {
+            BlogCommentVote blogCommentVote = new BlogCommentVote();
+
+            blogCommentVote.BlogComment = blogComment;
+            blogCommentVote.User = userDetails;
+            blogCommentVote.IsVote = blogCommentVoteDTO.vote;
+            blogCommentVote.CreatedAt = DateTime.Now;
+
+            return blogCommentVote;
+
+        }
+
     }
 }

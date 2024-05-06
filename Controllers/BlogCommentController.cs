@@ -6,6 +6,7 @@ using GroupCoursework.Service;
 using GroupCoursework.Utils;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Reflection.Metadata;
 
 namespace GroupCoursework.Controllers
 {
@@ -202,6 +203,91 @@ namespace GroupCoursework.Controllers
 
             var finalResponse = new ApiResponse<string>("500", "Failed to delete comment in the blog", null);
             return StatusCode(StatusCodes.Status500InternalServerError, finalResponse);
+        }
+
+        // vote a blog
+        [HttpPost("vote/{id}")]
+        public IActionResult VoteBlogComment(int id, [FromBody] VoteBlogCommentDTO blogCommentVoteDTO)
+        {
+            BlogComments blogComment = _blogCommentService.GetBlogCommentByID(id);
+            
+            if (blogComment == null)
+            {
+                var response = new ApiResponse<string>("404", "Blog comment not found", null);
+                return NotFound(response);
+
+            }
+
+            // Extracting Authorization header value
+            string userId = HttpContext.Request.Headers["Authorization"];
+            if (string.IsNullOrEmpty(userId))
+            {
+                var response = new ApiResponse<string>("403", "You are not authorization to vote for blog comment", null);
+                return Unauthorized(response);
+
+            }
+
+            // Retrieve user details
+            User userDetails = _userRepository.GetUserById(int.Parse(userId));
+
+            // Check vote
+            BlogCommentVote blogCommentCheck = _blogCommentService.GetBlogCommentVoteById(id, userDetails.UserId);
+
+            if (blogCommentCheck == null)
+            {
+                // Call service method to handle upvoting
+                bool voted = _blogCommentService.VoteBlogComment(blogComment, blogCommentVoteDTO, userDetails);
+
+                if (voted)
+                {
+                    var response = new ApiResponse<string>("201", "The blog comment voted successfully.", null);
+                    return Ok(response);
+                }
+                else
+                {
+                    var response = new ApiResponse<string>("500", "Failed to vote the blog comment 1", null);
+                    return StatusCode(StatusCodes.Status500InternalServerError, response);
+
+                }
+            }
+
+            if (blogCommentCheck.IsVote == blogCommentVoteDTO.vote)
+            {
+                var blogCommentVoteDelete = _blogCommentService.DeleteBlogCommentVote(blogCommentCheck.BlogCommentVoteId);
+                if (blogCommentVoteDelete)
+                {
+                    var response = new ApiResponse<string>("201", "The blog comment vote has been deleted successfully.", null);
+                    return Ok(response);
+                }
+                else
+                {
+                    var response = new ApiResponse<string>("500", "An error occurred while deleting the blog comment vote.", null);
+                    return StatusCode(StatusCodes.Status500InternalServerError, response);
+                }
+
+            }
+
+            if (blogCommentCheck.IsVote != blogCommentVoteDTO.vote)
+            {
+                Boolean blogCommentUpdate = _blogCommentService.UpdateBlogCommentVote(blogCommentCheck, blogCommentVoteDTO, userDetails);
+
+                if (blogCommentUpdate)
+                {
+                    var response = new ApiResponse<string>("201", "The blog comment vote has been successfully updated.", null);
+                    return Ok(response);
+                }
+                else
+                {
+                    var response = new ApiResponse<string>("500", "Failed to update the vote of the blog comment", null);
+                    return StatusCode(StatusCodes.Status500InternalServerError, response);
+                }
+            }
+
+
+            var responseReturn = new ApiResponse<string>("500", "Failed to vote of the blog comment", null);
+            return StatusCode(StatusCodes.Status500InternalServerError, responseReturn);
+
+
         }
     }
 }
