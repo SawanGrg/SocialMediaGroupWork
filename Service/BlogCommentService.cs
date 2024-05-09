@@ -44,6 +44,8 @@ namespace GroupCoursework.Service
             return _blogCommentRepository.GetBlogCommentById(blogCommentId);
         }
 
+
+
         public Boolean UpdateBlogComment(UpdateBlogCommentDTO updateBlogCommentDTO, BlogComments existingBlogComments)
         {
             if(existingBlogComments.CommentContent != updateBlogCommentDTO.CommentContent) 
@@ -73,6 +75,12 @@ namespace GroupCoursework.Service
 
             blogComments.IsCommentDeleted = true;
             return _blogCommentRepository.UpdateBlogCommentDelete(blogComments);
+        }
+
+
+        public IEnumerable<CommentHistory> GetBlogCommentHistoryByID(int blogCommentId)
+        {
+            return _blogCommentRepository.GetBlogCommentHistoryById(blogCommentId);
         }
 
     }

@@ -130,5 +130,12 @@ namespace GroupCoursework.Repository
 
             return true; // Update successfule
         }
+
+        public IEnumerable<CommentHistory> GetBlogCommentHistoryById(int blogCommentId)
+        {
+            IEnumerable<CommentHistory> blogCommentsHistory = _context.CommentHistory.Where(b => b.BlogComments.CommentId == blogCommentId);
+            return blogCommentsHistory;
+           
+        }
     }
 }

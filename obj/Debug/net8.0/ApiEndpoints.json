@@ -237,6 +237,22 @@
   },
   {
     "ContainingType": "GroupCoursework.Controllers.BlogCommentController",
+    "Method": "GetAllCommentHistory",
+    "RelativePath": "api/BlogComment/getCommentHistory/{commentId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "commentId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GroupCoursework.Controllers.BlogCommentController",
     "Method": "PostBlogComment",
     "RelativePath": "api/BlogComment/postBlogComment/{blogId}",
     "HttpMethod": "POST",
@@ -338,6 +354,54 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "GroupCoursework.Controllers.NotificationController",
+    "Method": "GetAllNotifications",
+    "RelativePath": "api/Notification/getNotifications/{UserId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UserId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GroupCoursework.Controllers.NotificationController",
+    "Method": "GetNotificationCounts",
+    "RelativePath": "api/Notification/getUnreadNotis/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GroupCoursework.Controllers.NotificationController",
+    "Method": "ReadNotification",
+    "RelativePath": "api/Notification/readNoti/{userId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "GroupCoursework.Controllers.UserController",

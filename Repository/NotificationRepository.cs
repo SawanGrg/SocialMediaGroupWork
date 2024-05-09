@@ -1,6 +1,7 @@
 ﻿using GroupCoursework.DatabaseConfig;
 using GroupCoursework.Models;
 using GroupCoursework.Service;
+using Microsoft.EntityFrameworkCore;
 using MimeKit;
 
 namespace GroupCoursework.Repository
@@ -20,6 +21,13 @@ namespace GroupCoursework.Repository
         }
 
 
+        public IEnumerable<Notification> GetAllNotifications(int userId)
+        {
+            return _context.Notification.Include(n => n.SenderId)
+                .Where(n => n.ReceiverId.UserId == userId)
+                .ToList();
+        }
+
         public bool AddNotification(Notification notification)
         {
             // Create a new Notification object
@@ -37,6 +45,26 @@ namespace GroupCoursework.Repository
              _context.SaveChanges();
 
             return true; 
+        }
+
+        public int NotificationCounts(int userId)
+        {
+            return _context.Notification.Where(user => user.ReceiverId.UserId == userId && user.IsSeen == false).Count();
+        }
+
+        public bool ReadNotifications(int userId)
+        {
+            var notifications = _context.Notification.Where(n => n.ReceiverId.UserId == userId && n.IsSeen == false);
+
+            foreach (var notification in notifications)
+            {
+                notification.IsSeen = true;
+            }
+
+            _context.Notification.UpdateRange(notifications);
+            _context.SaveChanges();
+
+            return true;
         }
 
     }

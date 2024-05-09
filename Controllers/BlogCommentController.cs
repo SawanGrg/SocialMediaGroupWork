@@ -60,7 +60,7 @@ namespace GroupCoursework.Controllers
                 var response = new ApiResponse<string>("404", "Blog not found", null);
                 return NotFound(response);
             }
-           
+
 
             if (_blogCommentService.PostBlogComment(blog, blogCommentDTO, userDetails))
             {
@@ -96,13 +96,13 @@ namespace GroupCoursework.Controllers
                 return NotFound(response);
             }
 
-            var finalResponse = new ApiResponse<List<BlogComments>> ("201", "All blog comments", blogComments);
+            var finalResponse = new ApiResponse<List<BlogComments>>("201", "All blog comments", blogComments);
             return Ok(finalResponse);
 
         }
 
         [HttpPost("updateBlogComment")]
-        public IActionResult UpdateBlogComment([FromQuery] int blogCommentId ,[FromBody] UpdateBlogCommentDTO updateBlogCommentDTO)
+        public IActionResult UpdateBlogComment([FromQuery] int blogCommentId, [FromBody] UpdateBlogCommentDTO updateBlogCommentDTO)
         {
             if (updateBlogCommentDTO == null)
             {
@@ -136,7 +136,7 @@ namespace GroupCoursework.Controllers
                 return NotFound(response);
             }
 
-            if(existingBlogComments.User.UserId != userDetails.UserId)
+            if (existingBlogComments.User.UserId != userDetails.UserId)
             {
                 var response = new ApiResponse<string>("500", "Current user cannot update comment in the blog", null);
                 return StatusCode(StatusCodes.Status500InternalServerError, response);
@@ -145,7 +145,7 @@ namespace GroupCoursework.Controllers
 
             Boolean update = _blogCommentService.UpdateBlogComment(updateBlogCommentDTO, existingBlogComments);
 
-            if(update)
+            if (update)
             {
                 var response = new ApiResponse<string>("201", "Comment of the blog updated successfully.", null);
                 return Ok(response);
@@ -201,6 +201,17 @@ namespace GroupCoursework.Controllers
 
             var finalResponse = new ApiResponse<string>("500", "Failed to delete comment in the blog", null);
             return StatusCode(StatusCodes.Status500InternalServerError, finalResponse);
+        }
+
+
+        [HttpGet("getCommentHistory/{commentId}")]
+        public IActionResult GetAllCommentHistory(int commentId)
+        {
+            IEnumerable<CommentHistory> blogHistories = _blogCommentService.GetBlogCommentHistoryByID(commentId);
+
+            var response = new ApiResponse<IEnumerable<CommentHistory>>("200", "The specified comments's update history.", blogHistories);
+            return Ok(response);
+
         }
     }
 }

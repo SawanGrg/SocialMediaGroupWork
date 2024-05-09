@@ -186,7 +186,7 @@ namespace GroupCoursework.Service
          if (_blogVoteRepository.AddVoteBlog(blogVoteObject))
            {
               return true;
-          }
+           }
            else
            {
                return false;
