@@ -90,17 +90,31 @@ namespace GroupCoursework.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateUser(int id, [FromBody] User user)
+        //[ServiceFilter(typeof(AuthFilter))]
+        public IActionResult UpdateUser(int id, [FromBody] User updatedUser)
         {
-            if (id != user.UserId)
+            var existingUser = _userService.GetUserById(id);
+            if (existingUser == null)
             {
-                var errorResponse = new ApiResponse<User>("400", "Bad request", null);
-                return BadRequest(errorResponse);
+                var errorResponse = new ApiResponse<User>("404", "User not found", null);
+                return NotFound(errorResponse);
             }
-            _userService.UpdateUser(user);
-            var successResponse = new ApiResponse<User>("204", "User updated", null);
+
+            // Update the user properties with the new values from updatedUser
+            existingUser.Username = updatedUser.Username;
+            existingUser.Email = updatedUser.Email;
+            existingUser.Phone = updatedUser.Phone;
+            existingUser.Gender = updatedUser.Gender;
+            existingUser.Role = updatedUser.Role;
+            existingUser.IsAdmin = updatedUser.IsAdmin;
+            existingUser.UpdatedAt = DateTime.UtcNow;
+
+            _userService.UpdateUser(existingUser);
+
+            var successResponse = new ApiResponse<User>("200", "User updated", existingUser);
             return Ok(successResponse);
         }
+
 
         [HttpDelete("{id}")]
         public IActionResult DeleteUser(int id)

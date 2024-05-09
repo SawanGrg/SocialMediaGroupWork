@@ -38,7 +38,7 @@ namespace GroupCoursework.Utils
                 file.CopyTo(stream);
             }
             //Path matra deko
-            string imageUrl = "http://localhost:50113/images/" + fileName;
+            string imageUrl = "http://localhost:5121/images/" + fileName;
 
             return imageUrl;
         }

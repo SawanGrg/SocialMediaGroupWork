@@ -199,5 +199,41 @@ namespace GroupCoursework.Repository
         }
 
 
+        public CumulativeCountsDTO GetCumulativeCountsAllTime()
+        {
+            var allPostsCount = _context.Blogs.Count();
+            var allUpvotesCount = _context.BlogVotes.Count(v => v.IsVote);
+            var allDownvotesCount = _context.BlogVotes.Count(v => !v.IsVote);
+            var allCommentsCount = _context.BlogComments.Count();
+
+            return new CumulativeCountsDTO
+            {
+                BlogPostsCount = allPostsCount,
+                UpvotesCount = allUpvotesCount,
+                DownvotesCount = allDownvotesCount,
+                CommentsCount = allCommentsCount
+            };
+        }
+
+        public CumulativeCountsDTO GetCumulativeCountsForMonth(string month)
+        {
+            var parsedMonth = DateTime.ParseExact(month, "MM/yyyy", CultureInfo.InvariantCulture);
+
+            var monthPostsCount = _context.Blogs.Count(b => b.blogCreatedAt.Year == parsedMonth.Year && b.blogCreatedAt.Month == parsedMonth.Month);
+            var monthUpvotesCount = _context.BlogVotes.Count(v => v.IsVote && v.Blog.blogCreatedAt.Year == parsedMonth.Year && v.Blog.blogCreatedAt.Month == parsedMonth.Month);
+            var monthDownvotesCount = _context.BlogVotes.Count(v => !v.IsVote && v.Blog.blogCreatedAt.Year == parsedMonth.Year && v.Blog.blogCreatedAt.Month == parsedMonth.Month);
+            var monthCommentsCount = _context.BlogComments.Count(c => c.Blog.blogCreatedAt.Year == parsedMonth.Year && c.Blog.blogCreatedAt.Month == parsedMonth.Month);
+
+            return new CumulativeCountsDTO
+            {
+                BlogPostsCount = monthPostsCount,
+                UpvotesCount = monthUpvotesCount,
+                DownvotesCount = monthDownvotesCount,
+                CommentsCount = monthCommentsCount
+            };
+        }
+
+
+
     }
 }
