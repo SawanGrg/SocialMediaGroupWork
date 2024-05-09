@@ -11,4 +11,9 @@
         public string? CommentContent { get; set; }
        
     }
+
+    public class VoteBlogCommentDTO
+    {
+        public bool vote {  get; set; }
+    }
 }

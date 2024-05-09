@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GroupCoursework.Migrations
 {
     [DbContext(typeof(AppDatabaseContext))]
-    [Migration("20240505103728_gau")]
-    partial class gau
+    [Migration("20240506044719_adding blog comment vote table")]
+    partial class addingblogcommentvotetable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -63,6 +63,35 @@ namespace GroupCoursework.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Blogs");
+                });
+
+            modelBuilder.Entity("GroupCoursework.Models.BlogCommentVote", b =>
+                {
+                    b.Property<int>("BlogCommentVoteId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BlogCommentVoteId"));
+
+                    b.Property<int>("BlogCommentCommentId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsVote")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("BlogCommentVoteId");
+
+                    b.HasIndex("BlogCommentCommentId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("BlogCommentVotes");
                 });
 
             modelBuilder.Entity("GroupCoursework.Models.BlogComments", b =>
@@ -188,41 +217,6 @@ namespace GroupCoursework.Migrations
                     b.ToTable("CommentHistory");
                 });
 
-            modelBuilder.Entity("GroupCoursework.Models.CommentReaction", b =>
-                {
-                    b.Property<int>("commentReactionId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("commentReactionId"));
-
-                    b.Property<int>("BlogCommentCommentId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsCommentDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsLike")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("commentReactionId");
-
-                    b.HasIndex("BlogCommentCommentId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("CommentReactions");
-                });
-
             modelBuilder.Entity("GroupCoursework.Models.Notification", b =>
                 {
                     b.Property<int>("NotificationId")
@@ -318,6 +312,25 @@ namespace GroupCoursework.Migrations
                     b.Navigation("user");
                 });
 
+            modelBuilder.Entity("GroupCoursework.Models.BlogCommentVote", b =>
+                {
+                    b.HasOne("GroupCoursework.Models.BlogComments", "BlogComment")
+                        .WithMany()
+                        .HasForeignKey("BlogCommentCommentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GroupCoursework.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BlogComment");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("GroupCoursework.Models.BlogComments", b =>
                 {
                     b.HasOne("GroupCoursework.Models.Blog", "Blog")
@@ -376,25 +389,6 @@ namespace GroupCoursework.Migrations
                         .IsRequired();
 
                     b.Navigation("BlogComments");
-                });
-
-            modelBuilder.Entity("GroupCoursework.Models.CommentReaction", b =>
-                {
-                    b.HasOne("GroupCoursework.Models.BlogComments", "BlogComment")
-                        .WithMany()
-                        .HasForeignKey("BlogCommentCommentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("GroupCoursework.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("BlogComment");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("GroupCoursework.Models.Notification", b =>

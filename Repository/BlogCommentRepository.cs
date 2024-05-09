@@ -15,8 +15,8 @@ namespace GroupCoursework.Repository
         private readonly ILogger _logger;
 
         public BlogCommentRepository(AppDatabaseContext context,
-            UserService userService, NotificationRepository notification,
-            ILogger<BlogRepository> logger)
+            UserService userService,
+            ILogger<BlogCommentRepository> logger)
         {
             _context = context;
             _userService = userService;

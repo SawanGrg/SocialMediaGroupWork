@@ -194,7 +194,7 @@ namespace GroupCoursework.Service
 
         }
 
-        public BlogVote GetBlogVote(int blogId)
+        public BlogVote GetBlogVote(int blogId, int userId)
         {
             if (blogId <= 0)
             {
@@ -202,7 +202,7 @@ namespace GroupCoursework.Service
             }
             Console.WriteLine(blogId.ToString(), "jje");
 
-            BlogVote blogVote = _blogVoteRepository.GetBlogVoteById(blogId);
+            BlogVote blogVote = _blogVoteRepository.GetBlogVoteById(blogId, userId);
             return blogVote;
         }
 
