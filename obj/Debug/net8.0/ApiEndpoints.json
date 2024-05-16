@@ -500,7 +500,7 @@
         "IsRequired": true
       },
       {
-        "Name": "user",
+        "Name": "updatedUser",
         "Type": "GroupCoursework.Models.User",
         "IsRequired": true
       }
@@ -632,6 +632,22 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "GroupCoursework.Controllers.AdminController",
+    "Method": "GetCumulativeCounts",
+    "RelativePath": "GetCumulativeCounts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "month",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "GroupCoursework.Controllers.AdminController",
