@@ -50,9 +50,48 @@ namespace GroupCoursework.Service
             return _adminRepository.Get10TopBlogger();
         }
 
+        //public CumulativeCountsDTO GetCumulativeCounts(string month)
+        //{
+        //    var allCounts = _adminRepository.GetCumulativeCountsAllTime();
+        //    var monthCounts = _adminRepository.GetCumulativeCountsForMonth(month);
 
+        //    return new CumulativeCountsDTO
+        //    {
+        //        BlogPostsCount = allCounts.BlogPostsCount,
+        //        UpvotesCount = allCounts.UpvotesCount,
+        //        DownvotesCount = allCounts.DownvotesCount,
+        //        CommentsCount = allCounts.CommentsCount,
+        //        MonthPostsCount = monthCounts.BlogPostsCount,
+        //        MonthUpvotesCount = monthCounts.UpvotesCount,
+        //        MonthDownvotesCount = monthCounts.DownvotesCount,
+        //        MonthCommentsCount = monthCounts.CommentsCount
+        //    };
+        //}
 
+        public CumulativeCountsDTO GetCumulativeCounts(string month)
+        {
+            if (string.IsNullOrEmpty(month))
+            {
+                return _adminRepository.GetCumulativeCountsAllTime();
+            }
+            else
+            {
+                var monthCounts = _adminRepository.GetCumulativeCountsForMonth(month);
+                var allCounts = _adminRepository.GetCumulativeCountsAllTime();
 
+                return new CumulativeCountsDTO
+                {
+                    BlogPostsCount = allCounts.BlogPostsCount,
+                    UpvotesCount = allCounts.UpvotesCount,
+                    DownvotesCount = allCounts.DownvotesCount,
+                    CommentsCount = allCounts.CommentsCount,
+                    MonthPostsCount = monthCounts.BlogPostsCount,
+                    MonthUpvotesCount = monthCounts.UpvotesCount,
+                    MonthDownvotesCount = monthCounts.DownvotesCount,
+                    MonthCommentsCount = monthCounts.CommentsCount
+                };
+            }
+        }
 
     }
 }
