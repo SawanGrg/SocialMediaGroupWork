@@ -29,6 +29,10 @@
       "PackagePath": "staticwebassets\\images\\17d1112a-21e2-4b39-968d-5811585ce5a6.jpg"
     },
     {
+      "Id": "C:\\ICP\\Final_Year\\Courseworks\\Application Development\\ApplicationGroup\\SocialMediaGroupWork\\wwwroot\\images\\1912bccc-a314-4e83-b8e2-52b217fa1501.png",
+      "PackagePath": "staticwebassets\\images\\1912bccc-a314-4e83-b8e2-52b217fa1501.png"
+    },
+    {
       "Id": "C:\\ICP\\Final_Year\\Courseworks\\Application Development\\ApplicationGroup\\SocialMediaGroupWork\\wwwroot\\images\\1b3dae79-72f0-49ba-94ce-c9f0852d35e4.jpg",
       "PackagePath": "staticwebassets\\images\\1b3dae79-72f0-49ba-94ce-c9f0852d35e4.jpg"
     },
@@ -43,6 +47,10 @@
     {
       "Id": "C:\\ICP\\Final_Year\\Courseworks\\Application Development\\ApplicationGroup\\SocialMediaGroupWork\\wwwroot\\images\\2732b9c3-16ae-4647-8b24-186df2a33a49.JPG",
       "PackagePath": "staticwebassets\\images\\2732b9c3-16ae-4647-8b24-186df2a33a49.JPG"
+    },
+    {
+      "Id": "C:\\ICP\\Final_Year\\Courseworks\\Application Development\\ApplicationGroup\\SocialMediaGroupWork\\wwwroot\\images\\394554d0-d39e-4c88-9535-368e8f85be03.png",
+      "PackagePath": "staticwebassets\\images\\394554d0-d39e-4c88-9535-368e8f85be03.png"
     },
     {
       "Id": "C:\\ICP\\Final_Year\\Courseworks\\Application Development\\ApplicationGroup\\SocialMediaGroupWork\\wwwroot\\images\\3fdbbc66-8d36-4e27-a10f-3b0ddbc50429.jpg",
@@ -105,12 +113,20 @@
       "PackagePath": "staticwebassets\\images\\99f84f51-b799-4b7f-a97f-a14dd617bd84.jpg"
     },
     {
+      "Id": "C:\\ICP\\Final_Year\\Courseworks\\Application Development\\ApplicationGroup\\SocialMediaGroupWork\\wwwroot\\images\\9cf28a1c-5ad0-49c1-b078-a48b0317c815.jpg",
+      "PackagePath": "staticwebassets\\images\\9cf28a1c-5ad0-49c1-b078-a48b0317c815.jpg"
+    },
+    {
       "Id": "C:\\ICP\\Final_Year\\Courseworks\\Application Development\\ApplicationGroup\\SocialMediaGroupWork\\wwwroot\\images\\9eff813b-d877-4518-993c-2a087574de8f.jpg",
       "PackagePath": "staticwebassets\\images\\9eff813b-d877-4518-993c-2a087574de8f.jpg"
     },
     {
       "Id": "C:\\ICP\\Final_Year\\Courseworks\\Application Development\\ApplicationGroup\\SocialMediaGroupWork\\wwwroot\\images\\a4a557a0-d13e-46be-8745-3b7e19c240dc.jpg",
       "PackagePath": "staticwebassets\\images\\a4a557a0-d13e-46be-8745-3b7e19c240dc.jpg"
+    },
+    {
+      "Id": "C:\\ICP\\Final_Year\\Courseworks\\Application Development\\ApplicationGroup\\SocialMediaGroupWork\\wwwroot\\images\\aa359168-7061-4a6b-8e4b-161277d41985.png",
+      "PackagePath": "staticwebassets\\images\\aa359168-7061-4a6b-8e4b-161277d41985.png"
     },
     {
       "Id": "C:\\ICP\\Final_Year\\Courseworks\\Application Development\\ApplicationGroup\\SocialMediaGroupWork\\wwwroot\\images\\ae9a7c1e-e271-4a60-ab2a-2e44054bd842.JPG",
@@ -153,6 +169,10 @@
       "PackagePath": "staticwebassets\\images\\cd3f68c2-3070-4057-be71-500341410cac.jpg"
     },
     {
+      "Id": "C:\\ICP\\Final_Year\\Courseworks\\Application Development\\ApplicationGroup\\SocialMediaGroupWork\\wwwroot\\images\\d0ede471-ebd5-40b3-bd96-c868b58f1877.jpg",
+      "PackagePath": "staticwebassets\\images\\d0ede471-ebd5-40b3-bd96-c868b58f1877.jpg"
+    },
+    {
       "Id": "C:\\ICP\\Final_Year\\Courseworks\\Application Development\\ApplicationGroup\\SocialMediaGroupWork\\wwwroot\\images\\dc6b743b-5c2b-4e49-96d8-706e23a1fc40.png",
       "PackagePath": "staticwebassets\\images\\dc6b743b-5c2b-4e49-96d8-706e23a1fc40.png"
     },
@@ -173,8 +193,20 @@
       "PackagePath": "staticwebassets\\images\\eb7baef0-f710-4dcf-9fc9-5d346a27c308.png"
     },
     {
+      "Id": "C:\\ICP\\Final_Year\\Courseworks\\Application Development\\ApplicationGroup\\SocialMediaGroupWork\\wwwroot\\images\\eda38d65-034e-43bf-aff2-604f045ae8d9.jpg",
+      "PackagePath": "staticwebassets\\images\\eda38d65-034e-43bf-aff2-604f045ae8d9.jpg"
+    },
+    {
+      "Id": "C:\\ICP\\Final_Year\\Courseworks\\Application Development\\ApplicationGroup\\SocialMediaGroupWork\\wwwroot\\images\\f11d8191-f16a-4544-973a-e24df8f80357.jpg",
+      "PackagePath": "staticwebassets\\images\\f11d8191-f16a-4544-973a-e24df8f80357.jpg"
+    },
+    {
       "Id": "C:\\ICP\\Final_Year\\Courseworks\\Application Development\\ApplicationGroup\\SocialMediaGroupWork\\wwwroot\\images\\f14b1bc5-242f-4728-8b2d-dd9e929772c3.webp",
       "PackagePath": "staticwebassets\\images\\f14b1bc5-242f-4728-8b2d-dd9e929772c3.webp"
+    },
+    {
+      "Id": "C:\\ICP\\Final_Year\\Courseworks\\Application Development\\ApplicationGroup\\SocialMediaGroupWork\\wwwroot\\images\\fea8bb24-c8f1-4914-a3d2-aaa59fc2b62f.png",
+      "PackagePath": "staticwebassets\\images\\fea8bb24-c8f1-4914-a3d2-aaa59fc2b62f.png"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.GroupCoursework.Microsoft.AspNetCore.StaticWebAssets.props",

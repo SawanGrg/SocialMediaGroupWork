@@ -294,6 +294,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "GroupCoursework.Controllers.BlogCommentController",
+    "Method": "VoteBlogComment",
+    "RelativePath": "api/BlogComment/vote/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "blogCommentVoteDTO",
+        "Type": "GroupCoursework.DTO.VoteBlogCommentDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "GroupCoursework.Controllers.EmailController",
     "Method": "ResetPassword",
     "RelativePath": "api/Email/reset-password",
@@ -497,6 +518,27 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GroupCoursework.Controllers.UserController",
+    "Method": "UpdateUserProfile",
+    "RelativePath": "api/User/editProfile/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedUser",
+        "Type": "GroupCoursework.DTO.UpdateUserProfileDTO",
         "IsRequired": true
       }
     ],

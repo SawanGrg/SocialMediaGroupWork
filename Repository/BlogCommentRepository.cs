@@ -1,4 +1,5 @@
 ﻿using GroupCoursework.DatabaseConfig;
+using GroupCoursework.DTO;
 using GroupCoursework.Models;
 using GroupCoursework.Service;
 using Microsoft.EntityFrameworkCore;
@@ -9,20 +10,21 @@ namespace GroupCoursework.Repository
     public class BlogCommentRepository
     {
         private readonly UserService _userService;
-        private readonly AppDatabaseContext _context;
+        private readonly AppDatabaseContext _context; 
         private readonly NotificationRepository _notification;
+        private readonly BlogCommentVoteRepository _blogCommentVoteRepository;
 
         private readonly ILogger _logger;
 
         public BlogCommentRepository(AppDatabaseContext context,
             UserService userService,
-            ILogger<BlogCommentRepository> logger)
+            ILogger<BlogCommentRepository> logger, NotificationRepository notification, BlogCommentVoteRepository blogCommentVoteRepository)
         {
             _context = context;
             _userService = userService;
             _logger = logger;
             _notification = notification;
-
+            _blogCommentVoteRepository = blogCommentVoteRepository;
         }
 
         private BlogComments PopulateUserDetails(BlogComments blogComments)
@@ -69,31 +71,56 @@ namespace GroupCoursework.Repository
         }
 
 
-        public List<BlogComments> GetAllBlogCommentsById(int blogId)
+        public List<BlogCommentDto> GetAllBlogCommentsById(int blogId)
         {
             try
             {
-                var blogComments = _context.BlogComments.Where(b => b.Blog.BlogId == blogId && b.IsCommentDeleted == false).Include(user => user.User).ToList(); 
-                List<BlogComments> blogCommentsList = new List<BlogComments>();
+                var blogComments = _context.BlogComments
+                    .Where(b => b.Blog.BlogId == blogId && b.IsCommentDeleted == false)
+                    .Include(user => user.User)
+                    .ToList();
 
-                if (blogComments == null)
-                {
-                    return blogCommentsList;
-                }
+                List<BlogCommentDto> blogCommentsList = new List<BlogCommentDto>();
 
                 // Populate user details for each blog
                 foreach (var blogComment in blogComments)
                 {
-                    blogCommentsList.Add(PopulateUserDetails(blogComment));
+                    BlogCommentVote blogCommentVotes = PopulateBlogCommentVote(blogComment);
+                    List<BlogCommentVote> blogCommentVotesList = new List<BlogCommentVote> { blogCommentVotes };
+
+                    BlogCommentDto blogCommentDTO = new BlogCommentDto
+                    {
+                        CommentId = blogComment.CommentId,
+                        CommentContent = blogComment.CommentContent,
+                        CommentVotes = blogCommentVotesList,
+                        CreatedAt = blogComment.CreatedAt,
+                        IsCommentDeleted = blogComment.IsCommentDeleted,
+                        User = blogComment.User,
+                    };
+
+                    blogCommentsList.Add(blogCommentDTO);
                 }
+
                 return blogCommentsList;
             }
             catch (Exception ex)
             {
-                List<BlogComments> blogCommentsList = new List<BlogComments>();
+                List<BlogCommentDto> blogCommentsList = new List<BlogCommentDto>();
                 return blogCommentsList; // Operation failed
             }
         }
+
+        public BlogCommentVote PopulateBlogCommentVote(BlogComments blogComments)
+        {
+            var blogCommentVotes = _blogCommentVoteRepository.GetBlogCommentVoteId(blogComments.CommentId);
+            return blogCommentVotes;
+
+        }
+
+
+
+
+
 
         public BlogComments GetBlogCommentById(int blogCommentId)
         {

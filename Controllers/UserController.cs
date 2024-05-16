@@ -63,7 +63,7 @@ namespace GroupCoursework.Controllers
                 return Unauthorized(response);
             }
 
-            var successResponse = new ApiResponse<User>("200", "Success", user);
+            var successResponse = new ApiResponse<User>("200", "Successfully logged in", user);
             return Ok(successResponse);
         }
 
@@ -145,6 +145,30 @@ namespace GroupCoursework.Controllers
             }
 
             var successResponse = new ApiResponse<User>("200", "User password updated", null);
+            return Ok(successResponse);
+        }
+
+
+        [HttpPut("editProfile/{id}")]
+        //[ServiceFilter(typeof(AuthFilter))]
+        public IActionResult UpdateUserProfile(int id, [FromBody] UpdateUserProfileDTO updatedUser)
+        {
+            var existingUser = _userService.GetUserById(id);
+            if (existingUser == null)
+            {
+                var errorResponse = new ApiResponse<User>("404", "User not found", null);
+                return NotFound(errorResponse);
+            }
+
+            // Update the user properties with the new values from updatedUser
+            existingUser.Username = updatedUser.UserName;
+            existingUser.Phone = updatedUser.Phone;
+            existingUser.Gender = updatedUser.Gender;
+            existingUser.UpdatedAt = DateTime.Now;
+
+            _userService.UpdateUser(existingUser);
+
+            var successResponse = new ApiResponse<User>("200", "User updated", existingUser);
             return Ok(successResponse);
         }
 

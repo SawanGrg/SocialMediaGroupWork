@@ -37,7 +37,7 @@ namespace GroupCoursework.Service
             return false;
         }
 
-        public List<BlogComments> GetAllBlogCommentsById(int blogId)
+        public List<BlogCommentDto> GetAllBlogCommentsById(int blogId)
         {
             return _blogCommentRepository.GetAllBlogCommentsById(blogId);
         }

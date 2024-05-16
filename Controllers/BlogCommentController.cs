@@ -97,7 +97,7 @@ namespace GroupCoursework.Controllers
                 return NotFound(response);
             }
 
-            var finalResponse = new ApiResponse<List<BlogComments>>("201", "All blog comments", blogComments);
+            var finalResponse = new ApiResponse<List<BlogCommentDto>>("201", "All blog comments", blogComments);
             return Ok(finalResponse);
 
         }
@@ -214,7 +214,6 @@ namespace GroupCoursework.Controllers
             {
                 var response = new ApiResponse<string>("404", "Blog comment not found", null);
                 return NotFound(response);
-
             }
 
             // Extracting Authorization header value
