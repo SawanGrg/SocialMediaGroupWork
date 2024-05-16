@@ -3,6 +3,7 @@ using System.Numerics;
 using GroupCoursework.DTO;
 using GroupCoursework.Models;
 using GroupCoursework.Repositories;
+using GroupCoursework.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace GroupCoursework.Service
@@ -75,8 +76,42 @@ namespace GroupCoursework.Service
 
         public void UpdateUser(User user)
         {
+            ////This is the existing user taken from the db and the UpdateUserProfileDTO is the data sent from the user to be updated
+            //User existingUser = _userRepository.GetUserById(user.UserId);
+
+            //if (existingUser == null)
+            //{
+            //    return; 
+            //}
+
+            //// Update properties only if they are provided in the DTO
+            //if (user.Username != existingUser.Username)
+            //{
+            //    existingUser.Username = user.Username;
+            //}
+
+            //if (user.Phone != existingUser.Phone)
+            //{
+            //    existingUser.Phone = user.Phone;
+            //}
+
+            //if (user.Gender != existingUser.Gender)
+            //{
+            //    existingUser.Gender = user.Gender;
+            //}
+
+            //existingUser.UpdatedAt = DateTime.Now;
+
+
             _userRepository.UpdateUser(user);
         }
+
+        public void UpdateUserProfile(User user)
+        {
+            _userRepository.UpdateUser(user);
+        }
+
+
 
         public bool AddUser(User user)
         {
@@ -87,6 +122,7 @@ namespace GroupCoursework.Service
         {
             return _userRepository.DeleteUser(userId);
         }
+
 
         public bool changePassword(String email, String password)
         {

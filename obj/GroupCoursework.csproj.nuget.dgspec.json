@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\SocialGroupCoursework\\SocialMediaGroupWork\\GroupCoursework.csproj": {}
+    "C:\\ICP\\Final_Year\\Courseworks\\Application Development\\ApplicationGroup\\SocialMediaGroupWork\\GroupCoursework.csproj": {}
   },
   "projects": {
-    "D:\\SocialGroupCoursework\\SocialMediaGroupWork\\GroupCoursework.csproj": {
+    "C:\\ICP\\Final_Year\\Courseworks\\Application Development\\ApplicationGroup\\SocialMediaGroupWork\\GroupCoursework.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SocialGroupCoursework\\SocialMediaGroupWork\\GroupCoursework.csproj",
+        "projectUniqueName": "C:\\ICP\\Final_Year\\Courseworks\\Application Development\\ApplicationGroup\\SocialMediaGroupWork\\GroupCoursework.csproj",
         "projectName": "GroupCoursework",
-        "projectPath": "D:\\SocialGroupCoursework\\SocialMediaGroupWork\\GroupCoursework.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "D:\\SocialGroupCoursework\\SocialMediaGroupWork\\obj\\",
+        "projectPath": "C:\\ICP\\Final_Year\\Courseworks\\Application Development\\ApplicationGroup\\SocialMediaGroupWork\\GroupCoursework.csproj",
+        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+        "outputPath": "C:\\ICP\\Final_Year\\Courseworks\\Application Development\\ApplicationGroup\\SocialMediaGroupWork\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -39,6 +39,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -95,7 +100,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

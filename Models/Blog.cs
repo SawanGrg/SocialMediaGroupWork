@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using GroupCoursework.DTO;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
@@ -62,5 +63,10 @@ namespace GroupCoursework.Models
 
         public IEnumerable<Blog> BlogSuggestions { get; set; }
         public double Popularity { get; set; } // Add this property to store the popularity score
+
+        public IEnumerable<BlogCommentDto> BlogComments { get; set; }
+
+        public IEnumerable<BlogVote> BlogVotes { get; set; }
+
     }
 }

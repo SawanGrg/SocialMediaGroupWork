@@ -40,6 +40,25 @@ namespace GroupCoursework.Repository
 
         }
 
+        public BlogCommentVote GetBlogCommentVoteId(int blogCommentId)
+        {
+            try
+            {
+                BlogCommentVote blogCommentVote = _context.BlogCommentVotes.Include(vote => vote.BlogComment).FirstOrDefault(b => b.BlogComment.CommentId == blogCommentId );
+
+                return blogCommentVote;
+
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+
+            }
+
+
+        }
+
         public Boolean AddVoteBlogComment(BlogCommentVote blogCommentVote)
         {
             try

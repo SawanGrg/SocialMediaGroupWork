@@ -237,6 +237,22 @@
   },
   {
     "ContainingType": "GroupCoursework.Controllers.BlogCommentController",
+    "Method": "GetAllCommentHistory",
+    "RelativePath": "api/BlogComment/getCommentHistory/{commentId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "commentId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GroupCoursework.Controllers.BlogCommentController",
     "Method": "PostBlogComment",
     "RelativePath": "api/BlogComment/postBlogComment/{blogId}",
     "HttpMethod": "POST",
@@ -361,6 +377,54 @@
     ]
   },
   {
+    "ContainingType": "GroupCoursework.Controllers.NotificationController",
+    "Method": "GetAllNotifications",
+    "RelativePath": "api/Notification/getNotifications/{UserId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UserId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GroupCoursework.Controllers.NotificationController",
+    "Method": "GetNotificationCounts",
+    "RelativePath": "api/Notification/getUnreadNotis/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GroupCoursework.Controllers.NotificationController",
+    "Method": "ReadNotification",
+    "RelativePath": "api/Notification/readNoti/{userId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "GroupCoursework.Controllers.UserController",
     "Method": "GetAllUsers",
     "RelativePath": "api/User",
@@ -461,6 +525,27 @@
   },
   {
     "ContainingType": "GroupCoursework.Controllers.UserController",
+    "Method": "UpdateUserProfile",
+    "RelativePath": "api/User/editProfile/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedUser",
+        "Type": "GroupCoursework.DTO.UpdateUserProfileDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GroupCoursework.Controllers.UserController",
     "Method": "Login",
     "RelativePath": "api/User/login",
     "HttpMethod": "POST",
@@ -470,6 +555,27 @@
       {
         "Name": "loginRequest",
         "Type": "Microsoft.AspNetCore.Identity.Data.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GroupCoursework.Controllers.UserController",
+    "Method": "UpdatePassword",
+    "RelativePath": "api/User/passwordChangeProfile/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "pass",
+        "Type": "GroupCoursework.DTO.ChangePassDTO",
         "IsRequired": true
       }
     ],

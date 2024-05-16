@@ -3,6 +3,7 @@ using GroupCoursework.Repository;
 using GroupCoursework.Utils;
 using GroupCoursework.Models;
 using System.Reflection.Metadata;
+using System.ComponentModel.DataAnnotations;
 
 namespace GroupCoursework.Service
 {
@@ -36,7 +37,7 @@ namespace GroupCoursework.Service
             return false;
         }
 
-        public List<BlogComments> GetAllBlogCommentsById(int blogId)
+        public List<BlogCommentDto> GetAllBlogCommentsById(int blogId)
         {
             return _blogCommentRepository.GetAllBlogCommentsById(blogId);
         }
@@ -46,14 +47,24 @@ namespace GroupCoursework.Service
             return _blogCommentRepository.GetBlogCommentById(blogCommentId);
         }
 
+
+
         public Boolean UpdateBlogComment(UpdateBlogCommentDTO updateBlogCommentDTO, BlogComments existingBlogComments)
         {
             if(existingBlogComments.CommentContent != updateBlogCommentDTO.CommentContent) 
             {
+
+                //For comment history
+                CommentHistory oldComment = new CommentHistory
+                {
+                    BlogComments = existingBlogComments,
+                    CommentContent =  existingBlogComments.CommentContent,
+                    CreatedAt  = DateTime.Now,
+    };
                 existingBlogComments.CommentContent = updateBlogCommentDTO.CommentContent;
                 existingBlogComments.UpdatedAt = DateTime.Now;
 
-                return _blogCommentRepository.UpdateBlogComment(existingBlogComments);
+                return _blogCommentRepository.UpdateBlogComment(existingBlogComments, oldComment);
             }
 
             return false;
@@ -66,7 +77,13 @@ namespace GroupCoursework.Service
         {
 
             blogComments.IsCommentDeleted = true;
-            return _blogCommentRepository.UpdateBlogComment(blogComments);
+            return _blogCommentRepository.UpdateBlogCommentDelete(blogComments);
+        }
+
+
+        public IEnumerable<CommentHistory> GetBlogCommentHistoryByID(int blogCommentId)
+        {
+            return _blogCommentRepository.GetBlogCommentHistoryById(blogCommentId);
         }
 
         public BlogCommentVote GetBlogCommentVoteById(int BlogCommentId, int userId)
