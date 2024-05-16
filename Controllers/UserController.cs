@@ -32,11 +32,11 @@ namespace GroupCoursework.Controllers
         public ActionResult<ApiResponse<UserWithBlogsDTO>> GetSpecificUser(int user_id)
         {
             var user = _userService.UserProfileDetails(user_id);
-            if(user != null)
+            if (user != null)
             {
-            var response = new ApiResponse<UserWithBlogsDTO>("200", "User's profile", user);
+                var response = new ApiResponse<UserWithBlogsDTO>("200", "User's profile", user);
 
-            return Ok(response);
+                return Ok(response);
 
             }
             else
@@ -47,25 +47,25 @@ namespace GroupCoursework.Controllers
         }
 
 
-            [HttpPost("login")]
-            public IActionResult Login([FromBody] LoginRequest loginRequest)
+        [HttpPost("login")]
+        public IActionResult Login([FromBody] LoginRequest loginRequest)
+        {
+            var user = _userService.AuthenticateUser(loginRequest.Email, loginRequest.Password);
+            if (user == null)
             {
-                var user = _userService.AuthenticateUser(loginRequest.Email, loginRequest.Password);
-                if (user == null)
-                {
-                    var response = new ApiResponse<User>("401", "Unauthorized register first!", null);
-                    return Unauthorized(response);
-                }
-
-                if (user.IsUserDeleted)
-                {
-                    var response = new ApiResponse<User>("401", "Unauthorized: Your account has been deleted.", null);
-                    return Unauthorized(response);
-                }
-
-                var successResponse = new ApiResponse<User>("200", "Success", user);
-                    return Ok(successResponse);
+                var response = new ApiResponse<User>("401", "Unauthorized register first!", null);
+                return Unauthorized(response);
             }
+
+            if (user.IsUserDeleted)
+            {
+                var response = new ApiResponse<User>("401", "Unauthorized: Your account has been deleted.", null);
+                return Unauthorized(response);
+            }
+
+            var successResponse = new ApiResponse<User>("200", "Successfully logged in", user);
+            return Ok(successResponse);
+        }
 
         [HttpGet("{id}")]
         [ServiceFilter(typeof(AuthFilter))] // Apply AuthFilter to this action
@@ -130,6 +130,61 @@ namespace GroupCoursework.Controllers
             var successResponse = new ApiResponse<User>("204", "User deleted", null);
             return Ok(successResponse);
         }
+
+
+        [HttpPut("passwordChangeProfile/{id}")]
+        public IActionResult UpdatePassword(int id, [FromBody] ChangePassDTO pass)
+        {
+            var recentUser = _userService.GetUserById(id);
+
+            if (recentUser == null)
+            {
+                var response = new ApiResponse<User>("404", "User not found", null);
+                return NotFound(response);
+            }
+
+            if (recentUser.Password != pass.password)
+            {
+                var response = new ApiResponse<User>("400", "Old password did not match", null);
+                return BadRequest(response);
+            }
+
+            var isUpdated = _userService.changePassword(recentUser.Email, pass.newPassword);
+
+            if (!isUpdated)
+            {
+                var response = new ApiResponse<User>("500", "Failed to update password", null);
+                return StatusCode(500, response);
+            }
+
+            var successResponse = new ApiResponse<User>("200", "User password updated", null);
+            return Ok(successResponse);
+        }
+
+
+        [HttpPut("editProfile/{id}")]
+        //[ServiceFilter(typeof(AuthFilter))]
+        public IActionResult UpdateUserProfile(int id, [FromBody] UpdateUserProfileDTO updatedUser)
+        {
+            var existingUser = _userService.GetUserById(id);
+            if (existingUser == null)
+            {
+                var errorResponse = new ApiResponse<User>("404", "User not found", null);
+                return NotFound(errorResponse);
+            }
+
+            // Update the user properties with the new values from updatedUser
+            existingUser.Username = updatedUser.UserName;
+            existingUser.Phone = updatedUser.Phone;
+            existingUser.Gender = updatedUser.Gender;
+            existingUser.UpdatedAt = DateTime.Now;
+
+            _userService.UpdateUser(existingUser);
+
+            var successResponse = new ApiResponse<User>("200", "User updated", existingUser);
+            return Ok(successResponse);
+        }
+
 
     }
 }

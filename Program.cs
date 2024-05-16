@@ -63,6 +63,8 @@ builder.Services.AddScoped<BlogCommentDTO>();
 builder.Services.AddScoped<BlogCommentVoteRepository>();
 
 
+builder.Services.AddScoped<NotificationRepository>();
+builder.Services.AddScoped<NotificationService>();
 //admin 
 builder.Services.AddScoped<AdminRepository>();
 builder.Services.AddScoped<AdminService>();

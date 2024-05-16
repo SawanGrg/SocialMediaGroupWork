@@ -42,6 +42,8 @@ namespace GroupCoursework.Repositories
             _context.SaveChanges();
         }
 
+        
+
         public bool AddUser(User user)
         {
             try

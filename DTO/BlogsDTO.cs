@@ -12,6 +12,7 @@ namespace GroupCoursework.DTO
 
             public PostBlogDTO()
             {
+
             }
 
             public PostBlogDTO(string blogTitle, string blogContent, IFormFile blogImage)
@@ -49,5 +50,6 @@ namespace GroupCoursework.DTO
 
             public IFormFile? BlogImage { get; set; }
         }
-    }
+
+}
 
