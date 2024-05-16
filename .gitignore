@@ -4,3 +4,8 @@
 bin/
 obj/
 Properties/
+/.vs/GroupCoursework/v17/.suo
+/obj/Debug/net8.0/GroupCoursework.AssemblyInfoInputs.cache
+/obj/Debug/net8.0/GroupCoursework.AssemblyInfo.cs
+/.gitignore
+/.gitignore
