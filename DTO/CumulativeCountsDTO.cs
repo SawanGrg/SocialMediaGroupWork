@@ -7,8 +7,6 @@
         public int UpvotesCount { get; set; }
         public int DownvotesCount { get; set; }
         public int CommentsCount { get; set; }
-
-        // Properties for counts for a specific month
         public int MonthPostsCount { get; set; }
         public int MonthUpvotesCount { get; set; }
         public int MonthDownvotesCount { get; set; }

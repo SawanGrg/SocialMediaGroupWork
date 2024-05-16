@@ -89,6 +89,24 @@ namespace GroupCoursework.Controllers
         }
 
 
+
+
+        //[HttpGet("/GetCumulativeCounts")]
+        //public IActionResult GetCumulativeCounts([FromQuery] string month = null)
+        //{
+        //    try
+        //    {
+        //        var counts = _adminService.GetCumulativeCounts(month);
+        //        var response = new ApiResponse<DTO.CumulativeCountsDTO>("200", "Success", counts);
+        //        return Ok(response);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        var errorResponse = new ApiResponse<object>("500", $"Error retrieving cumulative counts: {ex.Message}. Inner Exception: {ex.InnerException?.Message}", null);
+        //        return StatusCode(500, errorResponse);
+        //    }
+        //}
+
         [HttpGet("/GetCumulativeCounts")]
         public IActionResult GetCumulativeCounts([FromQuery] string month = null)
         {

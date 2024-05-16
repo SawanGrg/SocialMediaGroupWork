@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\images\\0cc23099-6d7f-4ea8-b093-cdd5a8cd0c66.jpg"
     },
     {
+      "Id": "D:\\SocialMediaGroupCourseWork\\Backend\\SocialMediaGroupWork\\wwwroot\\images\\0f8256c0-63a3-451a-9033-d99a793013d5.jpg",
+      "PackagePath": "staticwebassets\\images\\0f8256c0-63a3-451a-9033-d99a793013d5.jpg"
+    },
+    {
       "Id": "D:\\SocialMediaGroupCourseWork\\Backend\\SocialMediaGroupWork\\wwwroot\\images\\177cdb48-5b5a-4948-bc04-e713bab65d2f.png",
       "PackagePath": "staticwebassets\\images\\177cdb48-5b5a-4948-bc04-e713bab65d2f.png"
     },
@@ -23,6 +27,10 @@
     {
       "Id": "D:\\SocialMediaGroupCourseWork\\Backend\\SocialMediaGroupWork\\wwwroot\\images\\1912bccc-a314-4e83-b8e2-52b217fa1501.png",
       "PackagePath": "staticwebassets\\images\\1912bccc-a314-4e83-b8e2-52b217fa1501.png"
+    },
+    {
+      "Id": "D:\\SocialMediaGroupCourseWork\\Backend\\SocialMediaGroupWork\\wwwroot\\images\\19efb902-0b3f-44a9-af7a-de6de40cba3a.jfif",
+      "PackagePath": "staticwebassets\\images\\19efb902-0b3f-44a9-af7a-de6de40cba3a.jfif"
     },
     {
       "Id": "D:\\SocialMediaGroupCourseWork\\Backend\\SocialMediaGroupWork\\wwwroot\\images\\1b3dae79-72f0-49ba-94ce-c9f0852d35e4.jpg",
@@ -53,12 +61,28 @@
       "PackagePath": "staticwebassets\\images\\46e144a2-01bf-4ef9-8b75-53a71e090061.jpg"
     },
     {
+      "Id": "D:\\SocialMediaGroupCourseWork\\Backend\\SocialMediaGroupWork\\wwwroot\\images\\4b1b81bd-a7dd-4d25-ac43-c671ebe9bda1.jpg",
+      "PackagePath": "staticwebassets\\images\\4b1b81bd-a7dd-4d25-ac43-c671ebe9bda1.jpg"
+    },
+    {
       "Id": "D:\\SocialMediaGroupCourseWork\\Backend\\SocialMediaGroupWork\\wwwroot\\images\\4d95ce10-1a28-47eb-93ac-68c8ace5d3ab.png",
       "PackagePath": "staticwebassets\\images\\4d95ce10-1a28-47eb-93ac-68c8ace5d3ab.png"
     },
     {
+      "Id": "D:\\SocialMediaGroupCourseWork\\Backend\\SocialMediaGroupWork\\wwwroot\\images\\4ede355e-fbd8-4944-8f01-b4380d993e0c.jpg",
+      "PackagePath": "staticwebassets\\images\\4ede355e-fbd8-4944-8f01-b4380d993e0c.jpg"
+    },
+    {
       "Id": "D:\\SocialMediaGroupCourseWork\\Backend\\SocialMediaGroupWork\\wwwroot\\images\\507fcc37-6593-4cdb-8d2b-9cf5a0f8e279.jpg",
       "PackagePath": "staticwebassets\\images\\507fcc37-6593-4cdb-8d2b-9cf5a0f8e279.jpg"
+    },
+    {
+      "Id": "D:\\SocialMediaGroupCourseWork\\Backend\\SocialMediaGroupWork\\wwwroot\\images\\560fedbf-5d1f-4851-95fc-50d96961e6fb.webp",
+      "PackagePath": "staticwebassets\\images\\560fedbf-5d1f-4851-95fc-50d96961e6fb.webp"
+    },
+    {
+      "Id": "D:\\SocialMediaGroupCourseWork\\Backend\\SocialMediaGroupWork\\wwwroot\\images\\5b745e2e-85a8-469c-a1ad-a4b1534c149f.jpg",
+      "PackagePath": "staticwebassets\\images\\5b745e2e-85a8-469c-a1ad-a4b1534c149f.jpg"
     },
     {
       "Id": "D:\\SocialMediaGroupCourseWork\\Backend\\SocialMediaGroupWork\\wwwroot\\images\\6788366d-ad3f-4a70-ad83-8721558998e0.JPG",
@@ -77,12 +101,24 @@
       "PackagePath": "staticwebassets\\images\\7803d648-ebd7-4874-bf73-f185aeffebd7.JPG"
     },
     {
+      "Id": "D:\\SocialMediaGroupCourseWork\\Backend\\SocialMediaGroupWork\\wwwroot\\images\\7fb70914-0a70-44db-a150-444a6342af8e.avif",
+      "PackagePath": "staticwebassets\\images\\7fb70914-0a70-44db-a150-444a6342af8e.avif"
+    },
+    {
       "Id": "D:\\SocialMediaGroupCourseWork\\Backend\\SocialMediaGroupWork\\wwwroot\\images\\8024c806-993d-4690-8a82-edfbf1d4064c.png",
       "PackagePath": "staticwebassets\\images\\8024c806-993d-4690-8a82-edfbf1d4064c.png"
     },
     {
+      "Id": "D:\\SocialMediaGroupCourseWork\\Backend\\SocialMediaGroupWork\\wwwroot\\images\\8eca1f75-b9b2-480a-ab29-47757612ce88.webp",
+      "PackagePath": "staticwebassets\\images\\8eca1f75-b9b2-480a-ab29-47757612ce88.webp"
+    },
+    {
       "Id": "D:\\SocialMediaGroupCourseWork\\Backend\\SocialMediaGroupWork\\wwwroot\\images\\99f84f51-b799-4b7f-a97f-a14dd617bd84.jpg",
       "PackagePath": "staticwebassets\\images\\99f84f51-b799-4b7f-a97f-a14dd617bd84.jpg"
+    },
+    {
+      "Id": "D:\\SocialMediaGroupCourseWork\\Backend\\SocialMediaGroupWork\\wwwroot\\images\\9ad267c9-9fa3-4091-a406-1c9a64ac835e.jfif",
+      "PackagePath": "staticwebassets\\images\\9ad267c9-9fa3-4091-a406-1c9a64ac835e.jfif"
     },
     {
       "Id": "D:\\SocialMediaGroupCourseWork\\Backend\\SocialMediaGroupWork\\wwwroot\\images\\ae9a7c1e-e271-4a60-ab2a-2e44054bd842.JPG",
@@ -95,6 +131,10 @@
     {
       "Id": "D:\\SocialMediaGroupCourseWork\\Backend\\SocialMediaGroupWork\\wwwroot\\images\\b6842bf6-1200-4960-8615-ad1bad1f7ba4.JPG",
       "PackagePath": "staticwebassets\\images\\b6842bf6-1200-4960-8615-ad1bad1f7ba4.JPG"
+    },
+    {
+      "Id": "D:\\SocialMediaGroupCourseWork\\Backend\\SocialMediaGroupWork\\wwwroot\\images\\bd718f04-bfcd-43cf-92aa-f0a82c148c41.avif",
+      "PackagePath": "staticwebassets\\images\\bd718f04-bfcd-43cf-92aa-f0a82c148c41.avif"
     },
     {
       "Id": "D:\\SocialMediaGroupCourseWork\\Backend\\SocialMediaGroupWork\\wwwroot\\images\\c0cd5f50-e1fb-4ed4-81b7-1ab22e162baf.gif",
@@ -125,6 +165,14 @@
       "PackagePath": "staticwebassets\\images\\cd3f68c2-3070-4057-be71-500341410cac.jpg"
     },
     {
+      "Id": "D:\\SocialMediaGroupCourseWork\\Backend\\SocialMediaGroupWork\\wwwroot\\images\\d298f72d-2656-4fe2-ac97-0a39b272df31.jfif",
+      "PackagePath": "staticwebassets\\images\\d298f72d-2656-4fe2-ac97-0a39b272df31.jfif"
+    },
+    {
+      "Id": "D:\\SocialMediaGroupCourseWork\\Backend\\SocialMediaGroupWork\\wwwroot\\images\\d37482af-0f42-486c-97f8-2fa8ab97ffd5.jpg",
+      "PackagePath": "staticwebassets\\images\\d37482af-0f42-486c-97f8-2fa8ab97ffd5.jpg"
+    },
+    {
       "Id": "D:\\SocialMediaGroupCourseWork\\Backend\\SocialMediaGroupWork\\wwwroot\\images\\dc6b743b-5c2b-4e49-96d8-706e23a1fc40.png",
       "PackagePath": "staticwebassets\\images\\dc6b743b-5c2b-4e49-96d8-706e23a1fc40.png"
     },
@@ -147,6 +195,10 @@
     {
       "Id": "D:\\SocialMediaGroupCourseWork\\Backend\\SocialMediaGroupWork\\wwwroot\\images\\f14b1bc5-242f-4728-8b2d-dd9e929772c3.webp",
       "PackagePath": "staticwebassets\\images\\f14b1bc5-242f-4728-8b2d-dd9e929772c3.webp"
+    },
+    {
+      "Id": "D:\\SocialMediaGroupCourseWork\\Backend\\SocialMediaGroupWork\\wwwroot\\images\\f63fbcf0-d4a7-4c4f-ae3a-6a784d74b216.webp",
+      "PackagePath": "staticwebassets\\images\\f63fbcf0-d4a7-4c4f-ae3a-6a784d74b216.webp"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.GroupCoursework.Microsoft.AspNetCore.StaticWebAssets.props",

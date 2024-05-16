@@ -102,8 +102,8 @@ namespace GroupCoursework.Repository
         {
             try
             {
-                // Retrieve all blogs from the database
-                var allBlogs = _context.Blogs.ToList();
+                // Retrieve all blogs from the database with user details
+                var allBlogs = _context.Blogs.Include(blog => blog.user).ToList();
 
                 var top10Blogs = new List<SpecificBlogsWithSuggestions>(); // Create a list to store the top 10 blogs with suggestions
 
@@ -146,6 +146,7 @@ namespace GroupCoursework.Repository
             }
         }
 
+
         private double CalculatePopularity(int upvotes, int downvotes, int comments)
         {
             // Define weightage values
@@ -171,15 +172,14 @@ namespace GroupCoursework.Repository
                 }
 
                 var top10Blogs = _context.Blogs
-                    .Where(b => b.blogCreatedAt.Year == parsedMonth.Year && b.blogCreatedAt.Month == parsedMonth.Month)
-                    .ToList() // Bring data to client-side
                     .Select(b => new
                     {
                         Blog = b,
-                        Likes = _context.BlogVotes.Count(v => v.Blog.BlogId == b.BlogId && v.IsVote),
-                        Dislikes = _context.BlogVotes.Count(v => v.Blog.BlogId == b.BlogId && !v.IsVote),
-                        Comments = _context.BlogComments.Count(c => c.Blog.BlogId == b.BlogId)
+                        Likes = _context.BlogVotes.Count(v => v.Blog.BlogId == b.BlogId && v.IsVote && v.CreatedAt.Month == parsedMonth.Month),
+                        Dislikes = _context.BlogVotes.Count(v => v.Blog.BlogId == b.BlogId && !v.IsVote && v.CreatedAt.Month == parsedMonth.Month),
+                        Comments = _context.BlogComments.Count(c => c.Blog.BlogId == b.BlogId && c.CreatedAt.Month == parsedMonth.Month)
                     })
+                    .AsEnumerable() // Materialize the query results into memory
                     .OrderByDescending(b => CalculatePopularity(b.Likes, b.Dislikes, b.Comments))
                     .Take(10)
                     .Select(b => new SpecificBlogsWithSuggestions
@@ -199,6 +199,42 @@ namespace GroupCoursework.Repository
         }
 
 
+
+
+        //public CumulativeCountsDTO GetCumulativeCountsAllTime()
+        //{
+        //    var allPostsCount = _context.Blogs.Count();
+        //    var allUpvotesCount = _context.BlogVotes.Count(v => v.IsVote);
+        //    var allDownvotesCount = _context.BlogVotes.Count(v => !v.IsVote);
+        //    var allCommentsCount = _context.BlogComments.Count();
+
+        //    return new CumulativeCountsDTO
+        //    {
+        //        BlogPostsCount = allPostsCount,
+        //        UpvotesCount = allUpvotesCount,
+        //        DownvotesCount = allDownvotesCount,
+        //        CommentsCount = allCommentsCount
+        //    };
+        //}
+
+        //public CumulativeCountsDTO GetCumulativeCountsForMonth(string month)
+        //{
+        //    var parsedMonth = DateTime.ParseExact(month, "MM/yyyy", CultureInfo.InvariantCulture);
+
+        //    var monthPostsCount = _context.Blogs.Count(b => b.blogCreatedAt.Year == parsedMonth.Year && b.blogCreatedAt.Month == parsedMonth.Month);
+        //    var monthUpvotesCount = _context.BlogVotes.Count(v => v.IsVote && v.Blog.blogCreatedAt.Year == parsedMonth.Year && v.Blog.blogCreatedAt.Month == parsedMonth.Month);
+        //    var monthDownvotesCount = _context.BlogVotes.Count(v => !v.IsVote && v.Blog.blogCreatedAt.Year == parsedMonth.Year && v.Blog.blogCreatedAt.Month == parsedMonth.Month);
+        //    var monthCommentsCount = _context.BlogComments.Count(c => c.Blog.blogCreatedAt.Year == parsedMonth.Year && c.Blog.blogCreatedAt.Month == parsedMonth.Month);
+
+        //    return new CumulativeCountsDTO
+        //    {
+        //        BlogPostsCount = monthPostsCount,
+        //        UpvotesCount = monthUpvotesCount,
+        //        DownvotesCount = monthDownvotesCount,
+        //        CommentsCount = monthCommentsCount
+        //    };
+        //}
+
         public CumulativeCountsDTO GetCumulativeCountsAllTime()
         {
             var allPostsCount = _context.Blogs.Count();
@@ -217,7 +253,10 @@ namespace GroupCoursework.Repository
 
         public CumulativeCountsDTO GetCumulativeCountsForMonth(string month)
         {
-            var parsedMonth = DateTime.ParseExact(month, "MM/yyyy", CultureInfo.InvariantCulture);
+            if (!DateTime.TryParseExact(month, "MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime parsedMonth))
+            {
+                throw new ArgumentException("Invalid month format. Please provide month in MM/yyyy format.");
+            }
 
             var monthPostsCount = _context.Blogs.Count(b => b.blogCreatedAt.Year == parsedMonth.Year && b.blogCreatedAt.Month == parsedMonth.Month);
             var monthUpvotesCount = _context.BlogVotes.Count(v => v.IsVote && v.Blog.blogCreatedAt.Year == parsedMonth.Year && v.Blog.blogCreatedAt.Month == parsedMonth.Month);
