@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GroupCoursework")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c9f9caa95a0e7b71e18df6755e45330174a8c4fd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eee41853daf442d023bc0f6988d8f52a7352b3d2")]
 [assembly: System.Reflection.AssemblyProductAttribute("GroupCoursework")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GroupCoursework")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
